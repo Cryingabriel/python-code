@@ -30,7 +30,16 @@ while True:
         if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North':
             room = 3
      if room == 5:
-        print("your in room 5, you can move north")
+        print("you enter the room, you find that it's a plain room with nothing in it exept a ladder which seems to lead up.")
         choice = input()
         if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West':
             room = 3
+        elif choice == 'up' or choice == 'Up':
+            room = 6
+     if room == 6:
+        print("you climb up the ladder to find yourself in a some sort of storage with all sorts of tools inside it, you can move west")
+        choice = input()
+        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West':
+            room = 7
+        elif choice == 'd' or choice == 'D' or choice == 'down' or choice == 'Down':
+            room = 5

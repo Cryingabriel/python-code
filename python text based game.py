@@ -29,6 +29,15 @@ def monster(biome):
       print("a Troll is trying to squash you")
     elif num <= 100:
       print("you get stabbed by a goblin")
+  elif biome == "outside":
+    if num <= 25:
+      print("a Skeletons have appeared")
+    elif num <= 75:#30% chance
+      print("Ghosts are trying take you away")
+    elif num <= 85:
+      print("a hored of zombies are aproaching you")
+    elif num <= 100:
+      print("slimes are trying to erode you")
 
 print("you slowly wake up with water driping down you're face, when you open your eyes your inside a cold, dark and damp room. You have no idea how you woke up in here, all you can recall is falling asleep in bed then waking here.")
 room = 1
@@ -104,7 +113,7 @@ while True:
             print("that's not an option")
     if room == 8:
         monster("mansion")
-        print("you climb up the ladder to find yourself in a some sort of storage with all sorts of tools inside it, you can move west")
+        print("your in room 8, you can move south")
         choice = input()
         if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South':
             room = 7
@@ -112,7 +121,7 @@ while True:
             print("that's not an option")
     if room == 9:
         monster("mansion")
-        print("you climb up the ladder to find yourself in a some sort of storage with all sorts of tools inside it, you can move west")
+        print("your in room 9, you can move east or north")
         choice = input()
         if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East':
             room = 10
@@ -122,9 +131,135 @@ while True:
             print("that's not an option")
     if room == 10:
         monster("mansion")
-        print("you climb up the ladder to find yourself in a some sort of storage with all sorts of tools inside it, you can move west")
+        print("your in room 10, you can move west or east")
         choice = input()
         if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West':
             room = 9
+        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East':
+            room = 11
+        else:
+            print("that's not an option")
+    if room == 11:
+        monster("outside")
+        print("your in room 11, you can move west, south or east")
+        choice = input()
+        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West':
+            room = 12
+        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East':
+            room = 18
+        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South':
+            room = 15
+        else:
+            print("that's not an option")
+    if room == 12:
+        monster("outside")
+        print("your in room 12, you can move west or east")
+        choice = input()
+        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West':
+            room = 13
+        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East':
+            room = 11
+        else:
+            print("that's not an option")
+    if room == 13:
+        monster("outside")
+        print("your in room 13, you can move north or east")
+        choice = input()
+        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North':
+            room = 14
+        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East':
+            room = 12
+        else:
+            print("that's not an option")
+    if room == 14:
+        monster("outside")
+        print("your in room 14, you can move south")
+        choice = input()
+        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South':
+            room = 13
+        else:
+            print("that's not an option")
+    if room == 15:
+        monster("outside")
+        print("your in room 15, you can move south")
+        choice = input()
+        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South':
+            room = 16
+        else:
+            print("that's not an option")
+    if room == 16:
+        monster("outside")
+        print("your in room 16, you can move north or west")
+        choice = input()
+        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West':
+            room = 17
+        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North':
+            room = 15
+        else:
+            print("that's not an option")
+    if room == 17:
+        monster("outside")
+        print("your in room 17, you can move east")
+        choice = input()
+        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East':
+            room = 16
+        else:
+            print("that's not an option")
+    if room == 18:
+        monster("forest")
+        print("your in room 18, you can move west or east")
+        choice = input()
+        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West':
+            room = 11
+        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East':
+            room = 19
+        else:
+            print("that's not an option")
+    if room == 19:
+        monster("forest")
+        print("your in room 19, you can move west, south or north")
+        choice = input()
+        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West':
+            room = 18
+        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North':
+            room = 20
+        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South':
+            room = 21
+        else:
+            print("that's not an option")
+    if room == 20:
+        monster("forest")
+        print("your in room 20, you can move south")
+        choice = input()
+        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South':
+            room = 19
+        else:
+            print("that's not an option")
+    if room == 21:
+        monster("forest")
+        print("your in room 21, you can move north, east or south")
+        choice = input()
+        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East':
+            room = 
+        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North':
+            room = 19
+        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South':
+            room = 23
+        else:
+            print("that's not an option")
+    if room == 22:
+        monster("forest")
+        print("your in room 22, you can move west")
+        choice = input()
+        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West':
+            room = 21
+        else:
+            print("that's not an option")
+    if room == 23:
+        monster("forest")
+        print("your in room 23, you can move north")
+        choice = input()
+        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North':
+            room = 21
         else:
             print("that's not an option")

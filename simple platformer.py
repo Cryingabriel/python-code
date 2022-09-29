@@ -5,7 +5,8 @@ screen = pygame.display.set_mode((800, 800))  # creates game screen
 screen.fill((0,0,0))
 clock = pygame.time.Clock() #set up clock
 gameover = False #variable to run our game loop
-pixel = pygame.image.load("pixilart-drawing.png")
+
+pixel = pygame.transform.scale(pygame.image.load("pixilart-drawing.png"), (100,100))
 #CONSTANTS
 LEFT=0
 RIGHT=1
@@ -22,7 +23,9 @@ vy = 0 #y velocity of player
 keys = [False, False, False, False] #this list holds whether each key has been pressed
 isOnGround = False #this variable stops gravity from pulling you down more when on a platform
 
-
+jump = pygame.mixer.Sound('jump.wav')#load in sound effect
+music = pygame.mixer.music.load('believe-in-miracle.mp3')#load in background music
+pygame.mixer.music.play(-1)#start background music
 
 while not gameover: #GAME LOOP############################################################
     clock.tick(60) #FPS

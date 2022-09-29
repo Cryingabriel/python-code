@@ -22,7 +22,7 @@ vx = 0 #x velocity of player
 vy = 0 #y velocity of player
 keys = [False, False, False, False] #this list holds whether each key has been pressed
 isOnGround = False #this variable stops gravity from pulling you down more when on a platform
-
+#
 jump = pygame.mixer.Sound('jump.wav')#load in sound effect
 music = pygame.mixer.music.load('believe-in-miracle.mp3')#load in background music
 pygame.mixer.music.play(-1)#start background music
@@ -89,15 +89,15 @@ while not gameover: #GAME LOOP##################################################
     elif xpos>300 and xpos<400 and ypos+40 >550 and ypos+40 <570:
         ypos = 550-40
         isOnGround = True
-        xy = 0
+        vy = 0
     elif xpos>400 and xpos<500 and ypos+40 >450 and ypos+40 <470:
         ypos = 450-40
         isOnGround = True
-        xy = 0
+        vy = 0
     elif xpos>500 and xpos<600 and ypos+40 >350 and ypos+40 <370:
         ypos = 350-40
         isOnGround = True
-        xy = 0
+        vy = 0
     else:
         isOnGround = False
 

@@ -22,10 +22,44 @@ vx = 0 #x velocity of player
 vy = 0 #y velocity of player
 keys = [False, False, False, False] #this list holds whether each key has been pressed
 isOnGround = False #this variable stops gravity from pulling you down more when on a platform
+
+#enemy variables
+enemy1=[200, 630, 0]
+enemy2 = [400,430,0]
+enemy3 = [500,330,0]
+def enmove(enemyinfo):
+    enemyinfo[2] +=1
+    if enemyinfo[2]<=80:
+        enemyinfo[0]+=1
+    elif enemyinfo[2]<=160:
+        enemyinfo[0]-=1
+    else:
+        enemyinfo[2] = 0 #resetting timer
+    
+def enmove2(enemyinfo2):
+    enemyinfo2[2] +=1
+    if enemyinfo2[2]<=40:
+        enemyinfo2[0]+=2
+    elif enemyinfo2[2]<=80:
+        enemyinfo2[0]-=2
+    else:
+        enemyinfo2[2] = 0
+def enmove3(enemyinfo3):
+    enemyinfo3[2] +=1
+    if enemyinfo3[2]<=20:
+        enemyinfo3[0]+=4
+    elif enemyinfo3[2]<=40:
+        enemyinfo3[0]-=4
+    else:
+        enemyinfo3[2] = 0
+
 #
 jump = pygame.mixer.Sound('jump.wav')#load in sound effect
 music = pygame.mixer.music.load('believe-in-miracle.mp3')#load in background music
 pygame.mixer.music.play(-1)#start background music
+
+
+
 
 while not gameover: #GAME LOOP############################################################
     clock.tick(60) #FPS
@@ -74,8 +108,10 @@ while not gameover: #GAME LOOP##################################################
         isOnGround = False
         direction = UP
     
-    
-
+    #enemy movement
+    enmove(enemy1)
+    enmove2(enemy2)
+    enmove3(enemy3)
     
     #COLLISION
     if xpos>100 and xpos<200 and ypos+40 >750 and ypos+40 <770:
@@ -122,9 +158,14 @@ while not gameover: #GAME LOOP##################################################
     # RENDER Section--------------------------------------------------------------------------------
             
     screen.fill((0,0,0)) #wipe screen so it doesn't smear
-  
+    #player
     pygame.draw.rect(screen, (100, 200, 100), (xpos, ypos, 20, 40))
+    #enemies
+    pygame.draw.rect(screen, (200, 200, 200), (enemy1[0], enemy1[1], 20, 30))
     
+    pygame.draw.rect(screen, (50, 100, 50), (enemy2[0], enemy2[1], 20, 30))
+    
+    pygame.draw.rect(screen, (255, 0, 0), (enemy3[0], enemy3[1], 20, 30))
     #first platform
     pygame.draw.rect(screen, (200, 0, 100), (100, 750, 100, 20))
     

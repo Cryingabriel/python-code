@@ -1,10 +1,10 @@
-#add gold into the game so that the player has to pay gold to enter the next area[dont]
-#maybe make it so when the player dies they go back to the begining without anything that they got[]
-
+#add gold into the game so that the player has to pay gold to enter the next area[done]
+#maybe make it so when the player dies they go back to the begining without anything that they got[it doesn't go back to room 1 and makes it so the playerhealth is broken]
+#add it so the players can quit the game hwen they want[bugs close software, ask for help]
 import random
 import time
 #function definition
-playerhealth=100
+playerhealth=50
 gold=0
 def monster(biome):
   num = random.randrange(0, 100)
@@ -173,6 +173,8 @@ while True:
         choice = input()
         if choice == 'e' or choice == 'East' or choice == 'east' or choice == 'East' or choice == 'EAST':
             room = 2
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 2:
@@ -184,6 +186,8 @@ while True:
             room = 1
         elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
             room = 3
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 3:
@@ -197,6 +201,8 @@ while True:
             room = 4
         elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
             room = 5
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 4:
@@ -206,6 +212,8 @@ while True:
         choice = input()
         if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North'  or choice == 'NORTH':
             room = 3
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 5:
@@ -215,6 +223,8 @@ while True:
             room = 3
         elif choice == 'up' or choice == 'Up' or choice == 'UP' or choice == 'u' or choice == 'U':
             room = 6
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 6:
@@ -228,6 +238,8 @@ while True:
             room = 5
         elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
             room == 9
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 7:
@@ -239,6 +251,8 @@ while True:
             room = 8
         elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
             room = 6
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 8:
@@ -248,6 +262,8 @@ while True:
         choice = input()
         if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
             room = 7
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 9:
@@ -259,6 +275,8 @@ while True:
             room = 10
         elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
             room = 6
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 10:
@@ -270,6 +288,8 @@ while True:
             room = 9
         if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
             room = 11
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 11:
@@ -279,10 +299,12 @@ while True:
         choice = input()
         if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
             room = 12
-        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+        elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
             room = 18
-        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+        elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
             room = 15
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 12:
@@ -292,8 +314,10 @@ while True:
         choice = input()
         if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
             room = 13
-        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+        elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
             room = 11
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 13:
@@ -303,8 +327,10 @@ while True:
         choice = input()
         if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
             room = 14
-        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+        elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
             room = 12
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 14:
@@ -314,6 +340,8 @@ while True:
         choice = input()
         if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
             room = 13
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 15:
@@ -323,8 +351,10 @@ while True:
         choice = input()
         if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
             room = 16
-        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+        elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
             room = 11
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 16:
@@ -334,8 +364,10 @@ while True:
         choice = input()
         if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
             room = 17
-        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+        elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
             room = 15
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 17:
@@ -345,8 +377,10 @@ while True:
         choice = input()
         if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
             room = 16
-        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+        elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
             room = 23
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 18:
@@ -356,8 +390,10 @@ while True:
         choice = input()
         if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
             room = 11
-        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+        elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
             room = 19
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 19:
@@ -367,10 +403,12 @@ while True:
         choice = input()
         if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
             room = 18
-        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+        elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
             room = 20
-        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+        elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
             room = 21
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 20:
@@ -380,6 +418,8 @@ while True:
         choice = input()
         if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
             room = 19
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 21:
@@ -389,10 +429,12 @@ while True:
         choice = input()
         if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
             room = 22
-        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+        elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
             room = 19
-        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+        elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
             room = 23
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 22:
@@ -402,6 +444,8 @@ while True:
         choice = input()
         if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
             room = 21
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")
     if room == 23:
@@ -411,5 +455,7 @@ while True:
         choice = input()
         if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
             room = 21
+        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+            quit()
         else:
             print("that's not an option")

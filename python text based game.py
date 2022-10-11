@@ -6,6 +6,7 @@ import time
 #function definition
 playerhealth=50
 gold=0
+
 def monster(biome):
   num = random.randrange(0, 100)
   if biome == "dungeon":
@@ -162,300 +163,375 @@ def battlesystem(monster):
         quit()
     return playerhealth
 
-print("you slowly wake up with water driping down you're face, when you open your eyes your inside a cold, dark and damp room. You have no idea how you woke up in here, all you can recall is falling asleep in bed then waking here.through the darkness you can see a vague silhouette coming towards you.")
-room = 1
-time.sleep(8)
-while True:
-    if room == 1:
-        monster("dungeon")
-        time.sleep(3)
-        print("your in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through, you can move (e)ast")
-        choice = input()
-        if choice == 'e' or choice == 'East' or choice == 'east' or choice == 'East' or choice == 'EAST':
-            room = 2
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 2:
-        monster("dungeon")
-        time.sleep(3)
-        print("your in room 2, you can move west or south")
-        choice = input()
-        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
-            room = 1
-        elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-            room = 3
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 3:
-        monster("dungeon")
-        time.sleep(3)
-        print("your in room 3, you can move north, south or east")
-        choice = input()
-        if choice == 'n' or choice == 'N' or choice == 'North' or choice == 'north' or choice == 'NORTH':
-            room = 2
-        elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-            room = 4
-        elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
-            room = 5
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 4:
-        monster("dungeon")
-        time.sleep(3)
-        print("your in room 4, you can move north")
-        choice = input()
-        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North'  or choice == 'NORTH':
-            room = 3
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 5:
-        print("you enter the room, you find that it's a plain room with nothing in it exept a ladder which seems to lead 'up'.")
-        choice = input()
-        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
-            room = 3
-        elif choice == 'up' or choice == 'Up' or choice == 'UP' or choice == 'u' or choice == 'U':
-            room = 6
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 6:
-        monster("mansion")
-        time.sleep(3)
-        print("you climb up the ladder to find yourself in a some sort of storage with all sorts of tools inside it, you can move west or go back down")
-        choice = input()
-        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
-            room = 7
-        elif choice == 'd' or choice == 'D' or choice == 'down' or choice == 'Down' or choice == 'DOWN':
-            room = 5
-        elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-            room == 9
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 7:
-        monster("mansion")
-        time.sleep(3)
-        print("your in room 7, you can move north or east")
-        choice = input()
-        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
-            room = 8
-        elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
-            room = 6
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 8:
-        monster("mansion")
-        time.sleep(3)
-        print("your in room 8, you can move south")
-        choice = input()
-        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-            room = 7
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 9:
-        monster("mansion")
-        time.sleep(3)
-        print("your in room 9, you can move east or north")
-        choice = input()
-        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
-            room = 10
-        elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
-            room = 6
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 10:
-        monster("mansion")
-        time.sleep(3)
-        print("your in room 10, you can move west or east")
-        choice = input()
-        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
-            room = 9
-        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
-            room = 11
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 11:
-        monster("outside")
-        time.sleep(3)
-        print("when you look around you find yourself surrounded by greenery of a abandoned garden.It's filled with overgrown vines and weeds all over with countless spiderwebs everywhere, you can move west, south or east")
-        choice = input()
-        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
-            room = 12
-        elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
-            room = 18
-        elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-            room = 15
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 12:
-        monster("outside")
-        time.sleep(3)
-        print("your in room 12, you can move west or east")
-        choice = input()
-        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
-            room = 13
-        elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
-            room = 11
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 13:
-        monster("outside")
-        time.sleep(3)
-        print("your in room 13, you can move north or east")
-        choice = input()
-        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
-            room = 14
-        elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
-            room = 12
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 14:
-        monster("outside")
-        time.sleep(3)
-        print("your in room 14, you can move south")
-        choice = input()
-        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-            room = 13
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 15:
-        monster("outside")
-        time.sleep(3)
-        print("your in room 15, you can move south or north")
-        choice = input()
-        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-            room = 16
-        elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
-            room = 11
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 16:
-        monster("outside")
-        time.sleep(3)
-        print("your in room 16, you can move north or west")
-        choice = input()
-        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
-            room = 17
-        elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
-            room = 15
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 17:
-        monster("outside")
-        time.sleep(3)
-        print("your in room 17, you can move east")
-        choice = input()
-        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
-            room = 16
-        elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-            room = 23
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 18:
-        monster("forest")
-        time.sleep(3)
-        print("your in room 18, you can move west or east")
-        choice = input()
-        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
-            room = 11
-        elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
-            room = 19
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 19:
-        monster("forest")
-        time.sleep(3)
-        print("your in room 19, you can move west, south or north")
-        choice = input()
-        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
-            room = 18
-        elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
-            room = 20
-        elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-            room = 21
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 20:
-        monster("forest")
-        time.sleep(3)
-        print("your in room 20, you can move south")
-        choice = input()
-        if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-            room = 19
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 21:
-        monster("forest")
-        time.sleep(3)
-        print("your in room 21, you can move north, east or south")
-        choice = input()
-        if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
-            room = 22
-        elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
-            room = 19
-        elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-            room = 23
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 22:
-        monster("forest")
-        time.sleep(3)
-        print("your in room 22, you can move west")
-        choice = input()
-        if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
-            room = 21
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
-    if room == 23:
-        monster("forest")
-        time.sleep(3)
-        print("your in room 23, you can move north")
-        choice = input()
-        if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
-            room = 21
-        elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
-            quit()
-        else:
-            print("that's not an option")
+quit = False
+opendoor = False
+opendoor1 = False
+opendoor2 = False
+opendoor3 = False
+choice1 = input("do you want to play a game? Yes/No")
+if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or choice1 == 'YES':
+    time.sleep(3)
+    print("you slowly wake up with water driping down you're face, when you open your eyes your inside a cold, dark and damp room. You have no idea how you woke up in here, all you can recall is falling asleep in bed then waking here.through the darkness you can see a vague silhouette coming towards you.")
+    room = 1
+    time.sleep(8)
+    while quit == False:
+    
+        if room == 1:
+            monster("dungeon")
+            time.sleep(3)
+            print("your in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through, you can move (e)ast")
+            choice = input()
+            if choice == 'e' or choice == 'East' or choice == 'east' or choice == 'East' or choice == 'EAST':
+                room = 2
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 2:
+            monster("dungeon")
+            time.sleep(3)
+            print("your in room 2, you can move west or south")
+            choice = input()
+            if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
+                room = 1
+            elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+                room = 3
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 3:
+            monster("dungeon")
+            time.sleep(3)
+            n = random.randrange(100,300)
+            print("your in room 3, you can move north, south or pay to open door to the east")
+            choice = input()
+            if choice == 'n' or choice == 'N' or choice == 'North' or choice == 'north' or choice == 'NORTH':
+                room = 2
+            elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+                room = 4
+            elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST' and opendoor == True:
+                room = 5
+            elif choice == 'pay'and gold >= 450:
+                gold -= 450
+                opendoor = True
+                time.sleep(3)
+                print("taking you're gold t6he door magically dissapears before your eye's")
+                time.sleep(2)
+                print("you now have", gold, "gold")
+            elif choice == 'pay' and gold != 450:
+                print("you try to pay but realise too late that you don't have enough money and lost 100 gold")
+                gold -= n
+                time.sleep(3)
+                print("you now have", gold, "gold")
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 4:
+            monster("dungeon")
+            time.sleep(3)
+            if opendoor == False:
+                print("your in room 4, you can move north or pay to open door to the east")
+            if opendoor == True:
+                print("your in room 4 you can move north or east")
+            choice = input()
+            if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North'  or choice == 'NORTH':
+                room = 3
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 5:
+            print("you enter the room, you find that it's a plain room with nothing in it exept a ladder which seems to lead 'up'.")
+            choice = input()
+            if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
+                room = 3
+            elif choice == 'up' or choice == 'Up' or choice == 'UP' or choice == 'u' or choice == 'U':
+                room = 6
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 6:
+            monster("mansion")
+            time.sleep(3)
+            print("you climb up the ladder to find yourself in a some sort of storage with all sorts of tools inside it, you can move west or go back down")
+            choice = input()
+            if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
+                room = 7
+            elif choice == 'd' or choice == 'D' or choice == 'down' or choice == 'Down' or choice == 'DOWN':
+                room = 5
+            elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+                room == 9
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 7:
+            monster("mansion")
+            time.sleep(3)
+            print("your in room 7, you can move north or east")
+            choice = input()
+            if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+                room = 8
+            elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+                room = 6
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 8:
+            monster("mansion")
+            time.sleep(3)
+            print("your in room 8, you can move south")
+            choice = input()
+            if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+                room = 7
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 9:
+            monster("mansion")
+            time.sleep(3)
+            print("your in room 9, you can move east or north")
+            choice = input()
+            if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+                room = 10
+            elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+                room = 6
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 10:
+            monster("mansion")
+            time.sleep(3)
+            n = random.randrange(300,450)
+            if opendoor1 == False:
+                print("your in room 10, you can move west or pay to open the door leading east")
+            if opendoor1 == True:
+                print("your in room 10 you can move north or east")
+            choice = input()
+            if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
+                room = 9
+            elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST' and opendoor1 == True:
+                room = 11
+            elif choice == 'pay'and gold >= 700:
+                gold -= 700
+                opendoor1 = True
+                time.sleep(3)
+                print("taking you're gold t6he door magically dissapears before your eye's")
+                time.sleep(2)
+                print("you now have", gold, "gold")
+            elif choice == 'pay' and gold != 700:
+                print("you try to pay but realise too late that you don't have enough money and lost 100 gold")
+                gold -= n
+                time.sleep(3)
+                print("you now have", gold, "gold")
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 11:
+            monster("outside")
+            time.sleep(3)
+            n = random.randrange(300,450)
+            if opendoor3 == False:
+                print("when you look around you find yourself surrounded by greenery of a abandoned garden.It's filled with overgrown vines and weeds all over with countless spiderwebs everywhere, you can move west, south or pay to open a door going east")
+            if opendoor3 == True:
+                print("your in room 11 you can move west, south or east")
+            choice = input()
+            if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
+                room = 12
+            elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST' and opendoor3 == True:
+                room = 18
+            elif choice == 'pay'and gold >= 1000:
+                gold -= 1000
+                opendoor3 = True
+                time.sleep(3)
+                print("taking you're gold t6he door magically dissapears before your eye's")
+                time.sleep(2)
+                print("you now have", gold, "gold")
+            elif choice == 'pay' and gold != 1000:
+                print("you try to pay but realise too late that you don't have enough money and lost 100 gold")
+                gold -= n
+            elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+                room = 15
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 12:
+            monster("outside")
+            time.sleep(3)
+            print("your in room 12, you can move west or east")
+            choice = input()
+            if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
+                room = 13
+            elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+                room = 11
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 13:
+            monster("outside")
+            time.sleep(3)
+            print("your in room 13, you can move north or east")
+            choice = input()
+            if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+                room = 14
+            elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+                room = 12
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 14:
+            monster("outside")
+            time.sleep(3)
+            print("your in room 14, you can move south")
+            choice = input()
+            if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+                room = 13
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 15:
+            monster("outside")
+            time.sleep(3)
+            print("your in room 15, you can move south or north")
+            choice = input()
+            if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+                room = 16
+            elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+                room = 11
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 16:
+            monster("outside")
+            time.sleep(3)
+            print("your in room 16, you can move north or west")
+            choice = input()
+            if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
+                room = 17
+            elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+                room = 15
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 17:
+            monster("outside")
+            time.sleep(3)
+            print("your in room 17, you can move east")
+            choice = input()
+            if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+                room = 16
+            elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+                room = 23
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 18:
+            monster("forest")
+            time.sleep(3)
+            print("your in room 18, you can move west or east")
+            choice = input()
+            if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
+                room = 11
+            elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+                room = 19
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 19:
+            monster("forest")
+            time.sleep(3)
+            print("your in room 19, you can move west, south or north")
+            choice = input()
+            if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
+                room = 18
+            elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+                room = 20
+            elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+                room = 21
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 20:
+            monster("forest")
+            time.sleep(3)
+            print("your in room 20, you can move south")
+            choice = input()
+            if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+                room = 19
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 21:
+            monster("forest")
+            n = fandom.randrange(450,1000)
+            time.sleep(3)
+            if opendoor2 == False:
+                print("your in room 10, you can move west or pay to open the door leading east")
+            if opendoor2 == True:
+                print("your in room 10 you can move north or east")
+            print("your in room 21, you can move north, east or open a door to the south")
+            choice = input()
+            if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+                room = 22
+            elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+                room = 19
+            elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH' and opendoor2 == True:
+                room = 23
+            elif choice == 'pay'and gold >= 700:
+                gold -= 700
+                opendoor2 = True
+                time.sleep(3)
+                print("taking you're gold t6he door magically dissapears before your eye's")
+                time.sleep(2)
+                print("you now have", gold, "gold")
+            elif choice == 'pay' and gold != 1500:
+                print("you try to pay but realise too late that you don't have enough money and lost 100 gold")
+                gold -= n
+                time.sleep(3)
+                print("you now have", gold, "gold")
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 22:
+            monster("forest")
+            time.sleep(3)
+            print("your in room 22, you can move west")
+            choice = input()
+            if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
+                room = 21
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+        if room == 23:
+            monster("forest")
+            time.sleep(3)
+            print("your in room 23, you can move north")
+            choice = input()
+            if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+                room = 21
+            elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
+                quit = True
+            else:
+                print("that's not an option")
+else:
+    print("Very well, maybe another time")
+    quit = True

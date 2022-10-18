@@ -1,10 +1,18 @@
-#add gold into the game so that the player has to pay gold to enter the next area[done]
-#maybe make it so when the player dies they go back to the begining without anything that they got[it doesn't go back to room 1 and makes it so the playerhealth is broken]
-#add it so the players can quit the game hwen they want[bugs close software, ask for help]
+#Add gold into the game so that the player has to pay gold to enter the next area[Done.]
+#Maybe make it so when the player dies they go back to the begining without anything that they got[Done ish? Needs more testing.]
+#Add it so the players can quit the game hwen they want[Done]
+#Make it so that players can see the amount of gold and health when they type g or h[Semi done, finish for all rooms.]
+#Make it so that all input is lowercase so it's easier on me[It doesn't work so some reason, ask eli for help.]
+#Add an inventory so that player can hold things when added later[Not implemented.]
+#Add a sword that spawns in a room that boosts attack[Not implemented.]
+#See if I can add healthpotions/aidkits in some later rooms to make beating the game easier[Might add or not. Depends on how hard I want to make the game.]
+#Twick potions so that it's easier to die to monsters[Not done.]
+#Add final boss for the game[Not implemented.]
+#
 import random
 import time
 #function definition
-playerhealth=50
+playerhealth=30
 gold=0
 
 def monster(biome):
@@ -129,7 +137,15 @@ def battlesystem(monster):
         time.sleep(3)
         print("the monsters HP is at", monsterhealth)
         time.sleep(3)
-    if monsterhealth<= 0:
+    if playerhealth <= 0:# this makes sure that when the player dies the game end
+        print("you succumbed to your wounds as your vision slowly fades to black")
+        room = 1
+        playerhealth = 100
+        gold = 0
+        time.sleep(3)
+        print("you slowly regain consciousness propt up against a familiar looking room")
+        time.sleep(3)
+    elif monsterhealth<= 0:
         print("you have won.")
         time.sleep(3)
         print("the", monster, "drops a red liqud. when you pick it up some of your wounds disapear.")
@@ -154,15 +170,13 @@ def battlesystem(monster):
             print("the", monster, "also drops", monsterdrop, "gold that could be used later.")
             gold = gold + monsterdrop
             print("you now have", gold, "gold")
-        if playerhealth > 100:
-            playerhealth = 100
-        time.sleep(2)
-        print("your HP has been restored to", playerhealth)
-    if playerhealth <= 0:# this makes sure that when the player dies the game end
-        print("you have been slain.")
-        quit()
-    return playerhealth
+    if playerhealth > 100:
+        playerhealth = 100
+    time.sleep(2)
+    print("your HP has been restored to", playerhealth)
 
+    return playerhealth
+#__________game below_______________________________________________________________ 
 quit = False
 opendoor = False
 opendoor1 = False
@@ -179,12 +193,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
         if room == 1:
             monster("dungeon")
             time.sleep(3)
-            print("your in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through, you can move (e)ast")
+            print("Your in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through, you can move (e)ast")
             choice = input()
             if choice == 'e' or choice == 'East' or choice == 'east' or choice == 'East' or choice == 'EAST':
                 room = 2
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
             else:
                 print("that's not an option")
         if room == 2:

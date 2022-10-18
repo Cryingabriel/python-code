@@ -1,7 +1,8 @@
 #Add gold into the game so that the player has to pay gold to enter the next area[Done.]
-#Maybe make it so when the player dies they go back to the begining without anything that they got[Done ish? Needs more testing.]
-#Add it so the players can quit the game hwen they want[Done]
-#Make it so that players can see the amount of gold and health when they type g or h[Semi done, finish for all rooms.]
+#Maybe make it so when the player dies they go back to the beginning without anything that they got[Done ish? Needs more testing.]
+#Add it so the players can quit the game when they want[Done.]
+#Add doors for the gold to be used on[Done.]
+#Make it so that players can see the amount of gold and health when they type g or h[Semi done, finish for all rooms. Makes it so that you have to fight again. ask eli to help so that it doesn't happen again.]
 #Make it so that all input is lowercase so it's easier on me[It doesn't work so some reason, ask eli for help.]
 #Add an inventory so that player can hold things when added later[Not implemented.]
 #Add a sword that spawns in a room that boosts attack[Not implemented.]
@@ -57,8 +58,8 @@ def monster(biome):
 
 def battlesystem(monster):
     potion = random.randrange(30,36)
-    highpotion = random.randrange(50,55)
-    fullpotion = 100
+    highpotion = random.randrange(40,45)
+    fullpotion = random.randrange(55,60)
     global playerhealth
     global gold
     if monster == "Zombie":
@@ -142,6 +143,10 @@ def battlesystem(monster):
         room = 1
         playerhealth = 100
         gold = 0
+        opendoor = False
+        opendoor1 = False
+        opendoor2 = False
+        opendoor3 = False
         time.sleep(3)
         print("you slowly regain consciousness propt up against a familiar looking room")
         time.sleep(3)
@@ -152,7 +157,7 @@ def battlesystem(monster):
         time.sleep(4)
         num2 = random.randrange(0,100)
         monsterdrop = random.randrange(50,100)
-        if num2 <=70:
+        if num2 <=85:
             print("the potion gives you", potion, "health.")
             playerhealth = playerhealth + potion
             print("the", monster, "also drops", monsterdrop, "gold that could be used later.")
@@ -234,7 +239,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 gold -= 450
                 opendoor = True
                 time.sleep(3)
-                print("taking you're gold t6he door magically dissapears before your eye's")
+                print("taking you're gold the door magically dissapears before your eye's")
                 time.sleep(2)
                 print("you now have", gold, "gold")
             elif choice == 'pay' and gold != 450:

@@ -51,8 +51,8 @@ while not mexit:
         b = pygame.Rect((p1x,p1y), (30,30))
         if a.colliderect(b) == True:
             print("COLLISION")
-            #mexit=True
-            #winsound.Beep(900,900)
+            mexit=True
+        www    #winsound.Beep(900,900)
     #update cactus location if they are off creen
     for x in range(len(cactusx)):
         if cactusx[x]<0:

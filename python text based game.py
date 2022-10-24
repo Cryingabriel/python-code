@@ -15,7 +15,7 @@ import time
 #function definition
 playerhealth=30
 gold=0
-
+inventory = []
 def monster(biome):
   num = random.randrange(0, 100)
   if biome == "dungeon":

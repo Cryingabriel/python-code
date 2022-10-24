@@ -4,10 +4,10 @@
 #Add doors for the gold to be used on[Done.]
 #Make it so that players can see the amount of gold and health when they type g or h[Semi done, finish for all rooms. Makes it so that you have to fight again. ask eli to help so that it doesn't happen again.]
 #Make it so that all input is lowercase so it's easier on me[It doesn't work so some reason, ask eli for help.]
-#Add an inventory so that player can hold things when added later[Not implemented.]
-#Add a sword that spawns in a room that boosts attack[Not implemented.]
+#Add an inventory so that player can hold things when added later[starting to be implemented.]
+#Add a sword that spawns in a room that boosts attack[starting to be implemented.]
 #See if I can add healthpotions/aidkits in some later rooms to make beating the game easier[Might add or not. Depends on how hard I want to make the game.]
-#Twick potions so that it's easier to die to monsters[Not done.]
+#Tweek potions so that it's easier to die to monsters[Not done.]
 #Add final boss for the game[Not implemented.]
 #
 import random
@@ -17,43 +17,44 @@ playerhealth=30
 gold=0
 inventory = []
 def monster(biome):
-  num = random.randrange(0, 100)
-  if biome == "dungeon":
-    if num <= 25:
-      battlesystem("Zombie")
-    elif num <= 45:#30% chance
-      battlesystem("Skeleton")
-    elif num <= 65:
-      battlesystem("Spider")
-    elif num <= 100:
-      battlesystem("Goblin")
-  elif biome == "mansion":
-    if num <= 30:
-      battlesystem("Scorpion")
-    elif num <= 50:#30% chance
-      battlesystem("Skeleton")
-    elif num <= 79:
-      battlesystem("Spider")
-    elif num <= 100:
-      battlesystem("Goblin")
-  elif biome == "forest":
-    if num <= 25:
-      battlesystem("Mushroom")
-    elif num <= 75:#30% chance
-      battlesystem("Fairy")
-    elif num <= 85:
-      battlesystem("Troll")
-    elif num <= 100:
-      battlesystem("Goblin")
-  elif biome == "outside":
-    if num <= 25:
-      battlesystem("Skeleton")
-    elif num <= 75:#30% chance
-      battlesystem("Ghost")
-    elif num <= 85:
-      battlesystem("Zombie")
-    elif num <= 100:
-      battlesystem("Slime")
+    num = random.randrange(0, 100)
+    if biome == "dungeon":
+        if num <= 25:
+            battlesystem("Zombie")
+        elif num <= 45:#30% chance
+            battlesystem("Skeleton")
+        elif num <= 65:
+            battlesystem("Spider")
+        elif num <= 100:
+            battlesystem("Goblin")
+    elif biome == "mansion":
+        if num <= 30:
+          battlesystem("Scorpion")
+        elif num <= 50:#30% chance
+          battlesystem("Skeleton")
+        elif num <= 79:
+          battlesystem("Spider")
+        elif num <= 100:
+          battlesystem("Goblin")
+    elif biome == "forest":
+        if num <= 25:
+          battlesystem("Mushroom")
+        elif num <= 75:#30% chance
+          battlesystem("Fairy")
+        elif num <= 85:
+          battlesystem("Troll")
+        elif num <= 100:
+          battlesystem("Goblin")
+    elif biome == "outside":
+        if num <= 25:
+          battlesystem("Skeleton")
+        elif num <= 75:#30% chance
+          battlesystem("Ghost")
+        elif num <= 85:
+          battlesystem("Zombie")
+        elif num <= 100:
+          battlesystem("Slime")
+
 #____________________________________________
 
 def battlesystem(monster):
@@ -147,6 +148,7 @@ def battlesystem(monster):
         opendoor1 = False
         opendoor2 = False
         opendoor3 = False
+        inventory = []
         time.sleep(3)
         print("you slowly regain consciousness propt up against a familiar looking room")
         time.sleep(3)
@@ -239,7 +241,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 gold -= 450
                 opendoor = True
                 time.sleep(3)
-                print("taking you're gold the door magically dissapears before your eye's")
+                print("taking you're gold the door magically dissapears before your eyes")
                 time.sleep(2)
                 print("you now have", gold, "gold")
             elif choice == 'pay' and gold != 450:
@@ -345,7 +347,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 gold -= 700
                 opendoor1 = True
                 time.sleep(3)
-                print("taking you're gold t6he door magically dissapears before your eye's")
+                print("taking you're gold the door magically dissapears before your eyes")
                 time.sleep(2)
                 print("you now have", gold, "gold")
             elif choice == 'pay' and gold != 700:
@@ -374,7 +376,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 gold -= 1000
                 opendoor3 = True
                 time.sleep(3)
-                print("taking you're gold t6he door magically dissapears before your eye's")
+                print("taking you're gold the door magically dissapears before your eyes")
                 time.sleep(2)
                 print("you now have", gold, "gold")
             elif choice == 'pay' and gold != 1000:
@@ -389,7 +391,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
         if room == 12:
             monster("outside")
             time.sleep(3)
-            print("your in room 12, you can move west or east")
+            print("your in room 12, you can move west or east, you find a bloody sword stuck in the dirt")
             choice = input()
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 13
@@ -397,6 +399,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 11
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'sword' or 'Sword':
+                inventory.append('sword')
             else:
                 print("that's not an option")
         if room == 13:
@@ -521,7 +525,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 gold -= 700
                 opendoor2 = True
                 time.sleep(3)
-                print("taking you're gold t6he door magically dissapears before your eye's")
+                print("taking you're gold the door magically dissapears before your eyes")
                 time.sleep(2)
                 print("you now have", gold, "gold")
             elif choice == 'pay' and gold != 1500:

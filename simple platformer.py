@@ -22,7 +22,7 @@ vx = 0 #x velocity of player
 vy = 0 #y velocity of player
 keys = [False, False, False, False] #this list holds whether each key has been pressed
 isOnGround = False #this variable stops gravity from pulling you down more when on a platform
-
+health = 100
 #enemy variables
 enemy1=[200, 630, 0]
 enemy2 = [400,430,0]
@@ -52,6 +52,32 @@ def enmove3(enemyinfo3):
         enemyinfo3[0]-=4
     else:
         enemyinfo3[2] = 0
+        
+def enemyC(enemyinfo, xpos, ypos):
+    if xpos +20> enemyinfo[0]: #right of player and leftside of enemy 
+        if xpos < enemyinfo[0]+20: #left of player and right of enemy
+            if ypos < enemyinfo[1]+20: #top of the player and bottom of the the enemy
+                if ypos+20 > enemyinfo[1]: #bottom of the player and top of the enemy
+                    return True
+    else:
+        return False
+
+def enemyC2(enemyinfo2, xpos, ypos):
+    if xpos +20> enemyinfo2[0]: #right of player and leftside of enemy 
+        if xpos < enemyinfo2[0]+20: #left of player and right of enemy
+            if ypos < enemyinfo2[1]+20: #top of the player and bottom of the the enemy
+                if ypos+20 > enemyinfo2[1]: #bottom of the player and top of the enemy
+                    return True
+    else:
+        return False
+def enemyC3(enemyinfo3, xpos, ypos):
+    if xpos +20> enemyinfo3[0]: #right of player and leftside of enemy 
+        if xpos < enemyinfo3[0]+20: #left of player and right of enemy
+            if ypos < enemyinfo3[1]+20: #top of the player and bottom of the the enemy
+                if ypos+20 > enemyinfo3[1]: #bottom of the player and top of the enemy
+                    return True
+    else:
+        return False
 
 #
 jump = pygame.mixer.Sound('jump.wav')#load in sound effect
@@ -61,7 +87,7 @@ pygame.mixer.music.play(-1)#start background music
 
 
 
-while not gameover: #GAME LOOP############################################################
+while not gameover and health > 0: #GAME LOOP############################################################
     clock.tick(60) #FPS
     
     #Input Section------------------------------------------------------------
@@ -109,10 +135,25 @@ while not gameover: #GAME LOOP##################################################
         direction = UP
     
     #enemy movement
-    enmove(enemy1)
-    enmove2(enemy2)
-    enmove3(enemy3)
-    
+    enmove(enemy1) 
+
+    enmove(enemy2) 
+
+    enmove(enemy3)
+
+    #enemy collision
+    if enemyC(enemy1,xpos,ypos) == True:
+        print("hit")
+        health-=1
+        print(health)
+    if enemyC2(enemy2,xpos,ypos) == True:
+        print("hit")
+        health-=1
+        print(health)
+    if enemyC3(enemy3,xpos,ypos) == True:
+        print("hit")
+        health-=1
+        print(health)
     #COLLISION
     if xpos>100 and xpos<200 and ypos+40 >750 and ypos+40 <770:
         ypos = 750-40
@@ -158,6 +199,9 @@ while not gameover: #GAME LOOP##################################################
     # RENDER Section--------------------------------------------------------------------------------
             
     screen.fill((0,0,0)) #wipe screen so it doesn't smear
+    font = pygame.font.Font(None, 74)
+    text = font.render(str(health), 1, (255,255,0))
+    screen.blit(text, (250,10))
     #player
     pygame.draw.rect(screen, (100, 200, 100), (xpos, ypos, 20, 40))
     #enemies
@@ -187,4 +231,6 @@ while not gameover: #GAME LOOP##################################################
     
 
 #end game loop------------------------------------------------------------------------------
+if health <= 0:
+    print("you've died")
 pygame.quit()

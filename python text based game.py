@@ -14,7 +14,7 @@ import random
 import time
 import math
 #function definition
-playerhealth=30
+playerhealth=100
 gold=0
 inventory = []
 def monster(biome):
@@ -61,7 +61,7 @@ def monster(biome):
 #____________________________________________
 
 def battlesystem(monster):
-    potion = random.randrange(30,36)
+    potion = random.randrange(30,40)
     highpotion = random.randrange(40,45)
     fullpotion = random.randrange(55,60)
     global playerhealth
@@ -87,31 +87,32 @@ def battlesystem(monster):
         print("A Scorpion is stinging you")
         time.sleep(4)
     elif monster == "Mushroom":
-        monsterhealth =48
+        monsterhealth = 48
         print("a mushroom monster tries to poison you")
         time.sleep(4)
     elif monster == "Troll":
-        monsterhealth =60
+        monsterhealth = 60
         print("a Troll is trying to squash you")
         time.sleep(4)
     elif monster == "Fairy":
-        monsterhealth =39
+        monsterhealth = 39
         print("Fairies start biting at you")
         time.sleep(4)
     elif monster == "Ghost":
-        monsterhealth =39
+        monsterhealth = 39
         print("Ghosts are trying take you away")
         time.sleep(4)
     elif monster == "Slime":
-        monsterhealth =40
+        monsterhealth = 40
         print("slimes are trying to erode you")
         time.sleep(4)
     elif monster == "Dragon":
-        monsterhealth =80
+        monsterhealth = 80
         print("the master of this place won't let you leave that easily")
         time.sleep(4)
         
-    while monsterhealth>0 and playerhealth >0:
+    while monsterhealth > 0 and playerhealth > 0:
+        nu = random.randrange(0,100)
         if monster == "Zombie":
             monsterattack = random.randrange(11, 14)
         elif monster == "Skeleton":
@@ -133,7 +134,10 @@ def battlesystem(monster):
         elif monster == "Slime":
             monsterattack = random.randrange(19,24)
         elif monster == "Dragon":
-            monsterattack = random.randrange(10,37)
+            if nu <= 99:
+                monsterattack = random.randrange(15,37)
+            elif nu <= 100:
+                monsterattack = random.randrange(99,100)
             
         print("The", monster, "attacks deal", monsterattack, "damage.")
         playerhealth = playerhealth - monsterattack
@@ -143,7 +147,7 @@ def battlesystem(monster):
         playerattack = random.randrange(10,20) #I had to add 3 damage cause of Eli then I won later and subtracted 3 again then I won again
         n = random.ranrange(0,100)
         
-        if n >= 90:
+        if n >= 90 and n <= 100:
             playerattack = playerattack*2
         
         for elem in inventory: # elem goes through all elements
@@ -172,20 +176,20 @@ def battlesystem(monster):
         time.sleep(3)
         print("you slowly regain consciousness propt up against a familiar looking room")
         time.sleep(3)
-    elif monsterhealth<= 0:
+    elif monsterhealth <= 0:
         print("you have won.")
         time.sleep(3)
         print("the", monster, "drops a red liqud. when you pick it up some of your wounds disapear.")
         time.sleep(4)
         num2 = random.randrange(0,100)
         monsterdrop = random.randrange(50,100)
-        if num2 <=85:
+        if num2 <= 85:
             print("the potion gives you", potion, "health.")
             playerhealth = playerhealth + potion
             print("the", monster, "also drops", monsterdrop, "gold that could be used later.")
             gold = gold + monsterdrop
             print("you now have", gold, "gold")
-        elif num2 <=95:
+        elif num2 <= 95:
             print("the potion gives you", highpotion, "health.")
             playerhealth = playerhealth + highpotion
             print("the", monster, "also drops", monsterdrop, "gold that could be used later.")
@@ -229,8 +233,10 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold")
+                time.sleep(3)
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, "health")
+                time.sleep(3)
             elif choice == 'pickup' or 'p':
                 print("you have obtained a Rusted Key")
                 inventory.append("Rusted Key")
@@ -247,6 +253,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 3
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 3:
@@ -261,6 +273,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 4
             elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST' and opendoor == True:
                 room = 5
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             elif choice == 'pay'and gold >= 450:
                 gold -= 450
                 opendoor = True
@@ -289,6 +307,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 3
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 5:
@@ -300,6 +324,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 6
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 6:
@@ -315,6 +345,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room == 9
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 7:
@@ -328,6 +364,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 6
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 8:
@@ -339,6 +381,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 7
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             elif choice == 'open' or choice == 'Open':
                 key = False
                 for i in range(len(inventory)):
@@ -362,6 +410,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 6
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 10:
@@ -377,6 +431,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 9
             elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST' and opendoor1 == True:
                 room = 11
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             elif choice == 'pay'and gold >= 700:
                 gold -= 700
                 opendoor1 = True
@@ -406,6 +466,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 12
             elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST' and opendoor3 == True:
                 room = 18
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             elif choice == 'pay'and gold >= 1000:
                 gold -= 1000
                 opendoor3 = True
@@ -433,6 +499,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 11
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             elif choice == 'sword' or 'Sword':
                 print("you got a sword")
                 inventory.append('sword')
@@ -449,6 +521,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 12
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 14:
@@ -460,6 +538,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 13
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 15:
@@ -473,6 +557,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 11
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 16:
@@ -489,6 +579,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 15
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             elif choice == 'open' or choice == 'Open':
                 Key0 = False
                 for i in range(len(inventory)):
@@ -512,6 +608,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 23
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             elif choice == 'pickup' or choice == 'p':
                 print("when you pick up the sword it starts to glow even brighter like it wants to be weilded by you.")
                 inventory.append("esword")
@@ -528,6 +630,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 19
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 19:
@@ -541,6 +649,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 20
             elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
                 room = 21
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             else:
@@ -554,6 +668,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 19
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 21:
@@ -571,6 +691,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 19
             elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH' and opendoor2 == True:
                 room = 23
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             elif choice == 'open' or choice == 'Open':
                 Key1 = False
                 for i in range(len(inventory)):
@@ -594,6 +720,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 21
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             else:
                 print("that's not an option")
         if room == 23:
@@ -605,6 +737,12 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 21
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
+            elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
+                print("You have", gold, "gold")
+                time.sleep(3)
+            elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
+                print("you have", playerhealth, "health")
+                time.sleep(3)
             elif choice == 'open' or choice == 'Open':
                 print("when you open the chest you notice a shiny object and when you pick it up you find that it's a key.")
                 inventory.append("Key")

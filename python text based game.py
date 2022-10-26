@@ -182,7 +182,7 @@ def battlesystem(monster):
         print("the", monster, "drops a red liqud. when you pick it up some of your wounds disapear.")
         time.sleep(4)
         num2 = random.randrange(0,100)
-        monsterdrop = random.randrange(50,100)
+        monsterdrop = random.randrange(30,65)
         if num2 <= 85:
             print("the potion gives you", potion, "health.")
             playerhealth = playerhealth + potion
@@ -225,27 +225,27 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
         if room == 1:
             monster("dungeon")
             time.sleep(3)
-            print("Your in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through, you can move (e)ast")
+            print("Your in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through, you can move (e)ast.")
             choice = input()
             if choice == 'e' or choice == 'East' or choice == 'east' or choice == 'East' or choice == 'EAST':  
                 room = 2
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
-                print("You have", gold, "gold")
+                print("You have", gold, "gold.")
                 time.sleep(3)
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health")
+                print("you have", playerhealth, "health.")
                 time.sleep(3)
             elif choice == 'pickup' or 'p':
-                print("you have obtained a Rusted Key")
+                print("you have obtained a Rusted Key.")
                 inventory.append("Rusted Key")
             else:
-                print("that's not an option")
+                print("that's not an option.")
         if room == 2:
             monster("dungeon")
             time.sleep(3)
-            print("your in room 2, you can move west or south")
+            print("your in room 2, you can move west or south.")
             choice = input()
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 1
@@ -254,18 +254,21 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
-                print("You have", gold, "gold")
+                print("You have", gold, "gold.")
                 time.sleep(3)
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health")
+                print("you have", playerhealth, "health.")
                 time.sleep(3)
             else:
-                print("that's not an option")
+                print("that's not an option.")
         if room == 3:
             monster("dungeon")
             time.sleep(3)
             n = random.randrange(100,300)
-            print("your in room 3, you can move north, south or pay to open door to the east")
+            if opendoor == False:
+                print("Your in room 3, you can move North, South or pay to open door to the East.")
+            if opendoor == True:
+                print("Your in room 3, you can move North, South or East.")
             choice = input()
             if choice == 'n' or choice == 'N' or choice == 'North' or choice == 'north' or choice == 'NORTH':
                 room = 2
@@ -274,34 +277,31 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST' and opendoor == True:
                 room = 5
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
-                print("You have", gold, "gold")
+                print("You have", gold, "gold.")
                 time.sleep(3)
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health")
+                print("You have", playerhealth, "health.")
                 time.sleep(3)
             elif choice == 'pay'and gold >= 450:
                 gold -= 450
                 opendoor = True
                 time.sleep(3)
-                print("taking you're gold the door magically dissapears before your eyes")
+                print("Taking you're gold the door magically dissapears before your eyes.")
                 time.sleep(2)
-                print("you now have", gold, "gold")
+                print("You now have", gold, "gold")
             elif choice == 'pay' and gold != 450:
-                print("you try to pay but realise too late that you don't have enough money and lost 100 gold")
+                print("You try to pay but realise too late that you don't have enough money and lost 100 gold.")
                 gold -= n
                 time.sleep(3)
                 print("you now have", gold, "gold")
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             else:
-                print("that's not an option")
+                print("that's not an option.")
         if room == 4:
             monster("dungeon")
             time.sleep(3)
-            if opendoor == False:
-                print("your in room 4, you can move north or pay to open door to the east")
-            if opendoor == True:
-                print("your in room 4 you can move north or east")
+            print("your in room 4 you can move north.")
             choice = input()
             if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North'  or choice == 'NORTH':
                 room = 3

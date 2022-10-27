@@ -36,7 +36,7 @@ print(add(23,5,7))
 
 def bob(x):
     for i in range(x):
-        print(x, "Bottles of Root Beers on the wall!...")
+        print(x, "Bottles of Root Beers on the wall!...", x, "Bottles of Root Beer!, Take one down, pass it around,", x-1, "Bottle of Root Beer on the wall!")
         x-=1
 p = int(input("type a number"))
 bob(p)

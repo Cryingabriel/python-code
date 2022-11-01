@@ -1,7 +1,7 @@
 f = int(input("How many cookies do you have?"))
 if f < 3:
     print("You don't have enough Cookies.")
-elif f == 3 and f <=10:
+elif f >= 3 and f <=10:
     print("You have an alright amount of Cookies.")
 elif f > 10:
     print("You have too many Cookies and should share them.")
@@ -16,11 +16,10 @@ else:
     
 for i in range(4,44,2):
     print(i)
-quit = False
-while quit == False:
-    for i in range(100,40,-10):
-        print(i)
-        quit = True
+num =100
+while num != 40:
+    print(num)
+    num-=10
 quit2 = False
 while quit2 == False:
     print("Knock knock, who's there? ... BANANA!")

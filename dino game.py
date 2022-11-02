@@ -17,6 +17,7 @@ p1w =20
 p1h =20
 dinoimg = pygame.image.load('dino.png')
 touchground = False
+point = 0
 #Cactus's Variables__________________________
 
 cactush = [80,40,20,80,30]#creats and initializes a 5-slot list
@@ -52,7 +53,7 @@ while not mexit:
         if a.colliderect(b) == True:
             print("COLLISION")
             mexit=True
-        www    #winsound.Beep(900,900)
+         #winsound.Beep(900,900)
     #update cactus location if they are off creen
     for x in range(len(cactusx)):
         if cactusx[x]<0:
@@ -69,12 +70,16 @@ while not mexit:
     
     p1x+=vx
     p1y+=vy
+    point +=1
+    priwwwnt(point)
     #render section__________________
     screen.fill((0,0,0))
     #________________________________
     for x, y in zip(cactusx, cactush):
         screen.blit(cactusimg,(x-15,480-y))
-
+    font = pygame.font.Font(None, 74)
+    text = font.render(str(point), 1, (255,255,0))
+    screen.blit(text, (250,10))
     
     pygame.draw.rect(screen,White, (p1x, p1y, p1w, p1h))
     screen.blit(dinoimg,(p1x, p1y))

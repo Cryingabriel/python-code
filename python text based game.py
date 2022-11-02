@@ -145,7 +145,7 @@ def battlesystem(monster):
         print("your HP is at", playerhealth)
         
         playerattack = random.randrange(10,20) #I had to add 3 damage cause of Eli then I won later and subtracted 3 again then I won again
-        n = random.ranrange(0,100)
+        n = random.randrange(0,100)
         
         if n >= 90 and n <= 100:
             playerattack = playerattack*2

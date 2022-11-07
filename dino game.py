@@ -71,7 +71,7 @@ while not mexit:
     p1x+=vx
     p1y+=vy
     point +=1
-    priwwwnt(point)
+    print(point)
     #render section__________________
     screen.fill((0,0,0))
     #________________________________

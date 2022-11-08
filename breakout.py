@@ -43,9 +43,16 @@ while not mexit:
     #++++++++++++++++++++++
     keys = pygame.key.get_pressed()
     if keys [pygame.K_UP]:
-        p1x-=10
+        if p1x <= 0:
+            p1x == 0
+        else:
+            p1x -=10
+    
     if keys [pygame.K_DOWN]:
-        p1x+=10
+        if p1x+100 >= 800:
+            p1x == 0
+        else:
+            p1x +=10
     
     
     screen.fill((0,0,0))

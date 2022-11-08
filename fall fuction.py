@@ -26,10 +26,6 @@ def bob(chance):
                 else:
                     print("nothing happened")
 
-
-
-
-
 room = 1
 while quit == False:
     
@@ -37,7 +33,7 @@ while quit == False:
             print("You're in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through, you can move (e)ast.")
             choice = input()
             bob("dungeon")
-            if choice == 'e' or choice == 'East' or choice == 'east' or choice == 'East' or choice == 'EAST':  
+            if choice.lower() == 'e':  
                 room = 2
             else:
                 print("that's not an option.")
@@ -45,9 +41,9 @@ while quit == False:
             print("You're in room 2, you can move west or south.")
             choice = input()
             bob("dungeon")
-            if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
+            if choice.lower() == 'w':
                 room = 1
-            elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+            elif choice.lower() == 's':
                 room = 3
             else:
                 print("that's not an option.")
@@ -55,9 +51,9 @@ while quit == False:
             print("You're in room 3, you can move North, South or East.")
             choice = input()
             bob("dungeon")
-            if choice == 'n' or choice == 'N' or choice == 'North' or choice == 'north' or choice == 'NORTH':
+            if choice.lower() == 'n':
                 room = 2
-            elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
+            elif choice.lower() == 's':
                 room = 4
             else:
                 print("that's not an option.")
@@ -66,9 +62,9 @@ while quit == False:
             print("In your vision you see something, when you walk up to it you see that it looks like some type of charm")
             choice = input()
             bob("dungeon")
-            if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North'  or choice == 'NORTH':
+            if choice.lower() == 'n':
                 room = 3
-            if choice == 'p' or choice == 'P' or choice == 'pick' or choice == 'Pick'  or choice == 'PICK':
+            if choice.lower() == 'p':
                 inventory.append("Luckcharm")
                 print("You pick up the charm")
             else:

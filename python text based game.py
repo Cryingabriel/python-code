@@ -217,7 +217,7 @@ opendoor1 = False
 opendoor2 = False
 opendoor3 = False
 opendoor4 = False
-choice1 = input("do you want to play a game? Yes/No")
+choice1 = input("do you want to play a game? Yes/No").lower
 if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or choice1 == 'YES':
     time.sleep(3)
     print("you slowly wake up with water driping down you're face, when you open your eyes your inside a cold, dark and damp room. You have no idea how you woke up in here, all you can recall is falling asleep in bed then waking here.through the darkness you can see a vague silhouette coming towards you.")
@@ -230,7 +230,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             time.sleep(3)
             print("Your in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through, you can move (e)ast.")
             choice = input()
-            if choice == 'e' or choice == 'East' or choice == 'east' or choice == 'East' or choice == 'EAST':  
+            if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':  
                 room = 2
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True

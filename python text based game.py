@@ -61,11 +61,13 @@ def monster(biome):
 #____________________________________________
 
 def battlesystem(monster):
+    global inventory
     potion = random.randrange(30,40)
     highpotion = random.randrange(40,45)
     fullpotion = random.randrange(55,60)
     global playerhealth
     global gold
+    monsterhealth = 0
     if monster == "Zombie":
         monsterhealth = 45
         print("a Zombie has spawned in")
@@ -112,6 +114,7 @@ def battlesystem(monster):
         time.sleep(4)
         
     while monsterhealth > 0 and playerhealth > 0:
+        monsterattack = 0
         nu = random.randrange(0,100)
         if monster == "Zombie":
             monsterattack = random.randrange(11, 14)
@@ -342,7 +345,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'd' or choice == 'D' or choice == 'down' or choice == 'Down' or choice == 'DOWN':
                 room = 5
             elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
-                room == 9
+                room = 9
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':

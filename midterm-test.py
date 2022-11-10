@@ -29,7 +29,7 @@ while quit2 == False:
         quit2 = True
 
 def add(x,y,z):
-    return x+y+z
+    return x*y*z
 
 print(add(23,5,7))
 

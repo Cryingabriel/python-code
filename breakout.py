@@ -44,21 +44,31 @@ while not mexit:
     keys = pygame.key.get_pressed()
     if keys [pygame.K_UP]:
         if p1x <= 0:
-            p1x == 0
+            p1x = 0
         else:
             p1x -=10
     
     if keys [pygame.K_DOWN]:
         if p1x+100 >= 800:
-            p1x == 0
+            p1x = 700
         else:
             p1x +=10
+    bx += bVx
+    by += bVy
+
+
+    if by < 0 or by + 20 > 800:
+        bVy *= -1
+    if bx < 0 or bx+ 20 > 800:
+        bVx *= -1
+    if by >= p1y and bx > p1x and by+20 >= p1x+100:
+        bVy *= -1
     
-    
+#++++++++++++++++++++++++++++    
     screen.fill((0,0,0))
     bob.draw()
     ryan.draw()
     alfred.draw()
     pygame.draw.rect(screen, (255,255,255), (p1x, p1y, 100, 20), 1)
-
+    pygame.draw.circle(screen, (255,255,255), (bx, by), 10)
     pygame.display.flip()

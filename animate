@@ -6,8 +6,8 @@ screen.fill((0,0,0))
 clock = pygame.time.Clock() #set up clock
 gameover = False #variable to run our game loop
 
-link = pygame.image.load('link.png')
-link.set_colorkey((255,0,255)) 
+link = pygame.image.load('boxpep.png')
+link.set_colorkey((0,0,0)) 
 
 LEFT=0
 RIGHT=1
@@ -21,8 +21,8 @@ vy = 0 #y velocity of player
 keys = [False, False, False, False]
 isOnGround = False
 #++++++++++++++++++++++++++++++++
-framewidth = 64
-frameheight = 96
+framewidth = 20
+frameheight = 40
 rownum = 0
 framenum = 0
 ticker = 0
@@ -78,30 +78,30 @@ while not gameover:
     if vx < 0:
         ticker+=1
         if ticker%10==0:
-            rownum = 0
+            rownum = 1
             framenum+=1
-        if framenum>7:
+        if framenum>6:
             framenum = 0
     if vx > 0:
         ticker+=1
         if ticker%10==0:
-            rownum = 1
+            rownum = 0
             framenum+=1
-        if framenum> 7:
+        if framenum> 6:
             framenum = 0
     if vy < 0:
         ticker+=1
         if ticker%10==0:
             rownum = 2
             framenum+=1
-        if framenum > 7:
+        if framenum > 6:
             framenum = 0
     if vy > 0:
         ticker+=1
         if ticker%10==0:
             rownum = 3
             framenum+=1
-        if framenum > 7:
+        if framenum > 6:
             framenum = 0
 #++++++++++Render+++++++++++++++++
     screen.fill((0,0,0))

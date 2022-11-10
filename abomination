@@ -1,0 +1,40 @@
+import random
+inventory = ['empty','empty', 'empty','empty','empty']
+item = ''
+def bob():
+    global item
+    y = random.randint(0,4)
+    n = random.randrange(1,100)
+    if n <=25:
+        item = 'book'
+    elif n <=40:
+        item = 'frog'
+    elif n <= 80:
+        item = 'potion'
+    elif n <= 100:
+        item = 'cupcake'
+    inventory[y] = item
+    print(inventory)
+bob()
+bob()
+lenth = int(input("you long how the list be is what you will decide?"))
+leest = []
+for x in range (0,lenth):
+    abba = random.randint(0,100)
+    leest.append(abba)
+print("random list:",leest)
+#bozo sort
+for p in range(len(leest)):
+    for i in range(0,len(leest)-p-1):
+        if leest[p] < leest[p+1]:
+            leest[p], leest[p-1] = leest[p-1], leest[p]
+temp = 0
+for i in range(len(leest)):
+    for j in range(0, len(leest) - i - 1):
+        if leest[j] > leest[j + 1]:
+            temp = leest[j]
+            leest[j] = leest[j+1]
+            leest[j+1] = temp
+print()
+print()
+print('sorted list:', leest)

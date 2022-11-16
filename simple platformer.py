@@ -91,8 +91,9 @@ def enemyC3(enemyinfo3, xpos, ypos):
 jump = pygame.mixer.Sound('jump.wav')#load in sound effect
 music = pygame.mixer.music.load('believe-in-miracle.mp3')#load in background music
 pygame.mixer.music.play(-1)#start background music
-
-
+#Controller Input
+controller = pygame.joystick.Joystick(0) 
+controller.init()
 
 
 while not gameover and health > 0: #GAME LOOP############################################################
@@ -122,9 +123,12 @@ while not gameover and health > 0: #GAME LOOP###################################
             
             elif event.key == pygame.K_RIGHT:
                 keys[RIGHT]=False
-          
+
+
     #physics section--------------------------------------------------------------------
-    #LEFT MOVEMENT
+    #Player Movement
+    xvel = controller.get_axis(0)
+    yvel = controller.get_axis(1)
     if keys[LEFT]==True:
         vx=-3
         direction = LEFT    
@@ -140,6 +144,8 @@ while not gameover and health > 0: #GAME LOOP###################################
     else:
         vx = 0
     
+    xpos += int(xvel * 10)
+    ypos += int(yvel * 10)
     #enemy movement
     enmove(enemy1) 
 

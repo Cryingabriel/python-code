@@ -9,7 +9,9 @@ gameover = False #variable to run our game loop
 pixel = pygame.transform.scale(pygame.image.load("pixilart-drawing.png"), (100,100))
 
 link = pygame.image.load('boxpep.png')
-link.set_colorkey((200,0,255)) 
+link.set_colorkey((200,0,255))
+enemyi = pygame.image.load('enemy.png')
+enemyi.set_colorkey((200,0,200))
 #CONSTANTS
 LEFT=0
 RIGHT=1
@@ -23,6 +25,12 @@ rownum = 0
 framenum = 0
 ticker = 0
 
+framewidth1 = 20
+frameheight1 = 30
+rownum1 = 0
+framenum1 = 0
+ticker1 = 0
+
 #player variables
 xpos = 500 #xpos of player
 ypos = 200 #ypos of player
@@ -32,9 +40,9 @@ keys = [False, False, False, False] #this list holds whether each key has been p
 isOnGround = False #this variable stops gravity from pulling you down more when on a platform
 health = 100
 #enemy variables
-enemy1=[200, 630, 0]
-enemy2 = [400,430,0]
-enemy3 = [500,330,0]
+enemy1=[200, 620, 0]
+enemy2 = [400,420,0]
+enemy3 = [500,320,0]
 def enmove(enemyinfo):
     enemyinfo[2] +=1
     if enemyinfo[2]<=80:
@@ -129,6 +137,8 @@ while not gameover and health > 0: #GAME LOOP###################################
     #Player Movement
     xvel = controller.get_axis(0)
     yvel = controller.get_axis(1)
+    cxvel = controller.get_axis(0)
+    cyvel = controller.get_axis(1)
     if keys[LEFT]==True:
         vx=-3
         direction = LEFT    
@@ -146,7 +156,6 @@ while not gameover and health > 0: #GAME LOOP###################################
     
     xpos += int(xvel * 10)
     ypos += int(yvel * 10)
-    #enemy movement
     enmove(enemy1) 
 
     enmove(enemy2) 
@@ -193,6 +202,7 @@ while not gameover and health > 0: #GAME LOOP###################################
         xpos = 800-20
     elif ypos <=0:
         ypos = 0
+        yvel = 0
     else:
         isOnGround = False
 
@@ -218,14 +228,14 @@ while not gameover and health > 0: #GAME LOOP###################################
         if ticker%10==0:
             rownum = 1
             framenum+=1
-        if framenum>6:
+        if framenum > 6:
             framenum = 0
     if vx > 0:
         ticker+=1
         if ticker%10==0:
             rownum = 0
             framenum+=1
-        if framenum> 6:
+        if framenum > 6:
             framenum = 0
     if vy < 0:
         ticker+=1
@@ -241,6 +251,48 @@ while not gameover and health > 0: #GAME LOOP###################################
             framenum+=1
         if framenum > 6:
             framenum = 0
+    if enemy1[0] > 0:
+        ticker1+=1
+        if ticker1%10==0:
+            rownum1 = 0
+            framenum1+=1
+        if framenum1 > 6:
+                framenum1=0
+    if enemy1[0] < 0:
+        ticker1+=1
+        if ticker1%10==0:
+            rownum1 = 1
+            framenum1+=1
+        if framenum1 > 6:
+                framenum1=0
+    if enemy2[0] > 0:
+        ticker1+=1
+        if ticker1%10==0:
+            rownum1 = 0
+            framenum1+=1
+        if framenum1 > 6:
+                framenum1=0
+    if enemy2[0] < 0:
+        ticker1+=1
+        if ticker1%10==0:
+            rownum1 = 1
+            framenum1+=1
+        if framenum1 > 6:
+                framenum1=0
+    if enemy3[0] > 0:
+        ticker1+=1
+        if ticker1%10==0:
+            rownum1 = 0
+            framenum1+=1
+        if framenum1 > 6:
+                framenum1=0
+    if enemy3[0] < 0:
+        ticker1+=1
+        if ticker1%10==0:
+            rownum1 = 1
+            framenum1+=1
+        if framenum1 > 6:
+                framenum1=0
     # RENDER Section--------------------------------------------------------------------------------
             
     screen.fill((0,0,0)) #wipe screen so it doesn't smear
@@ -248,12 +300,7 @@ while not gameover and health > 0: #GAME LOOP###################################
     text = font.render(str(health), 1, (255,255,0))
     screen.blit(text, (250,10))
     #player
-    #enemies
-    pygame.draw.rect(screen, (200, 200, 200), (enemy1[0], enemy1[1], 20, 30))
-    
-    pygame.draw.rect(screen, (50, 100, 50), (enemy2[0], enemy2[1], 20, 30))
-    
-    pygame.draw.rect(screen, (255, 0, 0), (enemy3[0], enemy3[1], 20, 30))
+    #enemies=
     #first platform
     pygame.draw.rect(screen, (200, 0, 100), (100, 750, 100, 20))
     
@@ -271,6 +318,9 @@ while not gameover and health > 0: #GAME LOOP###################################
     
     screen.blit(pixel, (0,100))
     screen.blit(link, (xpos, ypos), (framewidth*framenum, rownum*frameheight, framewidth, frameheight))
+    screen.blit(enemyi, (enemy1[0], enemy1[1]), (framewidth1*framenum1, rownum1*frameheight1, framewidth1, frameheight1))
+    screen.blit(enemyi, (enemy2[0], enemy2[1]), (framewidth1*framenum1, rownum1*frameheight1, framewidth1, frameheight1))
+    screen.blit(enemyi, (enemy3[0], enemy3[1]), (framewidth1*framenum1, rownum1*frameheight1, framewidth1, frameheight1))
     pygame.display.flip()#this actually puts the pixel on the screen
     
     

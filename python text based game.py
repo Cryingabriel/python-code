@@ -9,14 +9,26 @@
 #See if I can add healthpotions/aidkits in some later rooms to make beating the game easier[Might add or not. Depends on how hard I want to make the game.]
 #Tweek potions so that it's easier to die to monsters[Not done.]
 #Add final boss for the game[Done.]
+#Add a way to increase Max health for player[Done]
+#Add Doors or chests that can only be opened wiuth
 #
+
 import random
 import time
 import math
+import os
 #function definition
+end = input("Do you wish to turn your text to light mode? yes/no")
+if end == 'Yes' or end =='y':
+    os.system('color f0')
+elif end == 'No' or end == 'no':
+    end = input("Press any key to continue")
+    os.system('color 55')
+
 playerhealth=100
 gold=0
 inventory = []
+
 def monster(biome):
     num = random.randrange(0, 100)
     if biome == "dungeon":
@@ -68,6 +80,7 @@ def battlesystem(monster):
     global playerhealth
     global gold
     monsterhealth = 0
+    global quit
     if monster == "Zombie":
         monsterhealth = 45
         print("a Zombie has spawned in")
@@ -204,8 +217,13 @@ def battlesystem(monster):
             print("the", monster, "also drops", monsterdrop, "gold that could be used later.")
             gold = gold + monsterdrop
             print("you now have", gold, "gold")
-    if playerhealth > 100:
-        playerhealth = 100
+    for elem in inventory:
+        if elem == 'token':
+            if playerhealth > 150:
+                playerhealth = 150
+        else:
+            if playerhealth > 100:
+                playerhealth = 100
     time.sleep(2)
     print("your HP has been restored to", playerhealth)
 
@@ -217,7 +235,7 @@ opendoor1 = False
 opendoor2 = False
 opendoor3 = False
 opendoor4 = False
-choice1 = input("do you want to play a game? Yes/No").lower
+choice1 = input("do you want to play a game? Yes/No")
 if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or choice1 == 'YES':
     time.sleep(3)
     print("you slowly wake up with water driping down you're face, when you open your eyes your inside a cold, dark and damp room. You have no idea how you woke up in here, all you can recall is falling asleep in bed then waking here.through the darkness you can see a vague silhouette coming towards you.")
@@ -304,10 +322,15 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
         if room == 4:
             monster("dungeon")
             time.sleep(3)
-            print("your in room 4 you can move north.")
+            if opendoor2 == False:
+                print("your in room 4, when you look around the room you find that it, like the previous rooms was mostly empty. but out of teh corner of your eye you find that there was a small door leading to somewhere unknown. when you try to open it it doesn't budge and nothing you do seems to open it.")
+            if opendoor2 == True:
+                print("your in room 4 you can move (n)orth or (w)est")
             choice = input()
             if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North'  or choice == 'NORTH':
                 room = 3
+            elif choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West'  or choice == 'WEST':
+                room = 24
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
@@ -603,7 +626,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
         if room == 17:
             monster("outside")
             time.sleep(3)
-            print("your in room 17 and find a glowing sword that gives off a sacred feeling, you can move east")
+            print("your in room 17 and find a glowing sword that gives off a sacred feeling besides it you find a weird token, you can move east")
             choice = input()
             if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
                 room = 16
@@ -619,7 +642,10 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 time.sleep(3)
             elif choice == 'pickup' or choice == 'p':
                 print("when you pick up the sword it starts to glow even brighter like it wants to be weilded by you.")
+                time.sleep(3)
+                print("when you pick up the token you for some reason feel like you become healthier")
                 inventory.append("esword")
+                inventory.append("MaxHp")
             else:
                 print("that's not an option")
         if room == 18:
@@ -751,6 +777,20 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 inventory.append("Key")
             else:
                 print("that's not an option")
+        if room == 24:
+            time.sleep(3)
+            print("when you enter the small door you find that you have to crawl through in order to fit. after a few minutes of crawling you make your way into an emtpy room. looking around the only thing you find is a message written in stone next to a skeleton.")
+            choice = input()
+            if choice == 'e' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
+                room = 21
+            elif choice == 'i' or choice == 'I' or choice == 'inspect' or choice == 'Inspect' or choice == 'INSPECT':
+                print("When you go examine the message on the stone wall it says. 'god this took forever to code and I wish I made it easier for myself and did just 10 rooms instead of 24, it took forever to code and when I was content I suddenly had more Ideas that I wanted to implement which took forever when those things caused bugs AHHHHHH. The skeleton here represents me after all of this is done.' When you finish reading the message you hear a clicking noise, turning around you find 5 monsters coming at you")
+                time.sleep(20)
+                monster("dungeon")
+                monster("dungeon")
+                monster("dungeon")
+                monster("dungeon")
+                monster("dungeon")
 else:
     print("Very well, maybe another time")
     quit = True

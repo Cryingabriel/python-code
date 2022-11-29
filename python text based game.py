@@ -212,7 +212,7 @@ def battlesystem(monster):#This makes it so that you can fight monsters and dege
             print("the", monster, "also drops", monsterdrop, "gold that could be used later.")
             gold = gold + monsterdrop
             print("you now have", gold, "gold")
-    for i in range(len(inventory)):
+    for i in range(len(inventory)):#This makes it so that if you have the token in your inventory then it makes your MaxHp 150 instead of 100
         if inventory[i] == 'MaxHp':
             if playerhealth > 150:
                 playerhealth = 150

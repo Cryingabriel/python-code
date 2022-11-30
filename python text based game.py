@@ -27,9 +27,11 @@ elif end == 'No' or end == 'no':
     os.system('color 55')
 
 playerhealth=100
+mplayerhealth = 100
 gold=0
 inventory = []
-
+def help():
+    print("press g to view the amount of gold that you have. type 'hp' in order to view your health. press p in order to pick up items. press q to quit the game.(your gameplay will not be saved). type pay in order to open doors and chests. ")
 def monster(biome):
     num = random.randrange(0, 100)
     if biome == "dungeon":
@@ -75,13 +77,19 @@ def monster(biome):
 
 def battlesystem(monster):#This makes it so that you can fight monsters and degeat them to get gold.
     global inventory
-    potion = random.randrange(30,40)#These are the range of which these potions can heal you.
+    potion = random.randrange(35,40)#These are the range of which these potions can heal you.
     highpotion = random.randrange(40,45)
-    fullpotion = random.randrange(55,60)
+    fullpotion = random.randrange(100,110)
     global playerhealth
     global gold
     monsterhealth = 0
     global quit
+    global mplayerhealth
+    global room
+    global opendoor
+    global opendoor1
+    global opendoor2
+    global opendoor3
     if monster == "Zombie":#This here controls the amount of health each monster has.
         monsterhealth = 45
         print("a Zombie has spawned in")
@@ -186,7 +194,17 @@ def battlesystem(monster):#This makes it so that you can fight monsters and dege
         time.sleep(2)
     if playerhealth <= 0:# this makes sure that when the player dies the game end
         print("you succumbed to your wounds as your vision slowly fades to black")
-        quit = True
+        room = 1
+        playerhealth = 100
+        gold = 0
+        opendoor = False
+        opendoor1 = False
+        opendoor2 = False
+        opendoor3 = False
+        inventory = []
+        time.sleep(3)
+        print("you slowly regain consciousness propt up against a familiar looking room")
+        time.sleep(3)
     elif monsterhealth <= 0: #makes sure that when you defeat the monster the monster drops gold for doors
         print("you have won.")
         time.sleep(3)
@@ -212,30 +230,31 @@ def battlesystem(monster):#This makes it so that you can fight monsters and dege
             print("the", monster, "also drops", monsterdrop, "gold that could be used later.")
             gold = gold + monsterdrop
             print("you now have", gold, "gold")
-    for i in range(len(inventory)):#This makes it so that if you have the token in your inventory then it makes your MaxHp 150 instead of 100
-        if inventory[i] == 'MaxHp':
-            if playerhealth > 150:
-                playerhealth = 150
-        elif inventory[i] != 'MaxHp':
-            if playerhealth > 100:
-                playerhealth = 100
+        for i in range(len(inventory)):#This makes it so that if you have the token in your inventory then it makes your MaxHp 150 instead of 100
+            if inventory[i] == 'MaxHp':
+                mplayerhealth = 150
+                playerhealth = playerhealth + 1
+                if playerhealth > 150:
+                    playerhealth = 150
+        if playerhealth > mplayerhealth:
+            playerhealth = mplayerhealth
     
     time.sleep(2)
-    print("your HP has been restored to", playerhealth)
+    print("your HP has been restored to", playerhealth, "/", mplayerhealth)
 
     return playerhealth
 #__________game below_______________________________________________________________ 
 quit = False
-opendoor = False
-opendoor1 = False
-opendoor2 = False
-opendoor3 = False
-opendoor4 = False
+opendoor = True
+opendoor1 = True
+opendoor2 = True
+opendoor3 = True
+opendoor4 = True
 choice1 = input("do you want to play a game? Yes/No")
 if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or choice1 == 'YES':
     time.sleep(3)
     print("you slowly wake up with water driping down you're face, when you open your eyes your inside a cold, dark and damp room. You have no idea how you woke up in here, all you can recall is falling asleep in bed then waking here.through the darkness you can see a vague silhouette coming towards you.")
-    room = 1
+    room = 16
     time.sleep(8)
     while quit == False:
         
@@ -251,20 +270,23 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("Press any key to continue your journey")
+                i = input("Press any key to continue your journey.")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, "health.")
-                i = input("Press any key to continue your journey")
+                i = input("Press any key to continue your journey.")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()#this is calling my help/info function to run
+                i = input("Press any key to continue.")
             elif choice == 'pickup' or 'p':
                 print("you have obtained a Rusted Key.")
                 inventory.append("Rusted Key")#this adds an item into the inventory
             else:
                 print("that's not an option.")
         if room == 2:
-            monster("dungeon")
+            #monster("dungeon")
             time.sleep(3)
             print("When you walk into the room you find a brick hallway that drips with some sort of fluid with a foul smell that makes you recoil with disgust. You can move (w)est or (s)outh.")
             choice = input()
@@ -283,10 +305,13 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)#this prints out the entire inventory.
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option.")
         if room == 3:
-            monster("dungeon")
+            #monster("dungeon")
             time.sleep(3)
             n = random.randrange(100,300)
             if opendoor == False:
@@ -309,14 +334,17 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
-            elif choice == 'pay'and gold >= 450:
-                gold -= 450
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
+            elif choice == 'pay'and gold >= 200:
+                gold -= 200
                 opendoor = True
                 time.sleep(3)
                 print("Taking you're gold the door magically dissapears before your eyes.")
                 time.sleep(2)
                 print("You now have", gold, "gold")
-            elif choice == 'pay' and gold != 450:
+            elif choice == 'pay' and gold != 200:
                 print("You try to pay but realise too late that you don't have enough money and lost 100 gold.")
                 gold -= n
                 time.sleep(3)
@@ -326,7 +354,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option.")
         if room == 4:
-            monster("dungeon")
+            #monster("dungeon")
             time.sleep(3)
             if opendoor2 == False:
                 print("your in room 4, when you look around the room you find that it, like the previous rooms was mostly empty. but out of the corner of your eye you find that there was a small door leading to somewhere unknown. when you try to open it it doesn't budge and nothing you do seems to open it.")
@@ -348,6 +376,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option")
         if room == 5:
@@ -368,10 +399,13 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option")
         if room == 6:
-            monster("mansion")
+            #monster("mansion")
             time.sleep(3)
             print("you climb up the ladder to find yourself in a some sort of storage with all sorts of tools inside it, you can move west, south or go back down")
             choice = input()
@@ -392,10 +426,13 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option")
         if room == 7:
-            monster("mansion")
+            #monster("mansion")
             time.sleep(3)
             print("your in room 7, you can move north or east")
             choice = input()
@@ -414,10 +451,13 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option")
         if room == 8:
-            monster("mansion")
+            #monster("mansion")
             time.sleep(3)
             print("your in room 8 in the corrider you have found an old chest that seems to need a key, you can move south")
             choice = input()
@@ -434,6 +474,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             elif choice == 'open' or choice == 'Open':
                 key = False
                 for i in range(len(inventory)):
@@ -447,7 +490,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 9:
-            monster("mansion")
+            #monster("mansion")
             time.sleep(3)
             print("your in room 9, you can move north or east")
             choice = input()
@@ -466,10 +509,13 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option")
         if room == 10:
-            monster("mansion")
+            #monster("mansion")
             time.sleep(3)
             n = random.randrange(300,450)
             if opendoor1 == False:
@@ -490,6 +536,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             elif choice == 'pay'and gold >= 700:
                 gold -= 700
                 opendoor1 = True
@@ -507,13 +556,13 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 11:
-            monster("outside")
+            #monster("outside")
             time.sleep(3)
             n = random.randrange(300,450)
             if opendoor3 == False:
-                print("when you look around you find yourself surrounded by greenery of a abandoned garden.It's filled with overgrown vines and weeds all over with countless spiderwebs everywhere, you can move west, south or pay to open a door going east")
+                print("when you look around you find yourself surrounded by greenery of a abandoned garden.It's filled with overgrown vines and weeds all over with countless spiderwebs everywhere, you can move north, west, south or pay to open a door going east")
             if opendoor3 == True:
-                print("your in room 11 you can move west, south or east")
+                print("your in room 11 you can move north, west, south or east")
             choice = input()
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 12
@@ -530,6 +579,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             elif choice == 'pay'and gold >= 1000:
                 gold -= 1000
                 opendoor3 = True
@@ -547,7 +599,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 12:
-            monster("outside")
+            #monster("outside")
             time.sleep(3)
             print("your in room 12, you can move west or east, you find a bloody sword stuck in the dirt")
             choice = input()
@@ -566,13 +618,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             elif choice == 'sword' or 'Sword':
                 print("you got a sword")
                 inventory.append('sword')
             else:
                 print("that's not an option")
         if room == 13:
-            monster("outside")
+            #monster("outside")
             time.sleep(3)
             print("your in room 13, you can move north or east")
             choice = input()
@@ -591,10 +646,13 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option")
         if room == 14:
-            monster("outside")
+            #monster("outside")
             time.sleep(3)
             print("your in room 14, you can move south")
             choice = input()
@@ -611,10 +669,13 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option")
         if room == 15:
-            monster("outside")
+            #monster("outside")
             time.sleep(3)
             print("your in room 15, you can move south or north")
             choice = input()
@@ -633,10 +694,13 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option")
         if room == 16:
-            monster("outside")
+            #monster("outside")
             time.sleep(3)
             if opendoor4 == False:
                 print("your in room 16, you can move North or have a key to open the door ")
@@ -658,6 +722,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             elif choice == 'open' or choice == 'Open':
                 Key0 = False
                 for i in range(len(inventory)):
@@ -690,6 +757,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             elif choice == 'pickup' or choice == 'p':
                 print("when you pick up the sword it starts to glow even brighter like it wants to be wielded by you.")
                 time.sleep(3)
@@ -718,6 +788,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option")
         if room == 19:
@@ -740,6 +813,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             else:
@@ -762,6 +838,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option")
         if room == 21:
@@ -788,6 +867,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             elif choice == 'open' or choice == 'Open':
                 Key1 = False
                 for i in range(len(inventory)):
@@ -820,6 +902,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             else:
                 print("that's not an option")
         if room == 23:
@@ -840,6 +925,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             elif choice == 'open' or choice == 'Open':
                 print("when you open the chest you notice a shiny object and when you pick it up you find that it's a key.")
                 inventory.append("Key")
@@ -860,6 +948,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'i' or choice == 'I':
                 print(inventory)
                 i = input("Press any key to continue your journey.")
+            elif choice == 'h' or choice == 'help':
+                help()
+                i = input("Press any key to continue.")
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'ex' or choice == 'Ex' or choice == 'examine' or choice == 'Examine' or choice == 'EXAMINE':

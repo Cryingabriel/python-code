@@ -13,7 +13,7 @@
 #Add Doors or chests that can only be opened when other things are opened[Done.]
 #Make it so players can see their inventory[Done.]
 #Make it so that players have a certain chance to crit on attack[Done.]
-#Add a cheat so that when you type a room number you can go to that room instantly.[not done]
+#Add a cheat so that when you type a room number you can go to that room instantly.[Done.]
 import random
 import time
 import math

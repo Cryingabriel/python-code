@@ -14,6 +14,7 @@
 #Make it so players can see their inventory[Done.]
 #Make it so that players have a certain chance to crit on attack[Done.]
 #Add a cheat so that when you type a room number you can go to that room instantly.[Done.]
+#Add a cheat to get a lot of gold[]
 import random
 import time
 import math
@@ -32,11 +33,32 @@ gold=0
 inventory = []
 def cheat():
     global room
-    r = int(input("which room do you wish to go to?"))
-    if r > 0 and r < 24:
-        room = r
-    else:
-        print("that's not an option.")
+    global gold
+    global playerhealth
+    global mplayerhealth
+    global inventory
+    l = input("which cheat do you want to use? h for health cheat, g for gold cheat and d for room cheat.")
+    if l == 'd':
+        r = int(input("which room do you wish to go to?"))
+        if r > 0 and r < 24:
+            room = r
+        else:
+            print("that's not an option.")
+    elif l == 'g':
+        g = int(input("how much gold would you like to give yourself?"))
+        gold = gold + g
+        print(g,"gold has been added to your inventory.")
+    elif l == 'h':
+        g = int(input("how much health would you like to restore?(you will not get health above the maximum health."))
+        playerhealth = playerhealth + g
+        for i in range(len(inventory)):#This makes it so that if you have the token in your inventory then it makes your MaxHp 150 instead of 100
+            if inventory[i] == 'MaxHp':
+                mplayerhealth = 150
+                playerhealth = playerhealth + 1
+                if playerhealth > 150:
+                    playerhealth = 150
+        if playerhealth > mplayerhealth:
+            playerhealth = mplayerhealth
 def help():
     print("press g to view the amount of gold that you have. type 'hp' in order to view your health. press p in order to pick up items. press q to quit the game.(your gameplay will not be saved). type pay in order to open doors and type open to open chests. ")
 def monster(biome):
@@ -169,7 +191,7 @@ def battlesystem(monster):#This makes it so that you can fight monsters and dege
             if nu <= 99:
                 monsterattack = random.randrange(15,37)
             elif nu <= 100:
-                monsterattack = random.randrange(99,100)
+                monsterattack = random.randrange(149,150)
             
         print("The", monster, "attacks deal", monsterattack, "damage.")
         playerhealth = playerhealth - monsterattack
@@ -252,10 +274,10 @@ def battlesystem(monster):#This makes it so that you can fight monsters and dege
     return playerhealth
 #__________game below_______________________________________________________________ 
 quit = False
-opendoor = True
-opendoor1 = True
-opendoor2 = True
-opendoor3 = True
+opendoor = False
+opendoor1 = False
+opendoor2 = False
+opendoor3 = False
 opendoor4 = False
 pkey = False
 pkey1 = False
@@ -284,7 +306,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("Press any key to continue your journey.")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("Press any key to continue your journey.")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -318,7 +340,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")#gives a break to the player so they have time to think.
             elif choice == 'i' or choice == 'I':
                 print(inventory)#this prints out the entire inventory.
@@ -349,7 +371,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -393,7 +415,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -418,7 +440,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -447,7 +469,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -474,7 +496,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -499,7 +521,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -541,7 +563,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -570,7 +592,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -615,7 +637,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -656,7 +678,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -690,7 +712,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -715,7 +737,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -742,7 +764,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -773,7 +795,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -810,7 +832,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -848,7 +870,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -875,7 +897,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -902,7 +924,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -932,7 +954,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -970,7 +992,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -995,7 +1017,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("you have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)
@@ -1026,7 +1048,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("You have", gold, "gold.")
                 i = input("Press any key to continue your journey")
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
-                print("You have", playerhealth, "health.")
+                print("you have", playerhealth, '/', mplayerhealth, "health.")
                 i = input("Press any key to continue your journey")
             elif choice == 'i' or choice == 'I':
                 print(inventory)

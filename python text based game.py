@@ -15,50 +15,67 @@
 #Make it so that players have a certain chance to crit on attack[Done.]
 #Add a cheat so that when you type a room number you can go to that room instantly.[Done.]
 #Add a cheat to get a lot of gold[]
+#Make it so input isn't mashed up with the lines above[Not Implemented]
 import random
 import time
 import math
 import os
 #function definition
-end = input("Do you wish to turn your text to light mode? yes/no")
-if end == 'yes' or end =='y':
-    os.system('color f0')#This makes it so the terminal for the game changes colors.
-elif end == 'No' or end == 'no':
-    end = input("Press any key to continue")
-    os.system('color 55')
+# end = input("Do you wish to turn your text to light mode? yes/no")
+# if end == 'yes' or end =='y':
+#     os.system('color f0')#This makes it so the terminal for the game changes colors.
+# elif end == 'No' or end == 'no':
+#     end = input("Press any key to continue")
+#     os.system('color 55')
 
 playerhealth=100
 mplayerhealth = 100
+monsterhealth = 0
 gold=0
+potion = random.randrange(35,40)#These are the range of which these potions can heal you.
+highpotion = random.randrange(40,45)
+fullpotion = random.randrange(100,110)
 inventory = []
+quit = False
+opendoor = False
+opendoor1 = False
+opendoor2 = False
+opendoor3 = False
+opendoor4 = False
+pkey = False
+pkey1 = False
+pkey2 = False
+s = False
+esa = False
 def cheat():
     global room
     global gold
     global playerhealth
     global mplayerhealth
     global inventory
-    l = input("which cheat do you want to use? h for health cheat, g for gold cheat and d for room cheat.")
+    l = input("which cheat do you want to use? h for health cheat, g for gold cheat and d for room cheat.: ")
     if l == 'd':
-        r = int(input("which room do you wish to go to?"))
+        r = int(input("which room do you wish to go to?: "))
         if r > 0 and r < 24:
             room = r
         else:
             print("that's not an option.")
     elif l == 'g':
-        g = int(input("how much gold would you like to give yourself?"))
+        g = int(input("how much gold would you like to give yourself?: "))
         gold = gold + g
         print(g,"gold has been added to your inventory.")
     elif l == 'h':
-        g = int(input("how much health would you like to restore?(you will not get health above the maximum health."))
+        g = int(input("how much health would you like to restore?(you will not get health above the maximum health.: "))
         playerhealth = playerhealth + g
-        for i in range(len(inventory)):#This makes it so that if you have the token in your inventory then it makes your MaxHp 150 instead of 100
-            if inventory[i] == 'MaxHp':
-                mplayerhealth = 150
-                playerhealth = playerhealth + 1
-                if playerhealth > 150:
-                    playerhealth = 150
+        if 'MaxHp' in inventory:
+            mplayerhealth = 150
+            playerhealth = playerhealth + 1
+            if playerhealth > 150:
+                playerhealth = 150
         if playerhealth > mplayerhealth:
             playerhealth = mplayerhealth
+    else:
+        print("That's not an Option.")
 def help():
     print("press g to view the amount of gold that you have. type 'hp' in order to view your health. press p in order to pick up items. press q to quit the game.(your gameplay will not be saved). type pay in order to open doors and type open to open chests. ")
 def monster(biome):
@@ -106,19 +123,14 @@ def monster(biome):
 
 def battlesystem(monster):#This makes it so that you can fight monsters and degeat them to get gold.
     global inventory
-    potion = random.randrange(35,40)#These are the range of which these potions can heal you.
-    highpotion = random.randrange(40,45)
-    fullpotion = random.randrange(100,110)
+    global potion
+    global highpotion
+    global fullpotion
     global playerhealth
     global gold
-    monsterhealth = 0
+    global monsterhealth
     global quit
     global mplayerhealth
-    global room
-    global opendoor
-    global opendoor1
-    global opendoor2
-    global opendoor3
     if monster == "Zombie":#This here controls the amount of health each monster has.
         monsterhealth = 45
         print("a Zombie has spawned in")
@@ -194,15 +206,57 @@ def battlesystem(monster):#This makes it so that you can fight monsters and dege
                 monsterattack = random.randrange(149,150)
             
         print("The", monster, "attacks deal", monsterattack, "damage.")
-        playerhealth = playerhealth - monsterattack
+        playerhealth -= monsterattack
         time.sleep(3)
         print("your HP is at", playerhealth)
+
+        if playerhealth <= 0:# this makes sure that when the player dies the game end
+            print("you succumbed to your wounds as your vision slowly fades to black")
+            time.sleep(3)
+            quit = True
+            break
+        elif monsterhealth <= 0: #makes sure that when you defeat the monster the monster drops gold for doors
+            print("you have won.")
+            time.sleep(3)
+            print("the", monster, "drops a red liqud. when you pick it up some of your wounds disapear.")
+            time.sleep(4)
+            num2 = random.randrange(0,100)
+            monsterdrop = random.randrange(30,65)#this randomly drops a certain amount of gold between those numbers
+            if num2 <= 85:
+                print("the potion gives you", potion, "health.")
+                playerhealth = playerhealth + potion#this makes it so that the potion actually adds health
+                print("the", monster, "also drops", monsterdrop, "gold that could be used later.")
+                gold = gold + monsterdrop
+                print("you now have", gold, "gold")
+            elif num2 <= 95:
+                print("the potion gives you", highpotion, "health.")
+                playerhealth = playerhealth + highpotion
+                print("the", monster, "also drops", monsterdrop, "gold that could be used later.")
+                gold = gold + monsterdrop
+                print("you now have", gold, "gold")
+            elif num2 <= 100:
+                print("the potion gives you", fullpotion, "health.")
+                playerhealth = playerhealth + fullpotion
+                print("the", monster, "also drops", monsterdrop, "gold that could be used later.")
+                gold = gold + monsterdrop
+                print("you now have", gold, "gold")
+            for i in range(len(inventory)):#This makes it so that if you have the token in your inventory then it makes your MaxHp 150 instead of 100
+                if inventory[i] == 'MaxHp':
+                    mplayerhealth = 150
+                    playerhealth = playerhealth + 1
+                    if playerhealth > 150:
+                        playerhealth = 150
+            if playerhealth > mplayerhealth:
+                playerhealth = mplayerhealth
         
+            time.sleep(2)
+            print("your HP has been restored to", playerhealth, "/", mplayerhealth)
+
         playerattack = random.randrange(10,20) #I had to add 3 damage cause of Eli then I won later and subtracted 3 again then I won again
         n = random.randrange(0,100)
         
         if n >= 90 and n <= 100: #this makes it so that there's a 10% chance to crit a monster
-            playerattack = playerattack*2
+            playerattack *= 2
         
         for i in range(len(inventory)): # this goes though all of the inventory makes sure that you have these items 
             if inventory[i] == 'esword':
@@ -217,23 +271,12 @@ def battlesystem(monster):#This makes it so that you can fight monsters and dege
         time.sleep(2)
         print("you deal", playerattack, "damage.")
         time.sleep(2)
-        monsterhealth= monsterhealth - playerattack
+        monsterhealth -= playerattack
         time.sleep(2)
         print("the monsters HP is at", monsterhealth)
         time.sleep(2)
     if playerhealth <= 0:# this makes sure that when the player dies the game end
-        print("you succumbed to your wounds as your vision slowly fades to black")
-        room = 1
-        playerhealth = 100
-        gold = 0
-        opendoor = False
-        opendoor1 = False
-        opendoor2 = False
-        opendoor3 = False
-        inventory = []
-        time.sleep(3)
-        print("you slowly regain consciousness propt up against a familiar looking room")
-        time.sleep(3)
+        quit = True
     elif monsterhealth <= 0: #makes sure that when you defeat the monster the monster drops gold for doors
         print("you have won.")
         time.sleep(3)
@@ -267,24 +310,12 @@ def battlesystem(monster):#This makes it so that you can fight monsters and dege
                     playerhealth = 150
         if playerhealth > mplayerhealth:
             playerhealth = mplayerhealth
-    
-    time.sleep(2)
-    print("your HP has been restored to", playerhealth, "/", mplayerhealth)
+        
+        time.sleep(2)
+        print("your HP has been restored to", playerhealth, "/", mplayerhealth)
 
-    return playerhealth
 #__________game below_______________________________________________________________ 
-quit = False
-opendoor = False
-opendoor1 = False
-opendoor2 = False
-opendoor3 = False
-opendoor4 = False
-pkey = False
-pkey1 = False
-pkey2 = False
-s = False
-esa = False
-choice1 = input("do you want to play a game? Yes/No")
+choice1 = input("do you want to play a game? Yes/No: ")
 if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or choice1 == 'YES':
     time.sleep(3)
     print("you slowly wake up with water driping down you're face, when you open your eyes your inside a cold, dark and damp room. You have no idea how you woke up in here, all you can recall is falling asleep in bed then waking here.through the darkness you can see a vague silhouette coming towards you.")
@@ -293,11 +324,13 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
     while quit == False:
         
         if room == 1:
-            #monster("dungeon")#this is calling my monster and battle function to run
+            monster("dungeon")#this is calling my monster and battle function to run
+            if quit:
+                break
             time.sleep(3)
             print("Your in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through. Out of the corner of your eye something is shining, you can move (e)ast.")
             print("psst, if you need help press h for info if you need help.")
-            choice = input()
+            choice = input(": ")
             if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':  
                 room = 2
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
@@ -327,6 +360,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option.")
         if room == 2:
             #monster("dungeon")
+            if quit:
+                break
             time.sleep(3)
             print("When you walk into the room you find a brick hallway that drips with some sort of fluid with a foul smell that makes you recoil with disgust. You can move (w)est or (s)outh.")
             choice = input()
@@ -354,12 +389,14 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option.")
         if room == 3:
             #monster("dungeon")
+            if quit:
+                break
             time.sleep(3)
             n = random.randrange(100,300)
             if opendoor == False:
-                print("Your in room 3, you can move North, South or pay to open door to the East.")
+                print("Turning the corner you find that it is a very dim hallway with one door in front of you. You can move North or South")
             if opendoor == True:
-                print("Your in room 3, you can move North, South or East.")
+                print("Turning the corner you find that it is a very dim hallway with three doors around you. You can move North, South or East.")
             choice = input()
             if choice == 'n' or choice == 'N' or choice == 'North' or choice == 'north' or choice == 'NORTH':
                 room = 2
@@ -399,11 +436,13 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option.")
         if room == 4:
             #monster("dungeon")
+            if quit:
+                break
             time.sleep(3)
             if opendoor2 == False:
                 print("your in room 4, when you look around the room you find that it, like the previous rooms was mostly empty. but out of the corner of your eye you find that there was a small door leading to somewhere unknown. when you try to open it it doesn't budge and nothing you do seems to open it.")
             if opendoor2 == True:
-                print("your in room 4 you can move (n)orth or (w)est")
+                print("your in room 4 when you look around the room you find that it, like the previous rooms was mostly empty. but out of the corner of your eye you find that there was a small open door leading to somewhere unknown. You can move (n)orth or (w)est")
             choice = input()
             if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North'  or choice == 'NORTH':
                 room = 3
@@ -454,6 +493,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 6:
             #monster("mansion")
+            if quit:
+                break
             time.sleep(3)
             print("you climb up the ladder to find yourself in a some sort of storage with all sorts of tools inside it, you can move west, south or go back down")
             choice = input()
@@ -483,6 +524,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 7:
             #monster("mansion")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 7, you can move north or east")
             choice = input()
@@ -510,6 +553,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 8:
             #monster("mansion")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 8 in the corrider you have found an old chest that seems to need a key, you can move south")
             choice = input()
@@ -533,9 +578,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 cheat()
             elif choice == 'open' or choice == 'Open':
                 key = False
-                for i in range(len(inventory)):
-                    if inventory[i] == "Key":
-                        key = True
+                if "key" in inventory:
+                    key = True
                 if key == True:
                     if pkey2 == False:
                         print("You have Obtained a Key.")
@@ -550,6 +594,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 9:
             #monster("mansion")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 9, you can move north or east")
             choice = input()
@@ -577,6 +623,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 10:
             #monster("mansion")
+            if quit:
+                break
             time.sleep(3)
             n = random.randrange(300,450)
             if opendoor1 == False:
@@ -620,6 +668,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 11:
             #monster("outside")
+            if quit:
+                break
             time.sleep(3)
             n = random.randrange(300,450)
             if opendoor3 == False:
@@ -665,6 +715,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 12:
             #monster("outside")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 12, you can move west or east, you find a bloody sword stuck in the dirt")
             choice = input()
@@ -699,6 +751,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 13:
             #monster("outside")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 13, you can move north or east")
             choice = input()
@@ -726,6 +780,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 14:
             #monster("outside")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 14, you can move south")
             choice = input()
@@ -751,6 +807,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 15:
             #monster("outside")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 15, you can move south or north")
             choice = input()
@@ -779,6 +837,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
         if room == 16:
             Key0 = False#Key0 is the Rusted Key
             #monster("outside")
+            if quit:
+                break
             time.sleep(3)
             if opendoor4 == False:
                 print("your in room 16, you can move North or have a key to open the door ")
@@ -806,9 +866,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             elif choice == 'cheat':
                 cheat()
             elif choice == 'open' or choice == 'Open':
-                for i in range(len(inventory)):
-                    if inventory[i] == "Rusted Key":
-                        Key0 = True
+                if "Rusted Key" in inventory:
+                    Key0 = True
                 if Key0 == True:
                     print("taking you're key the door magically disapears before your eyes.")
                     opendoor4 = True
@@ -818,7 +877,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 17:
-            monster("outside")
+            #monster("outside")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 17 and find a glowing sword that gives off a sacred feeling besides it you find a weird token, you can move east")
             choice = input()
@@ -849,7 +910,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                         print("when you pick up the token you for some reason feel like you become healthier")
                         inventory.append("esword")#this adds an item into the inventory
                         inventory.append("MaxHp")
-                        inventory.remove("sword")
+                        if 'sword' in inventory:
+                            inventory.remove('sword')#this removes the other sword in the inventory so that it doesn't double up the damage of both swords
                         esa = True
                 elif esa == True:
                         print("You have already picked up these Items")
@@ -857,6 +919,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 18:
             #monster("forest")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 18, you can move west or east")
             choice = input()
@@ -884,6 +948,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 19:
             #monster("forest")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 19, you can move west, south or north")
             choice = input()
@@ -913,6 +979,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 20:
             #monster("forest")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 20, you can move south")
             choice = input()
@@ -938,6 +1006,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 21:
             #monster("forest")
+            if quit:
+                break
             time.sleep(3)
             if opendoor2 == False:
                 print("your in room 21, you can move west or pay to open the door leading east")
@@ -981,6 +1051,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 22:
             monster("BossRoom")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 22, you can move west")
             choice = input()
@@ -1006,6 +1078,8 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 23:
             #monster("forest")
+            if quit:
+                break
             time.sleep(3)
             print("your in room 23 and find a worn down chest that could be opened, you can move north")
             choice = input()

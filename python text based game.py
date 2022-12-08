@@ -890,7 +890,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
     while quit == False:
         
         if room == 1:
-            #monster("dungeon")#this is calling my monster and battle function to run
+            monster("dungeon")#this is calling my monster and battle function to run
             if quit:
                 break
             con()
@@ -926,7 +926,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option.")
         if room == 2:
-            #monster("dungeon")
+            monster("dungeon")
             if quit:
                 break
             time.sleep(3)
@@ -955,7 +955,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option.")
         if room == 3:
-            #monster("dungeon")
+            monster("dungeon")
             if quit:
                 break
             time.sleep(3)
@@ -1002,7 +1002,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option.")
         if room == 4:
-            #monster("dungeon")
+            monster("dungeon")
             if quit:
                 break
             time.sleep(3)
@@ -1059,7 +1059,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 6:
-            #monster("mansion")
+            monster("mansion")
             if quit:
                 break
             time.sleep(3)
@@ -1090,7 +1090,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 7:
-            #monster("mansion")
+            monster("mansion")
             if quit:
                 break
             time.sleep(3)
@@ -1119,7 +1119,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 8:
-            #monster("mansion")
+            monster("mansion")
             if quit:
                 break
             time.sleep(3)
@@ -1160,7 +1160,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 9:
-            #monster("mansion")
+            monster("mansion")
             if quit:
                 break
             time.sleep(3)
@@ -1189,7 +1189,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 10:
-            #monster("mansion")
+            monster("mansion")
             if quit:
                 break
             time.sleep(3)
@@ -1234,7 +1234,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 11:
-            #monster("outside")
+            monster("outside")
             if quit:
                 break
             time.sleep(3)
@@ -1281,7 +1281,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 12:
-            #monster("outside")
+            monster("outside")
             if quit:
                 break
             time.sleep(3)
@@ -1317,7 +1317,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 13:
-            #monster("outside")
+            monster("outside")
             if quit:
                 break
             time.sleep(3)
@@ -1346,7 +1346,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 14:
-            #monster("outside")
+            monster("outside")
             if quit:
                 break
             time.sleep(3)
@@ -1373,7 +1373,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 15:
-            #monster("outside")
+            monster("outside")
             if quit:
                 break
             time.sleep(3)
@@ -1403,7 +1403,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 16:
             Key0 = False#Key0 is the Rusted Key
-            #monster("outside")
+            monster("outside")
             if quit:
                 break
             time.sleep(3)
@@ -1444,7 +1444,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 17:
-            #monster("outside")
+            monster("outside")
             if quit:
                 break
             time.sleep(3)
@@ -1485,7 +1485,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 18:
-            #monster("forest")
+            monster("forest")
             if quit:
                 break
             time.sleep(3)
@@ -1515,7 +1515,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 19:
-            #monster("forest")
+            monster("forest")
             if quit:
                 break
             time.sleep(3)
@@ -1546,7 +1546,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 20:
-            #monster("forest")
+            monster("forest")
             if quit:
                 break
             time.sleep(3)
@@ -1573,7 +1573,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 21:
-            #monster("forest")
+            monster("forest")
             if quit:
                 break
             time.sleep(3)
@@ -1618,7 +1618,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("that's not an option")
         if room == 22:
             print("your in room 22, when you open the door you find yourself in a huge room. in the center of the room is a huge monster, bigger than anything you have seen before, when you try to sneak past it you step on a branch and accidently stir up the beast and it looks very angry.")
-            #monster("BossRoom")
+            monster("BossRoom")
             if quit:
                 break
             time.sleep(3)
@@ -1648,7 +1648,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 23:
-            #monster("forest")
+            monster("forest")
             if quit:
                 break
             time.sleep(3)

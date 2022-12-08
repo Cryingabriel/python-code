@@ -18,8 +18,6 @@
 #Make it so input isn't mashed up with the lines above[Not Implemented]
 import random
 import time
-import math
-import os
 #function definition
 # end = input("Do you wish to turn your text to light mode? yes/no")
 # if end == 'yes' or end =='y':
@@ -27,7 +25,7 @@ import os
 # elif end == 'No' or end == 'no':
 #     end = input("Press any key to continue")
 #     os.system('color 55')
-
+#____________Variables____________________
 playerhealth=100
 mplayerhealth = 100
 monsterhealth = 0
@@ -45,15 +43,237 @@ opendoor4 = False
 pkey = False
 pkey1 = False
 pkey2 = False
+pkey3 = False
 s = False
 esa = False
+
+#________________Functions____________________________
+def ascii():
+    print("pleas type a number 1-5 for different types of art")
+    f = int(input(": "))
+    if f == 1:
+        print("⣿⣿⣿⣿⣿⡜⡇⣿⣷⣝⢿⣿⣿⠿⣛⠭⢴⣒⣒⠬⢝⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⡛⠛⣻⠿⠛⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⣿⣿⣿⣿⣿⡇⣿⢹⣿⣿⣷⣬⠑⡨⣰⣿⣿⣿⣿⣿⣷⣌⠪⠻⣿⣿⣿⣿⡿⠟⠉⢀⠤⡂⠥⠶⠿⢶⣤⠈⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⣿⣿⣿⣿⣿⣷⢹⡸⣿⣿⣿⡇⢣⣷⣿⣿⣿⣿⠟⠛⠛⠻⡧⡃⣦⣔⡠⢒⣂⣠⠔⡁⢡⡾⣿⡸⡇⡶⣠⡄⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⣿⣿⣿⣿⣭⣵⢸⣿⣶⣮⣭⡅⠀⠳⢾⣿⠟⠁⠀⠀⠀⠀⠀⠃⣿⣿⣿⡷⠀⠀⠀⡛⠀⠀⠙⠟⠀⠾⠟⠅⡆⠀⠈⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⣼⣿⠿⠿⣿⣿⢸⢻⣿⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿⡇⠀⠀⠈⠠⠐⠪⣁⠀⢡⣄⠀⢀⠀⠀⠀⠿⢛⡛⠙⣛⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⣿⡿⣸⡷⢊⣛⢸⢘⣋⢵⡎⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣶⣮⣭⢁⠀⠀⠀⣰⠀⠑⠘⡃⠾⡋⠙⢫⠀⣶⣿⣧⢱⣾⣿⣶⣮⣀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⠀⣠⡟⠁⠀⠈⠊⠉⠑⡼⣧⢢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡺⠿⢿⡇⣾⡆⢰⠰⠃⠀⠀⣤⢀⡀⢀⠃⢸⠀⢿⣿⡿⠠⣿⡷⠛⠭⢻⡇⢘⣛⣛⣛⢛⢿⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⣼⡟⠀⠀⠀⠀⠀⠀⠀⠀⡿⣎⢷⡰⣤⣀⣀⣀⣀⣀⣤⠔⣢⣭⣽⣷⢰⡿⠀⠃⠀⠀⠀⠂⡘⡜⡅⡎⠀⢸⢸⢱⣶⡖⠀⠀⠀⠀⠀⠀⠓⢸⣿⣿⡟⡇⡜⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⣿⡇⠀⠀⠀⠀⠀⠀⠀⠰⣧⣼⢪⣿⣜⠻⢿⠿⣛⣩⣶⣿⣿⣿⠿⠃⣿⠇⠀⠀⣔⠆⡀⠀⢻⡿⠁⠁⠀⠸⢸⡜⡋⠀⠀⠀⠀⠀⠀⠀⠀⣈⠻⠿⢣⢹⣷⡹⣿⣿⣿⣿⣿⣿⣿")
+        print("⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⢿⡏⢻⣿⣿⣿⣿⣿⣿⣿⣿⠿⠋⠁⢀⡆⡟⠀⠀⣸⢸⠘⡔⠠⡀⠀⠀⠀⡊⠀⢸⢣⠁⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⢏⢂⠻⣯⡻⢘⠻⣿⣿⣿⣿⣿")
+        print("⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⣿⡇⠀⠙⢿⣿⣿⡿⠟⠋⠀⠀⠀⢀⣾⡇⠀⢀⡀⢟⠜⢆⣿⣿⡆⣸⠀⠀⠀⠀⠈⣼⡆⡀⢄⣀⣀⡤⠀⣠⢹⡿⠃⢢⣿⣷⡮⡳⣸⣿⣮⡛⢿⣿⣿")
+        print("⣿⡗⠀⠀⠀⠀⠀⠀⠀⡀⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⢇⣾⡷⠝⠀⠐⠸⣿⣿⡇⠁⠀⠀⢀⠀⠀⣿⣿⡸⢶⣭⡵⠊⡾⡱⢌⠕⠵⠛⣩⠘⡱⣁⢝⠷⣍⡻⢇⢻⣿")
+        print("⡙⣷⣔⠆⢤⣤⡀⣤⠀⣸⡟⣁⡀⠀⠀⠀⠀⣀⣀⣠⣤⢆⢺⣿⠟⠚⣁⣠⣄⣀⠀⠀⠈⡣⣣⠀⠀⠀⠈⠘⢧⢸⣿⡷⠳⢿⡎⣶⠁⠀⠈⠉⠉⠁⢻⡌⠐⠠⡀⢕⠜⢣⣾⣷⡹")
+        print("⠉⠈⢩⠉⠐⠻⠷⠱⢶⡰⣾⡹⣿⣿⣿⠿⠿⠿⠛⠋⢉⣾⡜⡿⡰⠛⠻⠿⠿⢿⣿⢦⡀⣿⣮⠀⠀⢀⣀⣀⣈⠊⣿⠇⣇⠀⠀⢿⠀⠀⠀⠀⠀⠀⠈⣷⠀⠀⠀⢀⢈⠪⢻⣿⢃")
+        print("⢀⡴⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⡇⢃⡴⠶⢻⣿⣷⣶⣬⡢⠨⠘⣿⠀⠜⡛⠛⠿⠿⠷⡜⢸⣿⣄⢄⢸⡆⠀⠀⠀⠀⠀⠀⢕⠁⠀⠀⠈⣷⣕⡨⡰⢻")
+        print("⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⠇⠆⣊⣤⣤⣤⣤⣍⡃⠩⡑⣔⣹⠀⠨⢔⢒⣿⣿⣿⡖⠘⣿⡏⠈⠈⠻⣄⠀⣀⡀⠀⠀⡞⠀⠀⠀⠀⢿⣿⣿⣎⢨")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⢸⠜⡋⢁⣛⣛⡛⠿⣏⠒⠄⢻⣿⠀⢀⣠⣥⣶⣶⣶⡤⡀⠘⡇⠀⠀⠀⠘⠉⠘⠋⠚⣸⢣⣤⣄⣀⠀⡸⣿⣿⣿⣷")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⢀⠾⠋⡻⠿⣿⣷⠪⢕⠁⡄⣧⠁⠑⠠⢚⣉⣉⣉⣓⠈⣰⡘⡄⠀⠀⠀⠀⠀⠀⢸⡿⠀⠀⠉⢙⡚⢦⢻⣿⣿⣿")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠸⢨⣴⣾⣿⣶⣦⣅⡐⠰⣿⡇⠀⠚⢍⡹⠿⠿⠿⡏⠃⣿⡇⠐⡀⠀⠀⠀⠀⠐⠉⠀⠀⠇⠀⠀⡟⣷⣿⣿⣿⣿")
+    elif f == 2:
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣶⣶⣶⣶⣤⣤⣀⠸⢶⣶⣦⣤⣈⠉⠻⣷⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡤⢰⣶⣶⣿⣧⣘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⡉⠛⠻⢿⣦⡀⠰⢷⡄⠀⢀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⡞⣱⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣄⠀⠙⢵⣦⠈⢻⣆⠘⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠄⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣶⣿⣟⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⢦⡙⢧⠈⢿⡄⢿⡆⠀⠀⠀⠀⠀⠀⡀⢺⣿⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⡿⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣿⣿⡿⢿⣿⣷⡙⢦⡀⠸⣧⢸⡇⠀⠀⠀⣀⢀⣾⠇⣸⡏⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣶⣿⣿⡇⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡘⠿⣿⣿⣿⣿⣮⡛⢿⣿⣌⠛⢆⠹⠀⡇⠀⠀⢚⣁⠊⣠⣼⡿⠁⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⢻⣿⣿⣿⣿⣿⣿⣿⣆⠹⣿⣿⣿⣿⣷⣄⠙⠿⣧⡘⠳⡀⠃⢀⣤⣈⣴⣾⠿⠋⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⠀⢻⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⡟⣿⣆⠀⢈⠻⣦⣈⠀⢻⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⡇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⢰⡀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⡌⢿⣷⡐⡅⢀⠉⠓⢦⣄⣀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⣿⣿⡇⢸⣿⣿⣿⣿⣟⢻⣿⣿⣿⡿⠀⣼⣷⡀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⢤⣈⠻⠧⠈⣮⡀⠀⠀⠀⡁⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⡿⣿⣿⠁⠀⢻⣿⣿⣿⣿⡀⢻⣿⣿⠇⢀⣿⣿⣿⣦⠀⠻⣿⣿⣿⣿⣿⣾⣿⣦⣩⠉⠙⠋⠒⠀⡀⡿⣌⢶⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⡟")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⠏⢰⣿⡟⠀⣷⡘⢿⣿⣿⣿⣇⠈⢿⡿⠀⡼⠟⠛⣉⣉⣡⣄⠈⠻⢿⣿⡿⢿⣿⣿⣿⣷⣶⣶⣶⣄⠃⠉⠉⢀⢻⣿⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠏⠀⣾⣿⠃⢰⣿⠧⠀⠻⣿⣿⢿⡄⠈⠃⣠⣶⣾⠿⠛⠛⠿⠿⠋⠠⠄⠙⠓⢦⡈⠍⣛⠛⠿⣿⣿⣿⣷⣌⠀⠀⠎⢻⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠌⠀⣾⣿⣷⠀⣠⣴⣶⡶⠀⠙⢿⣿⣿⡄⠀⣿⣟⠁⠀⠀⠀⠀⠀⠀⢀⣀⠀⠀⠀⣀⠀⠀⠉⠁⠠⠀⠉⠙⠛⠻⠶⠄⠈⠻⠿⢿⣿⣿⣦⡀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⡟⠙⠇⠀⠒⠋⠁⠀⠀⠀⠀⠙⠷⣿⣀⡙⣿⣶⣾⣇⠠⣀⣠⡀⠸⠋⣀⣴⡄⢿⣷⣶⣶⣤⡄⢀⣀⣤⠀⢀⡈⠈⠀⠤⠰⣶⣟⣿⣿⣿⣦⡀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣉⡄⣌⠀⠀⠀⢠⠀⠀⠀⠀⣷⣄⣠⣄⠓⠳⢌⢿⣿⣿⣦⣥⣤⣶⣶⣿⣿⣿⡇⢸⣿⣿⣿⣿⠃⠸⣿⣿⡀⠀⠙⢦⡄⠀⢠⠋⠙⢿⣿⡿⣿⣿⣶⣄")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⠀⠀⠊⣸⠕⠂⠈⠂⢒⣒⣤⣿⣯⣿⣿⣿⣶⣶⣤⣹⣿⣿⣿⣿⣿⣿⣿⣿⣿⠇⣿⣿⣿⣿⠏⠀⢀⣽⣿⠇⠀⠀⠀⢨⠂⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀⠀⣿⠁⠀⢾⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⢠⣿⣿⣿⠋⠀⠐⢸⣿⣿⠀⠀⠀⠐⠛⠀⠀⠀⠀⠀⠈⠂⣙⠻⣿⣿")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠓⠀⠀⠀⢸⡁⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢡⣿⣿⠟⠁⠀⠀⠀⣌⣽⣿⢰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⠀⠀⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⣤⠻⠉⠁⠀⠀⠊⠀⣸⣿⣿⡏⣸⠀⠀⠀⠀⠀⠀⠀⠠⠄⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠈⠇⠀⠃⠀⠘⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⠀⠈⢀⡀⠐⠀⢀⡄⠀⠀⣿⣿⣿⠆⠘⡄⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⡇⠶⠀⠈⠀⠀⠠⠈⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣀⣩⣴⠀⣰⡟⠀⣰⠃⣿⣿⡿⠀⠐⠱⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⡇⣈⠀⠘⢆⢰⡔⠘⠀⠈⠻⢿⣿⣿⣿⣿⣿⠿⠟⣿⣿⣿⣿⡿⡿⠿⢠⡟⡀⠀⢋⣼⣽⠋⢀⢈⠠⡀⡆⠀⠀⠀⠐⣄⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠅⡀⢲⣄⠀⠂⠀⠀⠐⠀⠆⠉⠉⠉⣉⣀⣀⣉⣩⣭⡤⠤⠴⠖⠀⠋⠈⠥⠒⠻⠋⠁⢀⡜⣸⣆⢻⠸⡀⠀⠀⠀⠙⠗⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⣧⣉⠙⠀⠃⠀⠀⠀⡇⣴⣶⣾⣿⣿⣿⣿⣿⣿⣿⣿⣶⠄⣠⣄⡀⠀⣀⣀⣠⠄⠠⣦⣷⣾⣯⠈⠄⢃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠃⠀⣻⡟⠂⠈⠀⠀⠀⠀⡇⢻⣏⠙⠛⠛⠛⠛⠻⠛⠛⠋⠠⣞⣿⣾⡽⡿⠟⠋⣀⠞⢻⡿⠏⠻⣈⣀⣐⣈⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠃⠁⠀⠀⠀⠀⠀⠀⡟⠈⠻⣿⣦⣄⡀⠂⠀⠀⢂⣶⣾⡳⠟⢋⠑⠀⠀⣤⣤⣵⣶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣶⣦⣄⡀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠀⠀⠀⠀⠀⠑⠀⠉⠁⠀⠀⠀⠀⢀⡀⠀⠀⠀⢀⠀⣤⣶⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠀⠀⠀⠀⠀⠀⠀⣀⡀⡠⠄⠡⢀⣒⣀⣩⣬⣶⣶⣶⣿⣿⣾⣿⣏⠀⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⡿⠋⠙⠻⠟⣻⣿⣿⣿⣿⣆⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⢀⣀⣨⣭⣭⣴⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠈⣿⣿⣿⣿⡟⡋⠁⠀⡁⠀⠐⠒⠂⠙⠛⠛⠻⢿⡆⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣐⣉⣥⣴⣶⠿⠟⠛⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠈⣿⣿⠟⠰⠆⠀⠀⠀⣀⡀⠰⠶⢁⡠⠄⠀⠄⢳⠀⠀")
+        print("⠀⠀⠀⠄⢀⡀⠀⠀⢀⣤⣶⣿⣿⣿⠿⠛⠁⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⢹⣧⣤⠐⠚⠛⠓⠒⠛⠿⠿⠟⢀⣠⣴⣷⣤⡀⠀⠀")
+        print("⠀⠀⡐⠀⠴⠿⠃⣠⣿⣿⣿⠿⠋⠀⠔⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠻⠟⣁⣀⠀⣀⣀⢀⡀⠀⣦⣌⠻⢿⣿⣿⣿⠀⠀")
+    elif f == 3:
+        print("⠀⠀⡴⠀⡀⢉⠢⣄⠠⢀⠂⡄⠄⡌⢩⠛⠶⢮⣴⣒⡰⢢⡐⢄⢂⡐⡀⢂⠄⢠⠀⠄⠹⢦⡒⡄⢢⠐⡀⢂⡐⢀⠆⠰⣀⠒⡰⢂⣴⣐⠢⠒⢄⠒⡄⠒⡄⢢⠐⡄⢂⡒⢌⣴⠟⢁⠐⡀⠆⣀⠂⠄⣂⠰⢠⢂⠖⢄⣣⣬⠶⡞⠛⠉⡀⢸⠀⣠⠜⠀⡀⣠⡠⠔⠒⠉⡀")
+        print("⠀⢼⠁⡐⠄⢂⡐⢨⢹⣶⡡⢂⠵⣈⢣⡝⣪⢵⣶⣯⣝⣳⠶⣭⣔⣢⠱⣈⠔⡂⠌⠤⢁⠂⠹⢮⡂⢆⠡⡂⠌⠂⣈⣥⡶⠶⠄⠎⠻⣁⠢⠶⢶⣮⣔⢁⠊⡄⢃⠜⢄⣵⠟⢁⡐⢂⠡⢂⠱⣀⠎⠴⣈⣣⡥⠶⣛⢋⠱⡀⢆⢈⠓⠦⣔⡸⣥⣣⠴⠓⠉⢁⠰⣈⠆⠁⡀")
+        print("⠺⣇⠐⡄⢊⠔⣈⢦⡟⣰⢻⣵⢪⡕⢯⣜⣧⣿⣿⣿⣿⣿⣿⣷⣾⣭⣟⣲⢮⣥⣋⡔⢊⠤⡡⢈⠻⣮⡢⢡⠁⡌⠨⢁⠰⠁⠊⠜⡀⠢⣅⢊⠰⢀⠩⡀⠎⡔⢃⣴⠟⠁⡌⡔⣠⠣⢜⣈⣥⠶⠞⠛⢩⣱⡼⣿⠵⢮⠶⢳⠚⡞⣛⠫⣝⢿⠛⢒⠒⠮⠴⠤⢆⣄⣂⠐⡀")
+        print("⢀⢻⡄⡘⢦⡙⣴⡟⡼⣡⢟⡾⣷⣯⣟⣾⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣿⣳⡶⣥⣇⣊⠌⠻⣦⡣⢌⡁⠊⢄⣧⠾⢿⠀⠃⣸⡗⠠⢁⠆⡱⢘⣴⢟⡑⠌⣓⣨⡴⠶⠿⣯⣧⡤⠤⠔⠂⢸⢇⡞⣥⠻⣜⢬⣣⢛⡜⣰⢟⠡⢾⠡⢂⠌⢠⠐⡀⠂⢀⠈⠉⠉")
+        print("⢠⠊⣷⣉⠦⣽⣞⣹⢶⣹⣞⣿⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣾⣭⣟⣶⢮⣿⣦⡨⡑⡸⢁⢂⣀⠃⠌⠟⣁⠢⣁⠎⣴⢟⣥⠴⣞⣿⣿⣇⣮⠉⢩⣿⣄⠀⠀⠀⠀⢸⣳⢞⡵⣿⢯⠗⣬⢳⣾⣝⣌⢣⡟⡠⢃⠜⡀⢆⠠⢁⠂⠄⡈⢠")
+        print("⢢⡑⢺⣧⢻⣟⢮⣗⣯⣷⣻⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣮⣻⣦⡡⢂⠤⠻⢧⣬⡤⡀⢆⣥⢞⣥⣿⣾⣿⣿⣿⣿⣿⠈⠑⡀⠈⡅⣄⠂⠄⠀⢸⣯⣟⣻⡵⣞⡿⣬⣳⣃⢯⡙⢯⡟⢶⡭⣦⣱⡈⢆⡐⡈⠄⡐⡜")
+        print("⣠⣭⣳⣿⣿⣭⣿⣾⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣿⣯⡻⣮⡰⡈⢍⡐⢤⣱⢞⣵⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⠀⠐⢀⠀⠀⠀⠀⠀⢹⣿⣿⣳⣿⣾⣽⣷⣻⡼⣧⡝⣾⡟⢦⡚⡴⣡⢋⢏⠲⣳⣤⣽⠄")
+        print("⢱⢫⡳⣟⡿⣽⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⡿⣿⣿⣿⣿⣿⣻⣟⣮⡻⣮⡒⣰⢟⡵⣻⢟⡽⣛⡟⡿⣿⣿⣿⣿⡿⠀⠀⠀⠀⠢⠀⠀⠀⠀⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣞⣵⢻⡽⣎⣳⣵⡶⡽⢞⡛⡍⢦⡉⡖")
+        print("⢎⣳⢽⡾⣽⣯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢛⢩⢰⣿⣿⡿⠓⢶⣌⣿⣞⢵⡷⣎⣛⣵⣫⢷⣯⣟⣶⠿⣽⡜⡵⣫⡽⣱⣏⠀⠀⡄⡀⢀⣁⠀⠀⡂⣨⣝⣛⠽⢿⣿⣿⣿⣿⣿⣟⡼⣻⣿⢻⡍⢶⡘⢦⢫⢼⣹⠖⣍⠒")
+        print("⢮⡽⢾⡽⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⣀⣡⠇⣻⠿⢋⣤⣿⠌⣿⡞⢿⣔⣻⣽⣻⣾⡽⡾⡽⣿⣞⣻⣧⣽⣝⣧⣛⣵⡾⠀⠀⠐⠡⢾⣿⣿⣷⣮⣝⡻⢿⣿⣦⢹⠿⣿⣿⢿⣻⣽⣿⣿⣿⣾⣣⠝⣬⢓⠮⣑⠫⢤⢉")
+        print("⢧⣻⢯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⣼⣿⡿⠈⣡⣴⣿⣟⣵⡿⡘⣿⢌⠿⠓⠋⠉⠀⠀⠀⠀⠒⠲⢶⣶⣶⣶⣶⣶⣶⣾⠀⠀⠊⢑⣂⣐⣮⣍⡛⠾⣽⣳⣬⢻⠌⡾⡴⣎⠯⡽⣿⣿⣿⣿⣿⣷⢫⠖⣭⠚⡥⣉⠦⢌")
+        print("⣻⢼⣻⣯⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⡏⠰⠁⠀⡇⡱⣿⣻⣽⣻⢾⣽⠷⠈⠁⠀⠀⠀⠀⠀⠀⡀⠀⠀⡀⢀⠈⠛⠻⡯⣕⣺⢼⠀⠀⠀⠀⠉⠻⠿⣿⣟⢷⣢⢍⠃⠈⣾⡽⣳⢎⠷⣩⢟⡿⣿⣿⣿⣏⢧⡛⡴⢋⡴⢡⠚⣰")
+        print("⣽⢺⣽⣻⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣝⠀⠀⠠⢸⠁⡱⣯⡿⠞⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀⠀⡂⠱⠆⡁⠀⠙⠫⢾⠀⠀⠀⠀⠀⠀⠀⠠⠉⠻⢞⠽⠎⢠⣿⣗⢯⣏⠷⣭⡚⣭⢻⠭⣟⢯⠶⡹⣜⣡⠒⡥⢛⡴")
+        print("⢞⡽⣾⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡳⣎⢧⢻⣿⣿⣿⣿⣿⣿⣿⡿⢋⢁⠀⠀⠈⠄⢸⠘⠓⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠄⠂⠄⡀⢀⠀⠀⠀⠁⠀⠠⠁⠂⠀⠀⠀⠀⠀⠀⠀⠀⠈⢦⣁⣠⣶⣝⡫⢾⣮⡛⢷⣞⡽⣲⠝⢦⣋⡼⢎⣏⢿⣷⡜⢦⡹⣐⠧⣜")
+        print("⢫⣞⢷⣯⣿⣿⣿⣿⣿⣿⡟⡿⢿⠿⡾⣟⠘⠂⠆⢿⠿⡿⣿⢿⡿⣿⢁⠔⠁⠠⢐⠈⢀⠈⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⢂⠐⡈⠐⢀⣠⣴⣾⣿⣿⣿⣿⣶⣶⣦⣤⣀⡀⠀⠀⠂⠈⠀⠂⠀⠉⠻⣿⡿⣎⡢⡙⠚⡭⢛⡞⠧⠟⡬⠱⣎⠯⣜⢺⣼⣛⢮⢵⣩⢞⡵")
+        print("⣻⣼⣿⣾⣿⣛⣞⡷⣟⣾⢿⣞⢯⡻⢝⣋⠐⢄⡀⢰⢂⠑⢻⣿⠿⣅⡈⠀⢠⠡⠈⢆⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠡⠈⠄⡐⠀⣰⡟⣿⢻⡽⣻⢟⣿⣻⢿⢿⣿⣿⣷⣯⣷⣲⣖⣤⣤⣀⣀⣀⣀⣂⡙⠞⠿⣮⡇⡝⣣⠞⣹⠸⡌⠕⣎⡗⣎⠳⢆⡻⣮⣿⣼⣫⢾")
+        print("⣿⣾⣯⡷⣏⡿⢼⡹⣽⣚⢯⡞⠆⢁⡀⠈⢁⠠⡐⠄⢊⡎⠄⢿⣧⠹⣽⠄⠀⠌⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⣿⡽⣞⣷⣳⢯⣟⣶⣛⣞⣯⢾⣵⢾⣳⡾⣵⣯⣟⣿⣻⢿⣻⢿⣟⡿⠛⠷⠮⠐⡝⢦⡛⣔⢫⡞⣭⠲⣝⠬⢳⣭⢳⣿⣿⣿⣿⣿")
+        print("⣿⣿⣿⣏⢮⡳⢫⠵⣲⠹⠊⡅⡠⡅⠀⡐⡀⠀⠱⠈⠐⠸⠀⠛⣻⠳⠃⠀⠀⢀⡐⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣾⢿⣿⣾⣷⢿⠿⣟⣛⣛⠛⠛⠛⠛⠓⠛⠚⠝⠛⠛⠛⠊⠁⠠⣤⡤⣤⢞⣣⡝⡬⢧⡹⢎⠷⣙⠖⡡⠞⣫⠿⢿⣿⣿⣿")
+        print("⣿⣟⡿⡽⣸⣇⠫⠜⠁⠡⡀⡐⢀⠐⠀⠁⠄⡀⠀⠀⠀⠁⠃⠐⠤⠃⠀⡀⠌⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠙⠛⠛⠛⠋⠐⠀⠀⠰⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢼⢧⣛⠶⣱⡛⢶⡙⢎⡱⢡⠛⡴⣥⣶⢢⢿⣿⣿⣿")
+        print("⣿⣻⣿⣵⣿⠛⠀⠁⠈⠕⢀⠐⠀⠀⠢⠀⠈⠔⡡⢂⡀⣤⠈⡔⠊⢄⠂⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠂⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢳⣭⢻⡕⣯⢲⡙⢦⠑⢢⠉⠶⣹⠆⡵⣿⣿⣿⣿")
+        print("⣳⢻⣿⠛⠡⠁⠠⡀⠘⢀⠂⠀⠀⠀⠀⠀⠠⠰⣅⠓⢦⠁⢂⠠⠘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠄⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⠀⠆⠀⠠⢀⠠⠀⠂⠂⠀⠀⠀⠀⠀⠈⣞⢧⡻⢴⡣⢝⠢⢍⠢⢉⠒⡽⣞⠅⣿⣿⣿⣿")
+        print("⠻⡷⢋⠠⠁⠀⠂⠈⠐⠌⡘⠄⠀⠀⡀⡀⠂⠄⠻⠗⢀⠰⢈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⠐⡀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡠⠄⠀⠀⠀⠀⠀⢳⡀⠀⢰⠀⠀⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣷⡹⢖⡹⣌⠣⢌⠢⡁⢎⠱⢫⢾⣊⢿⣿⣿")
+        print("⠡⠐⠀⠀⠂⠀⠀⠀⣀⠈⠀⠀⠀⣀⣴⡴⠀⠀⠀⠐⠈⠔⡠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡐⢀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠞⠋⠀⠀⠀⠀⠀⠀⢀⠀⠹⢆⠐⣀⠠⢅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠳⣝⠲⡍⠜⡠⠃⠌⢠⠘⠠⠃⡍⢛⠟⣿")
+        print("⠀⡁⠀⠀⠀⠀⠀⠀⠀⠁⠂⠀⠘⠈⠁⠀⣀⠒⠀⠀⠀⠁⠠⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠒⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠁⠀⠀⠀⠀⠀⠀⢀⡀⠂⠀⠀⠀⢃⣤⣦⡘⠧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣌⠳⡘⢂⠅⡈⠐⠠⠈⢠⣡⣐⠈⡈⠔")
+        print("⠀⠀⠁⡊⠀⠀⠀⠀⠀⠀⠀⠠⠀⣀⠢⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠐⠄⠀⠀⠀⠀⠀⠀⠀⠀⠌⡀⠀⠀⠀⠀⠀⠈⠄⠀⠀⠀⠀⠀⠀⠀⠀⠻⡄⠀⠀⠐⠸⢿⣿⠇⣐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢁⠊⡔⠡⢈⠐⠠⠁⠂⠁⠈⢧⠋⠀⠀⠌")
+        print("⠀⠀⠢⠂⠀⠀⠀⠀⠀⠀⠀⠄⠑⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢂⠐⠠⢀⠀⠀⠀⠀⡍⢒⡀⠤⠤⣄⠢⠘⡌⡄⠙⠃⡀⠈⠀⠀⠀⠀⠀⠂⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡈⠄⡁⢂⠈⠀⡐⠀⠁⠀⠀⠀⢀⠈⠀")
+        print("⢀⠂⡀⠠⠀⠀⠀⠀⠀⠐⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠈⠄⢃⠀⠀⠀⠀⠸⡄⠆⢈⠳⡌⢥⠘⡰⢌⠣⡌⠐⢄⡠⠔⠦⢄⠀⠀⠀⠈⠐⠄⠀⠀⠀⠀⠀⠀⠀⠀⡐⠠⠀⠄⢀⠀⠀⠀⠠⠐⠀⠀⡀⠁")
+        print("⢂⠂⢀⠐⠀⢀⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠱⡀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠀⠀⠀⠀⠈⠄⠀⠀⠀⠀⠀⠨⣃⢀⠓⠘⢆⡣⢒⠭⠐⠀⠀⢈⢰⣾⣷⡌⣇⠀⠀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡐⠀⡐⠀⠠⠀⢀⠀⢀⠀⢂⠀⠁")
+        print("⠠⠈⠀⠠⠐⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠈⢧⡀⠈⠐⣫⢀⢄⠀⠐⠀⢈⠻⠟⠡⠀⠀⠘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⡀⠄⠐⠀⠀⠀⠀⠀⠈⠀⠀⠀")
+        print("⠀⡐⡈⠄⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⢳⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⡁⠀⠀⠀⠄⠀⠈⢷⠑⡠⡀⠀⠐⠑⣄⠀⠀⠈⠀⠈⢆⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠠⠀⠀⠀⠀⠀⡀⠀⢀⠀⠁")
+        print("⠠⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠞⡜⠀⠀⠀⠀⠀⠐⡀⠀⠀⠁⡀⠀⠂⠀⡀⠂⠁⠈⠢⣑⠲⢥⢢⢄⡘⠳⣢⡀⠀⠀⠀⠘⢢⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⢀⠁⠀⠀⢀⠀⠀⠀⡀⠈")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⡐⠒⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⢲⡇⠀⠀⠀⠀⠀⠀⠐⠈⠀⠀⠄⠐⢀⠀⠠⢀⠁⠂⠄⡀⠛⢶⢎⠤⣋⠲⣌⢱⠰⢄⡀⠀⠀⠈⡁⠀⠀⡀⡐⠀⠀⠀⠀⠀⠀⠀⢀⠐⠀⡀⠀⠄⠀⠀⠐⠀⠀⠈")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡇⣾⡇⡆⢰⠀⠀⠀⠀⠀⠀⠁⠀⠈⠠⠀⠄⠀⠂⢀⠨⣐⠠⢁⠠⡀⠀⠂⠙⢮⡀⠳⠐⢮⣑⠢⢄⡀⠀⠠⠑⠄⠀⠀⠀⠀⠀⠀⠀⠀⠄⠂⠀⠄⠀⠀⠀⠂⠀⠁⡀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⢢⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⢸⢱⣿⡇⣇⠀⡆⠀⠀⠈⡀⠀⠂⠀⠀⡅⠀⠌⢀⠈⠈⢆⡱⢂⡅⢲⠡⠀⠀⠂⡀⠝⣧⡀⡀⠁⠛⠓⠒⠉⠴⢠⠄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠈⠀⡐⠀⠁⠀⠄⠐⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠈⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠃⠀⠀⠘⠘⠛⠛⠘⠀⠛⠀⠱⠀⠡⡀⠀⠀⢀⠨⢄⡀⠂⠌⠐⠠⠐⠂⠘⡁⢉⠆⠀⡐⠀⠈⢹⣿⡔⠀⣀⠀⡄⠠⠀⠀⠈⢪⡱⡢⢄⠀⠀⠀⠀⠀⣀⡤⣶⠀⠀⡐⠈⢀⠠⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠈⠀⢆⡩⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⢦⠀⠀⡄⣿⣿⣿⣧⢧⠐⣦⠀⢤⡀⢁⠄⠀⢀⢦⠂⢆⠀⠀⠈⡐⠩⢄⠡⢂⢆⠂⠀⢐⣬⣥⣼⣿⣷⠩⠆⠉⠀⠠⠀⢂⠀⠚⠑⠋⠷⢭⣢⡀⠀⠀⠉⠲⢭⠀⠀⠐⠈⠠⢀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠆⠘⡄⠆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠸⣆⠀⢳⡘⣿⣿⣿⣯⣣⠘⢷⡈⠿⣦⡈⠣⠄⡊⢇⠠⠂⡀⠀⠈⠂⡂⠌⣣⠊⢠⣴⢺⣿⣿⣿⣿⣿⢈⠆⡄⠪⡐⠀⡠⠀⠄⠠⠀⠀⠀⠀⠉⠓⠀⠀⠀⠀⠀⠀⠂⢁⠐⡀⠂")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠰⠀⠀⠀⠀⠰⡘⡂⠄⠀⠀⠀⠀⠀⠀⠀⡃⠀⠀⠀⢨⠃⠿⠤⠜⠱⠴⠶⠶⢦⣭⣕⣊⠻⣄⠝⣹⣾⣶⣶⣬⣧⣧⡐⠠⢄⠀⠀⢂⠠⢐⣚⡻⣮⡻⣿⣿⢿⣣⡂⢠⠂⠄⡙⣧⠀⠐⢈⡠⠄⠔⠂⠁⠀⠀⠀⠀⠀⠀⠠⠐⠀⢂⠐⠠⢁")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⢆⠃⣄⠀⠀⠀⠅⢢⠁⠂⠀⠀⠀⠀⠀⠆⠀⡇⠄⠀⠀⠀⠀⠀⠀⡀⢀⡀⢀⣀⡀⠀⠈⠉⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠁⠈⠒⣄⢊⣴⣿⣿⣿⣷⡙⣼⡿⣛⣯⣭⣄⠀⠐⡠⢹⣧⠈⠃⠀⢁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠂⠌⡐⠡")
+        print("⠀⠀⠀⠀⠀⠀⢀⡴⢡⠘⠀⣠⣿⠀⠀⠀⠎⡐⡆⢀⠀⠀⠀⢰⠠⡼⣄⠱⠈⠀⠀⠀⡀⠀⢛⣡⣸⣇⣦⠿⣳⢹⡇⣆⣦⣅⣿⣿⣿⣿⣿⣿⣿⣿⣿⢠⣦⣔⠠⢸⣿⣿⣿⣿⡿⣳⣿⢹⣿⣿⣿⣿⡇⠐⠄⣸⡇⠀⠂⡁⠠⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⢈⠐⠤⣁⠣")
+        print("⠀⠀⠀⠀⣠⡾⣯⠃⠂⠀⣴⡿⢡⠀⠀⠠⠁⡃⢶⠨⠀⠀⠀⠸⡆⣿⡔⢢⡔⡀⠀⠀⢓⢦⣌⡻⠧⠻⠾⠿⠷⠿⣱⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⢸⣿⡇⡂⢣⠚⠀⢻⡸⣿⣿⣿⣯⣠⣬⣴⣿⠇⠀⠠⠐⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡐⢄⢃")
+        print("⠀⣀⣴⡾⣯⡟⡗⠀⢰⢹⣿⡇⣃⠀⢀⠀⠁⠀⢯⡀⠀⠀⡀⠀⠙⣜⣧⡳⠜⢡⠀⡀⠘⢘⣻⣿⣿⣿⣾⣿⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠉⠻⢈⢿⣿⡰⡀⠣⠀⠠⡑⠩⡻⠿⣿⣿⡿⠟⢡⠀⠠⠁⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⢈⢂")
+        print("⣿⣟⣯⣟⣷⡻⠁⠠⡃⣾⣿⣿⢹⠃⠀⢀⠂⠈⠸⣇⠀⠀⠙⢶⣅⡨⠻⣿⣾⣄⠡⢱⡀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⢨⡠⢒⠻⣷⣝⢅⣄⠀⢑⡀⠐⣿⡇⠀⠄⡀⢸⡆⠀⠠⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⠤⠞")
+        print("⣿⣞⡿⣾⡽⠁⠠⣱⢡⣿⣿⣿⢨⢏⠀⠠⢈⠀⢁⢻⡀⠀⠀⠂⠩⢉⠀⠀⠛⡻⣷⡈⣷⣄⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡜⣿⡄⠛⠪⡻⢷⣼⣿⣄⠘⠄⠻⠁⠐⢂⠀⠈⡐⠁⠀⠀⠀⠀⠀⠠⠀⠀⠀⠀⠀⠀⢀⠠⠚⠉⠀⠀⠀")
+        print("⣿⣞⣿⠗⠀⢀⡼⢣⢸⣿⣿⣿⣤⣿⢃⠀⡄⡄⠀⡌⠗⢀⠀⠐⠀⠂⠀⠀⡀⢈⠂⠵⠸⣿⣷⣄⠢⠍⣙⣛⣫⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⢻⣿⣄⠡⠌⢻⣶⣭⠭⣍⠒⢰⣀⣈⡀⠀⠀⠜⣀⠁⠄⡀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⣿⢛⠁⢠⣠⠻⠼⣭⢼⠟⠛⠛⠻⢁⠂⠀⢡⠘⡄⠈⠂⠈⠂⡈⠄⠀⠠⠐⠀⡂⢌⠠⠄⢻⣿⣿⣷⣬⣖⣚⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡜⣿⣿⣷⣌⠐⢈⠿⡀⢌⢳⡀⠹⡿⠁⠀⠀⢃⠄⠂⠀⠐⢄⠀⠀⠀⠈⢁⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⡐⢀⢎⣣⣴⣿⣿⡿⠋⠀⠠⢉⠐⠀⠀⠀⠀⠀⠘⠀⠑⠀⠀⠀⠌⡀⠐⠠⢑⠨⡐⠢⡈⠄⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⢻⣿⣿⣿⣷⣄⠠⣬⡆⢂⢳⠁⠁⠀⠠⠀⠈⠠⢁⠐⡀⠀⠈⠀⠀⠀⠀⢈⠈⡁⠀⡀⠀⠀⠀⠀⠀")
+        print("⣔⣿⣿⣿⣿⣿⠏⠁⢀⢂⠀⡀⠌⢠⠀⠄⠀⠀⠈⠅⠀⠀⠀⠀⠀⠠⠀⠁⢌⠂⡅⠢⢑⠨⢀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣼⣿⣿⣿⣿⣿⣷⡌⢿⠀⠎⠃⠀⠀⠀⠀⢈⠐⠀⠠⠀⠎⡀⠀⠀⠀⠀⠀⠙⠸⣍⠷⣒⡄⠀⠀⠀")
+        print("⣿⣿⣿⣿⡟⠁⠀⡀⠆⡌⡐⠀⢀⠃⡆⡑⠂⡄⠀⢂⠀⠀⠀⠀⠀⠀⠐⠀⠈⠔⡈⢅⢊⠰⠀⡌⡈⠹⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠛⢿⣿⣿⡌⡎⠆⡂⠀⠀⠀⠀⠀⡀⠀⠠⠡⠐⡠⢁⠀⠀⠀⠀⠀⠈⠨⢳⢩⠐⡡⢀⠀")
+        print("⣿⣿⣿⡟⢀⠁⠠⢀⠎⡐⢈⠅⡀⢂⠱⡘⠴⠱⡀⡁⢇⠀⠀⠀⠀⠀⠀⠀⠀⠈⠔⢨⢀⠃⠄⡐⢡⠂⢈⠙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠠⠑⡠⢈⢿⣿⡐⢠⠁⠀⠀⠀⠀⠀⠀⠡⠐⠀⠡⠐⠂⠈⡀⠀⠀⠀⠀⠀⠀⠢⠁⠆⣁⠂")
+        print("⣿⣿⡟⢀⠂⠠⢁⠢⠘⣀⠣⠘⠤⣀⠂⠙⣌⠣⠀⣑⠢⡁⠐⡄⡀⠀⠀⠀⠀⠀⠀⠂⠌⡘⠄⡐⠡⡘⡀⠆⡄⠙⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⡇⠐⣞⢹⣆⢂⡹⡇⢠⠃⠀⠀⠀⠀⠀⠀⠁⡁⠂⠐⡈⠌⡐⠄⠂⠠⡀⠀⠀⠀⠀⠁⡘⢀⠂")
+        print("⣿⣿⣇⠂⢀⠂⢄⠊⡡⠐⡌⡑⢢⠐⡂⠅⠐⠠⢁⠆⡡⠘⡀⠘⢡⣶⣄⡀⠀⠈⠀⠀⠀⠀⠈⠀⠁⠀⠁⠐⠈⠁⠘⠒⠙⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⣫⣵⢸⣿⡇⢸⡌⢟⣻⠔⢢⠀⡡⠆⠀⠀⠀⠀⠀⠀⠐⡁⠄⠃⠄⡃⠔⡈⠄⠠⢁⠣⠄⡀⠀⠀⠀⠡⠀")
+        print("⠀⡀⢀⠠⠄⠐⡈⠤⢁⠣⡐⠌⡄⢣⠘⠌⠠⠁⡌⢌⡅⢀⠇⣄⡙⠭⠽⣛⢎⡤⠐⠠⢀⠄⡀⠀⠀⠀⠀⠈⠠⢑⠀⠀⠐⠢⣤⣈⠻⣿⣿⣿⣿⣿⠿⣫⣵⣿⠟⠋⢸⣿⠃⠄⣠⡿⣃⣴⣿⠀⡑⣂⠀⠀⠀⠀⠀⠀⠈⠀⢨⢰⢀⠑⡂⠔⠁⢀⠣⡘⡐⢄⠀⠀⠀⠀⠀")
+        print("⠄⡡⠈⠄⡀⠆⡈⠔⢡⠂⢅⠊⡔⡁⠊⠠⢁⡚⡜⣢⠂⡌⠀⢏⢿⢆⢈⠰⢣⠻⣶⣤⠀⠈⠔⡡⢂⠄⡀⠀⠀⠀⠐⠠⠀⠀⠀⠙⢧⠀⢯⣿⣯⣷⣿⣿⡿⠁⠀⠀⢸⣿⠀⣸⢟⢌⣾⣿⣿⠀⡑⠦⠀⠀⠀⠀⠀⠀⠀⢀⠣⢄⢂⠎⢄⠃⠀⠂⠆⢡⠐⠈⠀⠀⠀⠀⠀")
+        print("⣜⠠⠑⡐⡐⠠⠐⡉⢄⠊⡄⢣⠐⠀⡁⢆⠡⡜⡱⢆⡱⢁⠰⠸⡎⣏⢣⠐⠐⣦⡳⣽⣧⡀⡀⠅⠌⢊⠵⡀⠀⠐⠀⠀⠡⠀⠀⠀⠀⠁⠈⣿⣿⣿⣿⠟⠀⠀⠀⠀⢸⣿⢰⡏⣌⣾⣿⣿⣿⠀⢨⠱⠄⠀⠀⠀⠀⠀⠀⠀⠘⣄⢂⠊⡐⠂⠀⠱⠈⠀⠀⠀⠀⠄⠀⠀⠀")
+        print("⠨⠳⢅⡐⠠⢁⠌⡰⢈⠒⠌⠄⢀⠰⡈⢆⠱⣸⡑⢎⠂⠄⢸⠃⢿⢸⡆⠮⣆⠸⣿⣵⣷⡵⡐⠠⢈⠐⡐⢹⡀⠀⠂⠈⡀⠐⠈⠀⡀⠀⠀⠈⠙⠋⠀⠀⠀⠀⠀⠀⢾⡏⣾⠀⣿⣿⣻⣿⡇⡰⠀⠙⠂⠀⠀⠀⠀⠀⠀⠀⠀⠢⢡⠒⡀⠀⠀⠀⠀⠀⢠⠠⡉⠀⠀⠀⠐")
+        print("⠀⠐⡀⢻⠂⠂⡰⢀⠣⠘⠀⡀⢆⠱⡈⢆⡱⢣⡜⠉⡀⠆⠞⠠⢸⣧⣛⠄⡹⡄⢻⣿⣿⣿⣽⣔⠀⣂⠀⡁⢗⠀⠀⠀⠐⠀⠁⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⣿⡇⡏⢸⣿⣿⣿⣿⡇⢲⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⡊⠀⠀⢀⠠⣀⠣⠆⠁⠀⠀⠀⠀⠀")
+        print("⠀⠀⠐⡀⠃⠄⡐⠂⠁⡀⢢⠑⡌⢢⠑⢢⡱⢣⠜⠀⡔⢨⠃⠰⢸⡿⠿⢟⠀⢢⠌⣿⣿⣿⡇⣿⢰⡄⢂⠁⠆⠀⠀⠀⠈⠀⠀⠂⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣇⡇⣼⣿⣿⣿⣿⡇⠃⠀⢀⠀⠀⠀⠀⠀⠀⠀⠐⡀⠀⠀⠀⠐⠌⠆⠑⢀⡁⠀⠀⠀⠀⠀⠀⠂")
+        print("⠀⠀⠂⠄⠀⠂⠄⢀⠰⡈⠔⡨⢐⠡⡐⢧⡑⡃⠀⣢⠀⡇⠠⢃⣿⢣⣟⢯⡇⢸⡀⠸⣿⢿⢳⣿⡼⣹⢦⡈⠘⠀⠀⠠⠀⡀⠀⠀⠈⠀⠀⠀⠀⠠⠁⠠⠀⠄⢀⢰⣿⢹⣴⣿⣿⣿⣿⣿⢀⠡⢎⡵⢢⠄⠀⠀⠀⠀⠀⠀⠘⡐⠄⡀⠀⠀⠀⠈⠀⠀⠣⠀⠀⠀⠠⠁⡀")
+        print("⠀⠤⢈⠐⢠⠀⠀⢆⠁⠜⡠⠑⡌⢰⠩⣆⡑⢀⢱⠂⣸⠀⠡⣼⡿⣸⢮⣟⠲⢩⢧⠂⠨⢳⣿⠿⣷⣿⣿⣷⣶⠀⠠⢁⠂⠀⠀⠀⡀⠀⠀⢂⡁⠂⡀⠡⠈⢀⠀⢸⣿⢸⣿⣿⣿⣿⣿⣿⢰⠢⠉⠀⠋⠚⠄⠀⠀⠀⠀⠀⠀⠀⠣⠐⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠄⡐⣼⡄⠃⠢⢀⠆⡡⢃⢠⠋⡖⡁⢀⢆⢣⢡⠇⡈⢰⣿⡇⣷⢫⡞⡜⣃⠽⣣⢀⠡⡻⣿⣾⡲⢮⣽⡻⠀⡐⠂⠈⠀⠀⠡⠐⠀⠐⠀⢀⠐⠀⡁⠆⠠⠀⣼⣿⣿⣼⣿⣿⣿⣿⡏⠀⠀⡀⠄⠀⠀⠀⠁⢀⠀⠀⠀⠀⠀⠀⠁⠀⠂⠀⠀⠀⠀⠒⠦⣤⠀⠀⠀⡀")
+        print("⠀⠈⢀⠐⡠⠣⡀⠀⢠⠘⡄⡡⣌⡙⡒⡐⠣⢜⢂⣎⠐⡀⣿⣿⡻⡜⢧⣳⡇⣾⣎⠵⣣⠐⡐⠽⣿⡿⢳⣽⠃⠄⠁⠀⢀⣞⢣⡐⢳⠈⢀⠐⡀⠀⠂⠀⡐⠀⠀⣿⡟⣿⣿⣿⣿⣿⣿⡇⣀⠀⠀⠄⠂⠀⠀⠀⠈⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠈⠡⠁")
+        print("⠀⢀⠂⠐⠀⠀⠹⣄⠃⡌⢰⡑⢦⡑⠠⡜⣡⡓⣰⠂⢠⢱⣿⣿⠶⣻⣬⣿⣔⣹⣿⣎⠙⣧⠐⡈⠜⢷⡯⠀⠀⠀⠀⣀⢺⡜⢌⡷⢤⠀⡂⠐⣀⡀⠀⠀⢀⠃⢰⣿⡇⣿⣿⣿⣿⣿⣿⢱⣭⡢⠀⠀⠂⠈⠄⠀⠄⡀⠀⠠⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠠⠈⠀⠀⠀⠀⠨⠳⣌⠱⢎⡱⢀⡓⢄⡷⠁⣣⠀⠆⣿⣿⣿⡻⡴⣾⡿⣠⣿⣟⡿⣎⢦⡗⡄⠊⠊⠀⠀⣀⣤⣾⣯⠀⣿⠈⢞⡥⣓⡐⢶⣿⣿⣗⢦⡤⣴⢸⣿⡇⣺⣿⣿⣿⣿⣿⣸⣿⣿⣷⡀⠀⠁⡘⠨⡐⠄⢂⢀⠈⡱⠀⡰⢰⠆⢤⢀⣀⣀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠥⠡⢆⡙⢌⠐⠎⡌⣜⠆⠤⡁⠐⣼⣿⣿⣿⢳⣹⣿⢏⣽⣿⣿⣿⣿⣦⠒⠶⣄⠂⠉⢻⣿⣿⣿⣿⢄⡳⠀⠌⢒⢥⢫⡄⠻⣿⣿⣇⣾⡏⢸⣿⢳⣿⣿⣿⣿⣿⡇⣿⣿⣿⣿⣿⣦⡀⢀⠑⠠⠊⡄⢊⠌⠐⡐⠼⣡⣮⡶⢛⣩⣤⣶⣭⣿⢿⠈⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠌⡂⠜⡈⠔⣠⢃⠨⣰⠋⡐⠠⠀⣸⣿⣿⣿⣿⠧⣿⣿⡜⢾⣿⣿⣿⣿⣿⣧⡓⡸⢆⠡⠈⢻⣿⣿⠟⡼⢳⢌⣶⣿⣷⣥⢚⠥⡈⢿⣾⡿⠀⢸⣿⣹⣿⣿⣿⣿⣿⢳⣻⣿⣿⣿⣿⣿⣿⣦⣌⢂⢁⡘⠄⢂⡖⡈⣼⣿⢋⣴⣿⡿⢫⣿⢾⡽⠏⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⢀⢂⠱⣈⠴⠉⠔⢀⢢⢧⠡⠀⠂⣰⣿⣿⣿⣿⣿⣿⣿⢗⣮⢻⣿⣿⣿⣿⣿⣿⣷⡔⡉⢗⡠⠀⠻⣿⣿⢟⣴⣿⡿⣫⡻⣿⣿⣵⣎⢄⠻⣇⢸⢸⣿⣾⣿⣿⣿⣿⣿⠸⣷⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣔⠂⠐⡡⣼⣿⢣⣿⣏⡈⠻⣦⣹⣻⠈⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠄⢊⠰⡀⢆⠑⢢⢉⡞⠂⠄⡀⢁⣿⣿⣿⣿⣿⣿⣿⡟⡼⣌⢿⣿⣿⣿⣿⣿⣿⣿⣿⣆⢊⠱⣌⠀⢉⣵⣿⡿⣯⠞⣝⡻⢮⡻⣿⣿⣷⡡⠝⢦⡘⠻⠿⣿⣿⣿⡿⠋⢠⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⢅⠀⡜⠄⣿⡇⣾⡿⣍⣛⣳⣎⠷⠁⠀⠀⠤⠀⠀")
+        print("⠀⠀⠀⠀⡐⠈⡄⢃⠈⠢⢁⡒⣸⠜⠐⠀⡀⢸⣿⣿⣿⣿⣿⣿⣿⢣⢳⢬⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⡂⢍⣴⣿⡿⠙⡺⢭⣛⢮⡔⣧⣛⢮⡻⣿⣷⣝⠤⠙⢦⣁⠂⠄⠐⡠⠘⡀⢰⣿⣿⣿⣿⣿⣿⣿⡿⠃⡌⠢⣘⣬⣴⣿⡇⣿⣹⢯⢯⣳⠎⠁⠀⠀⠌⡠⢉⠆")
+        print("⠀⠀⠀⡐⠀⠡⠐⢀⠨⡁⡖⢠⡗⠀⠁⠀⠀⡾⠿⣿⣿⣿⣿⣿⡿⣍⡳⢎⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⢟⣽⣿⡟⢧⡙⠆⡄⠐⠌⠣⢻⡴⣫⢷⣏⢮⡻⣿⣷⣌⠄⠩⡳⣌⠐⡀⢢⠐⣿⣿⣿⣿⣿⣿⡿⠋⠠⠢⣠⣾⡿⢟⣛⣫⣷⣣⠿⣝⢧⠓⠀⠀⠀⠈⠐⠀⠃⠀")
+        print("⠀⠀⠐⢀⠡⢁⠃⠠⢃⠜⠀⣞⠁⠀⠀⠀⣸⢿⠐⣈⠛⢿⣿⣿⡟⣼⡱⢏⣾⣿⣿⣿⣿⣿⣿⣿⢟⣵⣿⡿⡽⣶⡁⢍⠳⡌⠂⡌⢑⠢⡙⢵⡫⣞⢸⣟⣮⡻⣿⣷⣔⠈⠨⠳⣄⠡⣸⣻⣿⣿⡿⢛⠁⡐⡌⡐⣼⡿⣱⣾⣿⡋⢳⢷⣫⠿⣜⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⢈⠠⠐⠀⠠⢁⠊⠀⢸⡌⡀⠀⠀⢰⣋⠞⡍⢋⢏⠶⣹⢛⡼⣡⢏⣏⣾⣿⣿⣿⣿⣿⢟⣵⣿⡿⣫⢾⡝⣶⡹⢦⡑⢌⠓⣄⠂⢅⠘⠤⡑⢧⢺⡜⢯⠿⣮⡻⣿⣷⣖⢦⡨⢳⡏⣿⠟⠉⣀⠤⣊⢡⠎⢰⣿⢸⣿⣄⡈⢳⡬⣟⠵⡋⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀")
+        print("⠀⠀⠀⠀⠄⠀⠣⢌⠂⢀⠯⢠⣷⡄⠀⢳⠢⣞⡹⡈⠜⡜⣡⢋⠶⣡⣿⡚⣼⣿⣿⣿⢟⣵⣿⡿⣫⢾⡝⣧⡛⠶⣭⢳⡹⣢⡉⢄⠫⢄⠢⠀⠑⢢⡉⠺⣝⡻⡽⣿⢮⡻⣿⣷⣝⢦⢿⢠⠒⡩⢆⢃⡴⡃⢎⢸⡇⢾⣇⣉⣉⡷⣝⠎⠁⠀⠀⠀⠀⠀⠀⢀⡐⢤⢀⡀⠀")
+        print("⠀⠀⠀⠀⠀⠌⡐⠂⡀⡼⢃⣾⣿⣿⣆⠀⠱⢌⠳⣡⠈⠔⡣⣍⢶⡟⣶⢩⣿⣿⢟⣵⣿⡿⣫⢾⡝⣧⡛⢶⡙⣏⠶⣣⢗⣣⡝⢦⡒⠌⠓⡬⣀⠂⡈⠇⠬⡑⢿⣜⣺⢟⡮⡻⣿⣷⣜⡄⢎⣑⢔⣉⣐⣁⣊⢸⣿⠸⣯⣏⡿⡼⠑⠀⠀⠀⠀⠀⠄⠀⠀⠀⠘⠢⢣⠜⣡")
+        print("⠀⠀⠀⠀⠀⢂⠐⠠⠀⠃⣼⣿⡿⣿⣿⣦⠀⠈⠓⡴⠈⠠⠱⣎⡳⣽⢣⠧⢛⣵⣿⡿⣫⣞⢯⡳⣝⡲⣝⣣⢻⢬⣓⡳⢮⡱⣞⣣⠟⣦⢅⠐⡡⠖⡁⠒⡈⠘⣀⠉⡈⣐⠊⠵⠮⡻⣿⣿⣝⢁⠉⠆⠱⠂⠔⠈⣿⢣⡳⠞⠁⠁⠀⠀⠀⠀⠠⢈⠌⡀⠀⠀⠀⠀⠀⠈⠀")
+        print("⠀⠀⠀⠀⠐⠀⠂⠁⠄⣼⣿⣟⣿⣳⢻⣿⣧⠀⠀⠀⠇⠀⠄⠑⡽⡸⢋⣴⣿⡿⣫⣞⢷⡹⣎⠷⡹⣜⠶⣩⢎⡗⢮⠵⣫⠵⢮⡵⣛⡼⢎⡷⣢⠉⠔⢁⠠⡁⠆⣱⢋⡁⢆⠱⡘⢔⣪⠻⣿⣷⣝⠋⠄⢃⠌⢀⠧⡏⠑⠀⠀⠀⠀⠀⠀⠄⡁⢆⡘⠤⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠠⠁⠠⠁⣸⣿⣻⣞⣵⣫⠗⣞⣻⣇⠀⠀⠀⡄⠈⠠⢀⣵⣿⡿⣫⣞⢧⣛⠮⣕⡫⢞⡱⣭⢺⡱⢫⣜⢫⢞⣱⢫⠗⣞⡥⣏⡻⢌⠁⠂⠠⢄⠢⡑⡴⢁⠆⡘⢠⠑⡐⠌⡤⡙⢮⡻⣿⣷⣄⠀⠀⠈⠃⠀⠀⠀⠀⠀⠀⠀⠌⡐⡐⢢⠌⡃⠆⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠄⢀⠁⣰⣿⠷⣯⢞⠶⣹⢚⡵⢊⢿⡆⠀⠀⠄⢠⣶⣿⡿⢫⠞⡵⣎⠷⣩⣛⡴⡹⣍⢳⡬⢧⣙⠧⣎⠳⣎⢧⡛⣞⡱⣎⠳⠍⠀⠠⢁⠒⡄⣣⠞⠤⢁⠊⡐⠡⠌⠰⢁⢂⡙⠔⠘⡮⡻⣿⣷⣄⠀⠀⠀⠀⠀⠀⠀⠠⠁⢢⠑⡌⢡⠊⠜⡰⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⡐⠀⠰⠯⠝⢻⣆⢯⣚⡥⢣⢎⠣⢖⢻⡄⢈⣴⣿⡿⢫⡜⢣⠎⡱⢎⡽⡱⢎⠶⡹⢬⠳⣜⢣⢎⡳⢼⡹⡜⠲⠙⠂⠍⠘⠉⡀⠄⢁⠈⣢⠞⢁⠡⠊⠄⢂⠠⠁⢂⠁⠄⡀⠐⠨⠁⠒⡍⢮⡻⠿⣗⣀⡤⢤⡔⣶⣦⣄⠀⠀⠀⠈⠂⢍⠰⡁⠆⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠄⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠊⠱⠊⣌⣵⣿⠿⡫⢜⠣⡜⢡⠘⢄⠳⢌⠵⣋⠞⣱⢋⠷⡨⠓⠊⠁⠁⠀⠀⡀⠄⠐⠠⢈⡐⠤⠠⡀⠞⠁⠄⠠⠀⠁⠐⠠⠀⠐⠠⠈⠠⠀⢈⠐⠠⢁⣨⣤⣶⡿⣧⠧⢝⣶⣽⣾⣿⣿⣿⣶⣄⠀⠀⠀⠐⠌⡒⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠿⠩⠸⡑⢊⠱⢈⢂⠡⠊⢔⡊⡔⠡⠎⠑⠈⠀⠀⠀⠀⠀⠄⠈⢀⠀⠐⡈⠐⡰⠗⢊⠑⡀⢂⠡⢈⠀⠄⠁⠂⠀⠄⠀⠁⠀⠁⠀⠂⢠⠐⢙⣿⡿⠿⠛⠂⢭⠳⣶⣦⣍⠙⢿⣿⠟⠋⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠿⢉⠐⠠⠀⠱⢈⠂⠅⢂⢂⠡⠂⠀⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⠀⠀⢀⠈⠠⡀⠁⠁⠐⡀⠂⠐⠀⠂⠄⢈⠐⠠⠈⠀⠀⠂⠀⢀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠠⠘⢀⠫⠌⣛⣻⣥⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠿⢉⠐⡀⠈⠀⠀⠀⢂⠡⠘⠀⠀⠀⠀⠀⠀⡀⠀⠄⡁⠐⠀⠠⠀⠌⠊⠑⠂⡀⠣⠀⠀⠀⠀⠀⠀⠂⠁⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠫⣛⠽⣙⢯⡙⣣⣶⣿⣿⣿⣿⣿⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠐⡀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠿⠉⡐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢂⠐⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠄⢀⢊⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠈⡠⡺⣭⢟⣿⡿⣿⣿⠿⢛⣋⣤⣶⣶⢶⣶⡀⠀⠀⠀⠀⠀⡐⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠿⠉⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠌⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡔⢮⡱⢎⡻⠚⢙⣡⡴⣾⣻⢿⡽⣯⣟⣿⣺⡽⣧⠀⠈⢄⡀⠀⠌")
+        print("⠀⠀⠀⠀⠀⠀⢀⣴⣿⠿⠉⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠢⠄⠐⠀⠀⠀⠀⠀⠀⠠⢁⠂⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⣈⠒⡜⢢⠝⠊⡔⣌⠳⣍⠷⣭⢳⣏⠾⠓⠋⠒⠣⠽⢱⡣⠀⠀⠈⠀⠀")
+        print("⠀⠀⠀⠀⢀⣴⣿⠿⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠄⠃⡈⢄⠨⠑⠌⣀⠒⠌⠘⠀⢁⠀⡠⠄⡤⠤⡔⡒⢆⠦⠁⠀⠉⠃⠀")
+        print("⠀⠀⢀⣴⣿⠿⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠂⠁⠂⠀⠀⠀⠀⠀⢀⠃⠰⠁⠎⠱⠈⠑⠬⠈⢘⠀⠀⠀⠀")
+        print("⢀⣴⣿⠿⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠀")
+        print("⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠋⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
+    elif f == 4:
+        print("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⢋⠅⠒⠊⠉⠘⠛⠛⠂⣀⣈⣝⣛⣛⡛⢛⣃⠻⣿⣿⡇⠙⠛⠻⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡘⣷⡌⣿⣿⣿⣿⣿⣿⣿")
+        print("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢋⠀⣡⠆⢀⣠⣴⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣌⠻⣇⢻⣿⣿⣷⣶⣶⣬⣙⠻⣿⣿⣿⣿⣿⣿⣿⣷⢸⣷⢹⣿⣿⣿⣿⣿⣿")
+        print("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠁⣀⣠⣴⣾⣿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⡉⠿⣿⣿⣿⣿⣿⣿⣿⣦⡙⠿⣿⣿⡿⠿⠿⠘⠏⠻⠿⠿⣿⣿⣿⣿")
+        print("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠋⣡⣶⣾⣿⠟⠋⣩⣴⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⣡⣾⣿⣦⠘⣿⣿⣿⣿⣿⣿⣿⣿⣦⡉⠁⠀⠀⢀⠀⠀⠉⠙⠒⠠⢍⠛⢿")
+        print("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⣡⣾⣿⣿⡿⠁⣠⣾⣿⣿⣿⣿⣿⣿⣿⣿⠟⣽⣿⣿⣿⣿⣿⣿⠏⣼⣿⣿⣿⣿⣇⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣆⠉⠛⠛⠿⠿⣿⣶⣶⣄⡀⠉⢢")
+        print("⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⣰⣿⣿⣿⣿⢁⣾⣿⣿⣿⣿⣿⢋⣿⣿⣿⠏⣾⣿⣿⣿⣿⣿⣿⡏⣼⣿⣿⣿⣿⣿⣿⡄⣿⣿⣿⣿⣿⣿⣿⡿⣿⣿⣆⠀⠀⠀⠀⠀⠈⠹⢿⣿⣦⡈")
+        print("⣿⣿⣿⣿⣿⣿⣿⣿⡟⣰⣿⣿⣿⣿⢁⣾⣿⣿⣿⣿⣿⢃⣾⣿⣿⠏⢌⣿⣿⣿⣿⣿⣿⡟⣸⣿⣿⣿⣿⣿⣿⣿⣧⢹⣿⣿⣿⣿⣿⣿⣿⣹⣿⣿⡄⢠⣶⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⣿⣿⣿⣿⣿⣿⣿⡟⣰⣿⣿⣿⣿⠇⣾⣿⣿⣿⣿⣿⠃⣾⣿⣿⡟⡈⣸⣿⣿⣿⣿⣿⣿⢡⣿⣿⣿⣿⣿⣿⣿⣿⣿⢸⣿⣿⣿⣿⣿⣿⣿⣧⣻⣿⣇⠈⠛⠛⠿⢿⣿⣿⣿⣿⣿")
+        print("⣿⣿⣿⣿⣿⣿⠟⣰⣿⣿⣿⣿⡟⣸⣿⣿⣿⣿⣿⠟⣸⣿⣿⣿⠁⢱⡿⣿⣿⣿⣿⣿⡟⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡀⠀⣀⣤⡀⠈⠙⠿⣿⣿")
+        print("⣿⣿⣿⣿⣿⣿⣾⣿⣿⣿⣿⡿⢰⣿⣿⣿⣿⣿⢋⠀⣿⣿⣿⣿⢸⡆⠅⣿⣿⣿⣿⣿⡇⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠘⢿⣿⡆⠀⠀⠈⠻")
+        print("⠟⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠃⣿⣿⣿⡿⠛⢡⣭⢘⢿⣿⣿⣿⠈⣯⠀⠹⣿⣿⣿⣿⡇⣿⣿⣿⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⣼⣿⣿⣯⡖⣰⣿⡟⣾⣿⣇⣿⣿⠀⣿⡐⣦⢹⣿⣿⣿⡇⢻⣿⠇⣸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀")
+        print("⣿⣿⣿⣿⢿⣾⣿⣿⣿⣿⢡⣿⣿⣿⠟⣸⣿⣿⡇⣿⣿⣿⣿⣿⣆⢻⣧⠘⣧⡙⣿⣿⣷⢸⠏⡀⠀⠝⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⣀⠀⠀⠀⠀⠀⠀")
+        print("⣿⣿⣿⠏⣼⣿⣿⣿⣿⡇⣸⣿⡻⠟⣴⣿⣭⣛⠧⢿⣿⣿⣿⣿⣿⡸⣿⣷⡙⣷⣌⠻⣿⡆⢾⡇⡆⣷⣤⣌⠻⣿⣿⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⠘⣷⡀⠀⠀⠀⠀")
+        print("⣿⣿⡟⣸⣿⣿⣿⣿⣿⡇⠿⠿⠃⠀⢀⠀⠉⠹⣷⠘⣿⢻⣿⣿⣿⣧⡘⣿⣷⣌⠻⢷⠌⡑⠘⡇⠀⣿⣿⣿⣷⣌⠋⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⣿⣿⣆⢻⣷⠀⠀⠀⢰")
+        print("⣿⣏⢰⣿⣿⣿⣿⣿⣿⡇⢶⣆⠀⣾⡟⠀⠀⠀⠘⣧⢹⡸⣿⣿⣿⣿⣷⡽⢡⡾⠿⠁⠶⣦⣅⠀⠀⢿⣿⣿⣿⡿⢠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡆⣿⣿⣿⡌⢿⡇⠀⠀⢸")
+        print("⣿⡏⣸⣿⣿⣿⣿⢿⣿⡇⠀⣿⠀⣿⡁⠀⢀⠀⠀⣸⡇⢃⢻⣿⣿⣿⠟⢁⡉⢀⣠⠄⠀⠀⠙⠷⢘⠘⣿⣿⣿⢃⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣥⢹⣿⣿⣧⡘⣷⠠⠀⢸")
+        print("⣿⡇⣿⣿⣿⣿⠏⢸⣿⣷⠀⢻⢰⣾⣇⢻⣾⣦⢰⣿⢣⣿⣄⢻⢟⣥⡾⢋⣴⣿⠋⠀⠉⠀⠐⠀⠈⠀⢩⣽⠏⣼⣿⣿⣿⣿⣿⡟⣿⣿⣿⣿⣿⣿⣿⣿⡘⢿⣿⣿⣧⠙⡇⢷⣌")
+        print("⣿⡇⢹⠃⣿⣿⠀⠈⢿⣿⡆⠀⣾⣿⣿⣦⣽⣡⣾⠃⣾⠿⢟⠱⢞⣡⣶⣿⣿⡟⣠⡇⢠⠀⠠⠀⡀⠀⠈⠛⣴⣿⣿⣿⣿⣿⠟⣽⣿⣿⣿⣿⢻⣿⣿⣿⣧⠠⣝⠻⠿⣷⣌⠘⣿")
+        print("⢻⣿⢸⠀⣿⣿⡇⠀⠀⠻⣷⠀⢹⣿⣿⣿⣿⣿⣇⣬⣄⣢⣤⣾⣿⣿⣿⣿⣿⣧⡈⢻⣾⡧⠖⡐⠁⣠⠆⣼⣿⣿⣿⣿⣿⠋⣼⣿⣿⣿⣿⡟⠀⡏⣿⣿⣿⣇⠻⣿⣿⣶⣬⣥⡘")
+        print("⡌⣿⡈⠀⢻⣿⣧⠀⠀⠀⠌⠳⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣶⣿⣷⣿⣶⡿⢃⣼⣿⣿⣿⣿⣿⢃⣾⣿⣿⡟⣿⣿⢣⣷⠹⡘⢿⣿⣿⣧⠹⣿⣿⣿⣿⣧")
+        print("⣧⠹⣇⠀⠈⢿⣿⠀⠀⠀⠀⠀⢰⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣱⣿⣿⣿⣿⣿⠟⣡⣾⣿⣿⡟⣰⣿⠏⣾⣿⣧⠃⢢⣙⠿⣿⣷⡌⠿⣿⣿⣿")
+        print("⣿⠀⣷⠀⠀⠈⢿⣇⠀⣦⣄⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢃⣾⣿⣿⣿⡿⠟⣡⣾⣿⣿⣿⠏⣴⣿⠏⣼⢸⣿⣿⣧⡀⢿⣷⡆⣍⣉⠀⣈⣿⣿")
+        print("⣿⠀⣷⠀⠀⠀⣠⠙⠆⠹⣿⣷⣤⡈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⣡⣾⣿⣿⠿⢛⣩⣴⣿⣿⣿⣿⠟⢁⣼⣿⢋⣼⠇⣾⣿⣿⣿⣿⣦⣙⠃⢻⣿⡀⢿⣿⣿")
+        print("⣿⢸⣿⡀⢀⣴⡿⠀⠀⢦⣌⠻⣿⣿⣦⡙⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡟⠋⣑⣚⣟⡛⢉⣥⣾⣿⣿⣿⢿⣿⠟⠁⣠⣾⠟⣡⣿⡿⢠⢃⣿⣿⣿⣿⡿⡟⣰⢸⣿⡇⢸⠟⢠")
+        print("⡏⣿⣧⡱⡘⢿⡇⠀⢰⡈⢿⣿⣿⣿⣿⣿⣆⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠟⠉⣠⣶⣿⡿⠿⠛⡩⠔⡋⠁⣠⡾⢛⣡⣾⣿⡿⠁⢁⣾⣿⡿⣿⠟⡐⢱⡇⡿⣿⠇⢀⣴⣿")
+        print("⣀⡛⠻⠗⡘⠦⣅⠀⢸⡇⠘⣿⣿⣿⣿⣿⣿⣷⡘⠿⣿⣿⣿⣿⣿⣿⠿⣟⠋⡤⢂⣭⣭⣥⣄⣶⣽⠶⠞⣋⡴⠛⣡⠀⣌⠻⡿⢋⡄⢠⡾⢿⠟⠔⣡⡶⣠⡛⣀⣁⣥⣶⣿⣿⣿")
+        print("⣭⣴⣶⣶⣾⣶⣶⣆⠈⢿⠀⢻⣿⣿⣿⣿⣿⣿⡿⠂⠀⠀⠀⠉⠈⢀⣶⠃⠌⣰⣿⣿⢿⣿⣿⣿⣿⣾⡟⠋⠠⣾⣿⡇⢹⣷⣦⣭⣤⣈⣤⣥⣶⡿⢋⣴⡿⢁⣼⣿⣿⠟⢻⣿⣿")
+        print("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣀⠸⠿⣿⣿⣿⣿⠟⢁⡀⠀⠀⠀⠀⢰⣿⡏⢠⣾⣿⡿⠃⣾⣿⣿⣿⡿⢋⡀⠀⣾⠟⠉⠈⠁⠙⠿⠿⣿⣿⠿⠟⠋⣠⡿⢋⣴⣿⣿⣿⣧⡄⢠⣤⣤")
+        print("⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠀⣼⣿⣿⠏⠀⠀⢚⣡⣤⣄⣀⠀⣰⡟⠠⢡⣿⣿⠇⢸⣿⡿⠟⣡⣾⣿⡇⠸⠁⣠⡶⠶⠶⣦⡀⠀⠀⠀⠀⣀⡀⠀⠀⠉⠙⠛⠻⢿⣿⡇⢠⣤⣄")
+        print("⣛⣿⣭⣍⡀⠌⢀⣠⣤⠔⢠⣾⠿⠟⠥⢊⠀⣼⣿⣿⣿⠟⠥⠂⠿⢠⠇⣿⡟⠋⠀⠸⢋⣴⣿⣿⣿⣿⠀⠀⠀⠘⠁⠀⠀⠀⣤⡀⠀⣴⣿⣿⣤⠘⠿⠗⠀⣀⡤⢸⣿⣅⣀⣉⣁")
+        print("⢟⣿⣭⣶⡶⠾⠛⠛⢓⣊⣩⣭⣤⣴⡾⢃⣼⣿⡟⣩⢵⠶⠸⣿⢀⡏⢸⣿⣇⠀⢀⣴⣿⢿⣿⡿⢛⣩⡆⢀⣀⠀⠀⣀⣤⡶⠛⢰⣄⠉⢿⣿⣿⣿⠄⢰⣾⡟⠀⠛⠛⠛⠛⠿⣿")
+        print("⡿⣿⡋⢡⣶⣾⣿⣿⣿⠿⠟⣋⣩⣥⣶⣮⣍⡛⢸⣿⠀⣴⣲⣿⠸⡇⣿⣿⣿⠀⣿⣿⢏⣨⡵⠶⢟⣋⠀⠋⠁⠀⠀⢻⣧⠀⠀⠀⠙⣧⠀⢿⣿⡟⠀⣾⠟⡀⠙⠓⠒⣒⠈⠉⠉")
+        print("⠣⠿⣵⣿⡿⠟⢋⣥⡶⣾⣿⡿⣿⣿⣿⣿⣿⣿⣿⣦⣠⣥⣿⣿⠀⠀⢿⣿⣿⣧⠘⣡⣤⣴⣾⣿⣿⣿⡆⠀⠀⠀⢀⣾⡟⠀⣀⡀⢀⣘⣷⠀⠻⠋⠀⢋⣴⣿⣿⣿⣿⣿⣿⣿⣿")
+    elif f == 5:
+        print("⣿⣝⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⢿⣛⣫⣭⡵⠶⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣶⣮⣍⡻⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⠿⠛⢛⣛⠻⠿⠿⠟⣫⣥⣌⡻⠿⠟⠋⠉⠀⢶⡿⠿⠿⠟⠛⠶⠾⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠣⢿⣿⣿⣿⣿⣿⣿⣿")
+        print("⣤⣈⠀⣰⣿⢁⣾⣇⠈⠛⠛⢋⣴⣿⣿⣿⡟⣉⣀⣶⠞⣛⣛⣻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠛⣢⣵⢾⣿⣶⣮⡙⢿⣿⣿⣿⣿")
+        print("⣿⣿⢰⣿⡿⢨⣿⡟⣠⣾⣷⣶⣮⣭⠋⢉⡛⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⠛⣉⡉⠡⣤⣶⣿⣿⡮⣻⣧⡹⣿⣷⣝⢦⡙⣿⣿⣿")
+        print("⣛⡛⠸⢟⠃⡄⠋⢡⣿⣿⣿⣿⣷⣶⣿⣿⣿⣷⣦⡙⠿⠿⠟⢛⠉⣉⣤⣶⣿⣷⡸⣿⣯⡻⣦⡙⢿⣿⣷⡝⢿⣷⡜⣿⣿⣧⡹⡌⢿⢿")
+        print("⣿⣿⣷⠄⣂⣠⣤⣭⣭⣉⡉⠍⠉⠉⠉⠉⠁⠀⢀⣠⢐⣠⡶⢸⢸⣿⣿⣿⢩⣿⣇⣿⣏⢿⣌⢿⣦⡻⣿⣿⣎⢻⡿⡜⣿⣿⡙⡌⣰⣿")
+        print("⣿⡿⣡⣿⣿⣿⣿⣿⣿⠟⣩⡖⢀⡀⣠⠄⠀⣰⣿⡏⣾⡿⢰⢸⢸⣿⣿⣿⠘⣿⣿⢻⣿⣧⢻⣮⣿⢿⡜⣿⣿⣆⢻⡄⠸⣿⣿⡄⣿⣿")
+        print("⠉⠐⣋⠙⠿⠿⠿⣛⣡⣾⡿⢠⣿⣱⡏⣼⢰⣿⣿⢃⣿⠇⢧⡎⠘⣿⣿⢿⡆⢻⡿⠘⣿⣌⣎⢿⡼⣦⣾⡜⣿⣏⠂⢻⡀⠹⣿⣇⢿⣿")
+        print("⣴⣿⣿⡘⢂⣀⠀⣴⣿⣿⠃⣿⢣⡿⣘⣣⣿⣿⡟⢸⣿⠀⢸⣷⣄⢻⣿⠈⠁⠈⠇⠀⠹⣿⣿⣸⣷⠹⣿⡄⠸⣿⣧⠈⣷⠀⢿⣿⢸⣿")
+        print("⢻⣿⣿⣿⣿⣧⠀⠿⣿⡟⢸⡟⣸⢃⣿⢿⣿⣿⠃⢸⡇⢀⡘⣿⣿⣎⢿⡇⠀⢰⡈⠀⢦⠙⣿⣿⣿⡇⢿⣿⡄⢻⣿⡄⢻⣧⢸⡏⣾⣿")
+        print("⢸⣿⣿⣿⣿⡿⠁⠡⣴⠄⡜⢃⡟⣾⡅⣿⣿⠏⢀⣼⠇⢼⡇⠃⢹⣿⣿⡇⠀⠸⢡⡄⢸⣶⡘⢿⣿⣿⠸⣿⣷⠜⣿⡇⠸⣿⡌⠃⣿⣿")
+        print("⣼⠈⠿⠿⠀⠀⢀⣸⣿⠀⠁⣿⣇⣷⣿⣿⡇⠀⣴⣶⠀⣮⣽⡀⠀⠻⣿⣇⠀⣴⣿⣿⣆⢿⣿⣎⢿⣧⠁⢿⣿⡆⣿⣿⢠⢻⣷⡀⣿⣿")
+        print("⢼⣧⠀⠀⠀⢰⣿⣿⡏⠐⢰⣿⣿⣇⣿⣟⠇⢰⣿⣿⠀⣿⣿⡇⣤⠀⣜⢿⡀⢻⣿⣿⡿⠿⢿⣿⣦⢻⡄⢸⣿⣇⢿⣿⢸⣾⣿⡇⣿⣿")
+        print("⢘⣿⡃⠀⣤⣨⣿⣿⡇⠀⢸⡿⣿⣏⣿⣿⠀⣿⡿⠿⠘⠟⢛⣳⣿⣧⡹⣦⡳⠈⢿⡁⠀⠀⣀⣀⠀⠀⠇⠘⣿⣿⢸⡏⠀⣿⣿⡃⣿⣿")
+        print("⣿⣿⢇⣴⣿⣿⣿⣿⡇⠀⢸⣷⢻⣿⠸⡿⠀⡿⠁⠀⢀⣀⣀⣉⣙⣿⣿⣿⣿⣷⣾⣤⣴⣿⣿⣿⣿⣿⡀⠀⣿⣿⢸⣧⠀⣿⣿⠁⣿⣿")
+        print("⢾⡏⣼⣿⣿⣿⣿⣿⡇⠂⠘⣿⢸⢻⣆⠀⢀⣿⣤⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣧⠀⠇⡎⠈⡿⠀⣿⡿⢰⣌⠻")
+        print("⣺⢸⣿⣿⣿⣿⣿⣿⣇⠀⠀⣿⢸⡘⣿⠀⠘⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⢠⡇⢠⡇⠀⢻⠃⠸⣿⠀")
+        print("⣿⠈⢿⣿⣿⣿⣿⣿⣿⠸⡆⠹⠈⣇⠙⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠿⠛⢿⣿⣟⣼⠃⠸⠱⣸⢃⠀⠈⠀⠐⠇⢀")
+        print("⢟⣾⢸⣿⣿⣿⣿⣿⣿⡇⠁⠀⢀⢻⡄⠀⠀⠈⣿⣿⣿⣿⣿⣿⡿⠟⣛⣭⣴⣶⣶⠾⠿⣛⡥⢸⣿⣿⡿⠀⣠⡇⢏⡎⠀⣠⢠⣁⣶⣿")
+        print("⠼⠻⢸⣿⣿⣿⣿⣿⣿⣿⡄⠀⢸⠘⣧⠀⠀⠀⢻⣿⣿⣿⣿⣿⣦⡙⣻⣿⣿⣷⣶⣿⠿⠟⠡⣿⡿⠿⠁⢠⣟⢀⡾⣱⣧⣤⣿⣿⣿⣿")
+        print("⢀⠀⣿⣿⣿⣿⡟⡻⠏⠙⠡⡄⢠⡀⢻⡄⠀⠀⡀⠉⢿⣿⣿⣿⣿⣷⣬⡍⠩⠭⠧⣠⣀⣤⣶⣬⢀⣶⡟⣼⣿⠛⣱⣿⣿⣿⣿⣿⣿⣿")
+        print("⣼⠀⣍⠛⣛⣛⠓⠘⣷⣾⣿⣿⣾⣿⡜⢹⣦⠀⢨⣉⣢⡉⠛⠯⠙⠿⠿⠇⢹⣿⣶⣿⣿⣿⣿⣿⣿⣿⢡⣿⢃⣴⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⠋⣠⢸⣷⡜⣿⡇⠀⣤⣽⣿⣿⣿⣿⣿⠀⢿⠀⣼⣿⣿⣷⣤⣦⣄⣷⣴⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⡏⡼⢁⣾⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⢠⡿⠘⣿⡅⢻⣷⡔⠛⠛⠋⠛⣿⣿⣿⡆⡌⠇⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠃⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
+        print("⢿⠇⠀⣿⣿⡈⢿⡅⠀⠀⠀⡀⡍⣨⣿⡇⣿⡄⠀⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠀⢰⣿⡿⠻⠛⡛⠋⠹⣿⡿⢿⣿")
+def con():
+    r = input("Press and key to continue")
+
 def cheat():
     global room
     global gold
     global playerhealth
     global mplayerhealth
     global inventory
-    l = input("which cheat do you want to use? h for health cheat, g for gold cheat and d for room cheat.: ")
+    l = input("which cheat do you want to use? h for health cheat, g for gold cheat, d for room cheat and a for cool art from others.: ")
     if l == 'd':
         r = int(input("which room do you wish to go to?: "))
         if r > 0 and r < 24:
@@ -74,6 +294,8 @@ def cheat():
                 playerhealth = 150
         if playerhealth > mplayerhealth:
             playerhealth = mplayerhealth
+    elif l == 'a':
+        ascii()
     else:
         print("That's not an Option.")
 def help():
@@ -118,14 +340,11 @@ def monster(biome):
           battlesystem("Slime")
     elif biome == "BossRoom":
         battlesystem("Dragon")
-
-#____________________________________________
-
 def battlesystem(monster):#This makes it so that you can fight monsters and degeat them to get gold.
     global inventory
-    global potion
-    global highpotion
-    global fullpotion
+    potion = random.randrange(35,40)#These are the range of which these potions can heal you.
+    highpotion = random.randrange(40,45)
+    fullpotion = random.randrange(100,110)
     global playerhealth
     global gold
     global monsterhealth
@@ -320,15 +539,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
     time.sleep(3)
     print("you slowly wake up with water driping down you're face, when you open your eyes your inside a cold, dark and damp room. You have no idea how you woke up in here, all you can recall is falling asleep in bed then waking here.through the darkness you can see a vague silhouette coming towards you.")
     room = 1
-    i = input("Press any key to continue.")
+    con()
     while quit == False:
         
         if room == 1:
-            monster("dungeon")#this is calling my monster and battle function to run
+            #monster("dungeon")#this is calling my monster and battle function to run
             if quit:
                 break
-            time.sleep(3)
+            con()
             print("Your in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through. Out of the corner of your eye something is shining, you can move (e)ast.")
+            con()
             print("psst, if you need help press h for info if you need help.")
             choice = input(": ")
             if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':  
@@ -337,16 +557,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()#this is calling my help/info function to run
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             elif choice == 'pickup' or 'p':
@@ -364,7 +584,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("When you walk into the room you find a brick hallway that drips with some sort of fluid with a foul smell that makes you recoil with disgust. You can move (w)est or (s)outh.")
-            choice = input()
+            choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 1
             elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
@@ -373,16 +593,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")#gives a break to the player so they have time to think.
+                con()#gives a break to the player so they have time to think.
             elif choice == 'i' or choice == 'I':
                 print(inventory)#this prints out the entire inventory.
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
@@ -397,7 +617,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("Turning the corner you find that it is a very dim hallway with one door in front of you. You can move North or South")
             if opendoor == True:
                 print("Turning the corner you find that it is a very dim hallway with three doors around you. You can move North, South or East.")
-            choice = input()
+            choice = input(": ")
             if choice == 'n' or choice == 'N' or choice == 'North' or choice == 'north' or choice == 'NORTH':
                 room = 2
             elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
@@ -406,16 +626,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 5
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             elif choice == 'pay'and gold >= 200:
@@ -443,7 +663,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("your in room 4, when you look around the room you find that it, like the previous rooms was mostly empty. but out of the corner of your eye you find that there was a small door leading to somewhere unknown. when you try to open it it doesn't budge and nothing you do seems to open it.")
             if opendoor2 == True:
                 print("your in room 4 when you look around the room you find that it, like the previous rooms was mostly empty. but out of the corner of your eye you find that there was a small open door leading to somewhere unknown. You can move (n)orth or (w)est")
-            choice = input()
+            choice = input(": ")
             if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North'  or choice == 'NORTH':
                 room = 3
             elif choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West'  or choice == 'WEST':
@@ -452,23 +672,23 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
                 print("that's not an option")
         if room == 5:
             print("you enter the room, you find that it's a plain room with nothing in it exept a ladder which seems to lead 'up'.")
-            choice = input()
+            choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 3
             elif choice == 'up' or choice == 'Up' or choice == 'UP' or choice == 'u' or choice == 'U':
@@ -477,16 +697,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()            
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
@@ -497,7 +717,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("you climb up the ladder to find yourself in a some sort of storage with all sorts of tools inside it, you can move west, south or go back down")
-            choice = input()
+            choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 7
             elif choice == 'd' or choice == 'D' or choice == 'down' or choice == 'Down' or choice == 'DOWN':
@@ -508,16 +728,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
@@ -528,7 +748,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 7, you can move north or east")
-            choice = input()
+            choice = input(": ")
             if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
                 room = 8
             elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
@@ -537,16 +757,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
@@ -557,23 +777,23 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 8 in the corrider you have found an old chest that seems to need a key, you can move south")
-            choice = input()
+            choice = input(": ")
             if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
                 room = 7
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             elif choice == 'open' or choice == 'Open':
@@ -598,7 +818,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 9, you can move north or east")
-            choice = input()
+            choice = input(": ")
             if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
                 room = 10
             elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
@@ -607,16 +827,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
@@ -631,23 +851,23 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("your in room 10, you can move west or pay to open the door leading east")
             if opendoor1 == True:
                 print("your in room 10 you can move west or east")
-            choice = input()
+            choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 9
             elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST' and opendoor1 == True:
                 room = 11
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             elif choice == 'pay'and gold >= 400:
@@ -676,7 +896,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("when you look around you find yourself surrounded by greenery of a abandoned garden.It's filled with overgrown vines and weeds all over with countless spiderwebs everywhere, you can move north, west, south or pay to open a door going east")
             if opendoor3 == True:
                 print("your in room 11 you can move north, west, south or east")
-            choice = input()
+            choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 12
             elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST' and opendoor3 == True:
@@ -685,16 +905,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 10
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             elif choice == 'pay'and gold >= 600:
@@ -719,7 +939,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 12, you can move west or east, you find a bloody sword stuck in the dirt")
-            choice = input()
+            choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 13
             elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
@@ -728,16 +948,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             elif choice == 'sword' or 'Sword':
@@ -755,7 +975,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 13, you can move north or east")
-            choice = input()
+            choice = input(": ")
             if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
                 room = 14
             elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
@@ -764,16 +984,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
@@ -784,23 +1004,23 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 14, you can move south")
-            choice = input()
+            choice = input(": ")
             if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
                 room = 13
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
@@ -811,7 +1031,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 15, you can move south or north")
-            choice = input()
+            choice = input(": ")
             if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
                 room = 16
             elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
@@ -820,16 +1040,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
@@ -844,7 +1064,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("your in room 16, you can move North or have a key to open the door ")
             if opendoor4 == True:
                 print("your in room 16, you can move north or west")
-            choice = input()
+            choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 17
             elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
@@ -853,16 +1073,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             elif choice == 'open' or choice == 'Open':
@@ -882,7 +1102,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 17 and find a glowing sword that gives off a sacred feeling besides it you find a weird token, you can move east")
-            choice = input()
+            choice = input(": ")
             if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
                 room = 16
             elif choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
@@ -891,22 +1111,22 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             elif choice == 'pickup' or choice == 'p':
                 if esa == False:
                         print("when you pick up the sword it starts to glow even brighter like it wants to be wielded by you.")
-                        i = input("Press any key to continue.")
+                        con()
                         print("when you pick up the token you for some reason feel like you become healthier")
                         inventory.append("esword")#this adds an item into the inventory
                         inventory.append("MaxHp")
@@ -923,7 +1143,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 18, you can move west or east")
-            choice = input()
+            choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 11
             elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
@@ -932,16 +1152,17 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
+
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
@@ -952,7 +1173,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 19, you can move west, south or north")
-            choice = input()
+            choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 18
             elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
@@ -961,16 +1182,16 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 21
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
@@ -983,23 +1204,23 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 20, you can move south")
-            choice = input()
+            choice = input(": ")
             if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
                 room = 19
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
@@ -1013,7 +1234,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 print("your in room 21, you can move west or pay to open the door leading east")
             if opendoor2 == True:
                 print("your in room 21, you can move north, east or south")
-            choice = input()
+            choice = input(": ")
             if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
                 room = 22
             elif choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
@@ -1022,25 +1243,24 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 room = 23
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             elif choice == 'open' or choice == 'Open':
                 Key1 = False
-                for i in range(len(inventory)):
-                    if inventory[i] == "Key1":
-                        Key1 = True
+                if "Key1" in inventory:
+                    Key1 = True
                 if Key1 == True:
-                    print("taking you're key the door magically dissapears before your eyes.")
+                    print("taking your key the door magically dissapears before your eyes.")
                     opendoor2 = True
                     inventory.remove('Key1')
                 else:
@@ -1055,23 +1275,23 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 22, you can move west")
-            choice = input()
+            choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 21
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             else:
@@ -1082,29 +1302,29 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             print("your in room 23 and find a worn down chest that could be opened, you can move north")
-            choice = input()
+            choice = input(": ")
             if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
                 room = 21
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'cheat':
                 cheat()
             elif choice == 'open' or choice == 'Open':
                 if pkey1 == False:
                     print("When you open the chest you notice a shiny object and when you pick it up you find that it's a key.")
-                    i = input("Press any key to continue.")
+                    con()
                     print("You have Obtained Key.")
                     inventory.append("Key")#this adds an item into the inventory
                     pkey1 = True
@@ -1115,21 +1335,21 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
         if room == 24:
             time.sleep(3)
             print("When you enter the small door you find that you have to crawl through in order to fit. after a few minutes of crawling you make your way into an emtpy room. looking around the only thing you find is a message written in stone next to a skeleton.")
-            choice = input()
+            choice = input(": ")
             if choice == 'e' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
                 room = 21
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':
                 print("You have", gold, "gold.")
-                i = input("Press any key to continue your journey")
+                con()
             elif choice == 'hp' or choice == 'HP' or choice == 'health' or choice == 'Health' or choice == 'HEALTH':
                 print("you have", playerhealth, '/', mplayerhealth, "health.")
-                i = input("Press any key to continue your journey")
+                con()
             elif choice == 'i' or choice == 'I':
                 print(inventory)
-                i = input("Press any key to continue your journey.")
+                con()
             elif choice == 'h' or choice == 'help':
                 help()
-                i = input("Press any key to continue.")
+                con()
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'cheat':

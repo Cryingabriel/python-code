@@ -18,21 +18,20 @@
 #Make it so input isn't mashed up with the lines above[Not Implemented]
 import random
 import time
+import winsound
+import os
 #function definition
-# end = input("Do you wish to turn your text to light mode? yes/no")
-# if end == 'yes' or end =='y':
-#     os.system('color f0')#This makes it so the terminal for the game changes colors.
-# elif end == 'No' or end == 'no':
-#     end = input("Press any key to continue")
-#     os.system('color 55')
+end = input("Do you wish to turn your text to light mode? yes/no: ")
+if end == 'yes' or end =='y':
+    os.system('color f0')#This makes it so the terminal for the game changes colors.
+elif end == 'No' or end == 'no':
+    end = input("Press any key to continue")
+    os.system('color 55')
 #____________Variables____________________
 playerhealth=100
 mplayerhealth = 100
 monsterhealth = 0
 gold=0
-potion = random.randrange(35,40)#These are the range of which these potions can heal you.
-highpotion = random.randrange(40,45)
-fullpotion = random.randrange(100,110)
 inventory = []
 quit = False
 opendoor = False
@@ -48,8 +47,357 @@ s = False
 esa = False
 
 #________________Functions____________________________
+def sound():
+    winsound.Beep(480,200)
+
+    winsound.Beep(1568,200)
+
+    winsound.Beep(1568,200)
+
+    winsound.Beep(1568,200)
+
+
+
+    winsound.Beep(740,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(784,200)
+
+
+    winsound.Beep(370,200)
+
+    winsound.Beep(392,200)
+
+    winsound.Beep(370,200)
+
+    winsound.Beep(392,200)
+
+    winsound.Beep(392,400)
+
+    winsound.Beep(196,400)
+
+
+
+    winsound.Beep(740,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(740,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(740,200)
+
+    winsound.Beep(84,200)
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(831,200)
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(988,400)
+
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(699,200)
+
+    winsound.Beep(740,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(740,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(740,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(830,200)
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(988,400)
+
+    time.sleep(200/1000)
+
+    winsound.Beep(1108,10)
+    winsound.Beep(1174,200)
+    winsound.Beep(1480,10)
+    winsound.Beep(1568,200)
+
+
+    time.sleep(200/1000)
+    winsound.Beep(740,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(740,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(740,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(830,200)
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(988,400)
+
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(699,200)
+
+
+    winsound.Beep(659,200)
+
+    winsound.Beep(699,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(880,400)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(699,200)
+
+    winsound.Beep(659,200)
+
+
+
+    winsound.Beep(587,200)
+
+    winsound.Beep(659,200)
+
+    winsound.Beep(699,200)
+
+    winsound.Beep(784,400)
+
+    winsound.Beep(699,200)
+
+    winsound.Beep(659,200)
+
+    winsound.Beep(587,200)
+
+
+
+    winsound.Beep(523,200)
+
+    winsound.Beep(587,200)
+
+    winsound.Beep(659,200)
+
+    winsound.Beep(699,400)
+
+    winsound.Beep(659,200)
+
+    winsound.Beep(587,200)
+
+    winsound.Beep(494,200)
+
+    winsound.Beep(523,200)
+
+
+    time.sleep(400/1000)
+
+    winsound.Beep(349,400)
+
+    winsound.Beep(392,200)
+
+    winsound.Beep(330,200)
+
+    winsound.Beep(523,200)
+
+    winsound.Beep(494,200)
+
+    winsound.Beep(466,200)
+
+
+
+    winsound.Beep(440,200)
+
+    winsound.Beep(494,200)
+
+    winsound.Beep(523,200)
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(494,200)
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(1760,200)
+
+    winsound.Beep(440,200)
+
+
+
+    winsound.Beep(392,200)
+
+    winsound.Beep(440,200)
+
+    winsound.Beep(494,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(440, 200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(1568,200)
+
+    winsound.Beep(392,200)
+
+
+
+    winsound.Beep(349,200)
+
+    winsound.Beep(392,200)
+
+    winsound.Beep(440,200)
+
+    winsound.Beep(699,200)
+
+    winsound.Beep(415,200)
+
+    winsound.Beep(699,200)
+
+    winsound.Beep(1397,200)
+
+    winsound.Beep(349,200)
+
+
+
+    winsound.Beep(330,200)
+
+    winsound.Beep(311,200)
+
+    winsound.Beep(330,200)
+
+    winsound.Beep(659,200)
+
+    winsound.Beep(699,400)
+
+    winsound.Beep(784,400)
+
+
+
+    winsound.Beep(440,200)
+
+    winsound.Beep(494,200)
+
+    winsound.Beep(523,200)
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(494,200)
+
+    winsound.Beep(880,200)
+
+    winsound.Beep(1760,200)
+
+    winsound.Beep(440,200)
+
+
+
+    winsound.Beep(392,200)
+
+    winsound.Beep(440,200)
+
+    winsound.Beep(494,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(440,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(1568,200)
+
+    winsound.Beep(392,200)
+
+
+
+    winsound.Beep(349,200)
+
+    winsound.Beep(392,200)
+
+    winsound.Beep(440,200)
+
+    winsound.Beep(699,200)
+
+    winsound.Beep(659,200)
+
+    winsound.Beep(699,200)
+
+    winsound.Beep(740,200)
+
+    winsound.Beep(784,200)
+
+    winsound.Beep(392,200)
+
+    winsound.Beep(392,200)
+
+    winsound.Beep(392,200)
+
+    winsound.Beep(392,200)
+
+    winsound.Beep(196,200)
+
+    winsound.Beep(196,200)
+
+    winsound.Beep(196,200)
+
+
+
+    winsound.Beep(185,200)
+
+    winsound.Beep(196,200)
+
+    winsound.Beep(185,200)
+
+    winsound.Beep(196,200)
+
+    winsound.Beep(208,200)
+
+    winsound.Beep(220,200)
+
+    winsound.Beep(233,200)
+
+    winsound.Beep(247,200)
+
+    print("song finished")
+
 def ascii():
-    print("pleas type a number 1-5 for different types of art")
+    print("please type a number 1-5 for different types of art")
     f = int(input(": "))
     if f == 1:
         print("⣿⣿⣿⣿⣿⡜⡇⣿⣷⣝⢿⣿⣿⠿⣛⠭⢴⣒⣒⠬⢝⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⡛⠛⣻⠿⠛⠛⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿")
@@ -197,10 +545,6 @@ def ascii():
         print("⢀⣴⣿⠿⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠀⠀")
         print("⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
         print("⠋⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
-        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
-        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
-        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
-        print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
         print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
         print("⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀")
     elif f == 4:
@@ -267,7 +611,7 @@ def ascii():
 def con():
     r = input("Press and key to continue")
 
-def cheat():
+def cheat():#secret cheat to make it so
     global room
     global gold
     global playerhealth
@@ -276,7 +620,7 @@ def cheat():
     l = input("which cheat do you want to use? h for health cheat, g for gold cheat, d for room cheat and a for cool art from others.: ")
     if l == 'd':
         r = int(input("which room do you wish to go to?: "))
-        if r > 0 and r < 24:
+        if r > 0 and r < 25:
             room = r
         else:
             print("that's not an option.")
@@ -300,7 +644,7 @@ def cheat():
         print("That's not an Option.")
 def help():
     print("press g to view the amount of gold that you have. type 'hp' in order to view your health. press p in order to pick up items. press q to quit the game.(your gameplay will not be saved). type pay in order to open doors and type open to open chests. ")
-def monster(biome):
+def monster(biome):#this spawns different monsters depending on where they are in the map
     num = random.randrange(0, 100)
     if biome == "dungeon":
         if num <= 25:
@@ -536,6 +880,9 @@ def battlesystem(monster):#This makes it so that you can fight monsters and dege
 #__________game below_______________________________________________________________ 
 choice1 = input("do you want to play a game? Yes/No: ")
 if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or choice1 == 'YES':
+    print("Headphones are recommended to play this game.")
+    con()
+    sound()
     time.sleep(3)
     print("you slowly wake up with water driping down you're face, when you open your eyes your inside a cold, dark and damp room. You have no idea how you woke up in here, all you can recall is falling asleep in bed then waking here.through the darkness you can see a vague silhouette coming towards you.")
     room = 1
@@ -547,7 +894,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             con()
-            print("Your in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through. Out of the corner of your eye something is shining, you can move (e)ast.")
+            print("Your in room 1. Your in a dull looking cell, it appears run down as parts of the iron bars look to be destroyed enough to squeez through. Out of the corner of your eye something is shining, you can move (e)ast.")
             con()
             print("psst, if you need help press h for info if you need help.")
             choice = input(": ")
@@ -583,7 +930,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("When you walk into the room you find a brick hallway that drips with some sort of fluid with a foul smell that makes you recoil with disgust. You can move (w)est or (s)outh.")
+            print("You're in room 2. When you walk into the room you find a brick hallway that drips with some sort of fluid with a foul smell that makes you recoil with disgust. You can move (w)est or (s)outh.")
             choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 1
@@ -612,9 +959,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            n = random.randrange(100,300)
+            n = random.randrange(50,100)
             if opendoor == False:
-                print("Turning the corner you find that it is a very dim hallway with one door in front of you. You can move North or South")
+                print("you're in room 3. Turning the corner you find that it is a very dim hallway with one door in front of you. You can move North or South")
             if opendoor == True:
                 print("Turning the corner you find that it is a very dim hallway with three doors around you. You can move North, South or East.")
             choice = input(": ")
@@ -660,7 +1007,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             if opendoor2 == False:
-                print("your in room 4, when you look around the room you find that it, like the previous rooms was mostly empty. but out of the corner of your eye you find that there was a small door leading to somewhere unknown. when you try to open it it doesn't budge and nothing you do seems to open it.")
+                print("you're in room 4, when you look around the room you find that it, like the previous rooms was mostly empty. but out of the corner of your eye you find that there was a small door leading to somewhere unknown. when you try to open it it doesn't budge and nothing you do seems to open it.")
             if opendoor2 == True:
                 print("your in room 4 when you look around the room you find that it, like the previous rooms was mostly empty. but out of the corner of your eye you find that there was a small open door leading to somewhere unknown. You can move (n)orth or (w)est")
             choice = input(": ")
@@ -687,7 +1034,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 5:
-            print("you enter the room, you find that it's a plain room with nothing in it exept a ladder which seems to lead 'up'.")
+            print("your in room 5. you enter the room, you find that it's a plain room with nothing but dusty bricks for the walls and in it a ladder which seems to lead 'up'.")
             choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 3
@@ -716,7 +1063,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("you climb up the ladder to find yourself in a some sort of storage with all sorts of tools inside it, you can move west, south or go back down")
+            print("your'e in room 6. you climb up the ladder to find yourself in a some sort of storage with all sorts of tools inside it, you can move west, south or go back down")
             choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 7
@@ -747,7 +1094,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("your in room 7, you can move north or east")
+            print("you're in room 7. When you walk out you find worself in a unassuming hallway with dim lighting, you can move north or east")
             choice = input(": ")
             if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
                 room = 8
@@ -776,7 +1123,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("your in room 8 in the corrider you have found an old chest that seems to need a key, you can move south")
+            print("your'e in room 8 in the room you have found an old chest that seems to need a key, you can move south")
             choice = input(": ")
             if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
                 room = 7
@@ -817,7 +1164,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("your in room 9, you can move north or east")
+            print("you're in room 9. When you walk out you find worself in a unassuming hallway with dim lighting, you can move north or east")
             choice = input(": ")
             if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
                 room = 10
@@ -846,11 +1193,11 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            n = random.randrange(300,450)
+            n = random.randrange(100,150)
             if opendoor1 == False:
-                print("your in room 10, you can move west or pay to open the door leading east")
+                print("you're in room 10, walking down the hallway there appears to be a giant door in front of you however when you try to open it it doesn't unlock. a sign appears in front of you saying that you need to exchange something in order to open the door. you can move west or pay to open the door leading east")
             if opendoor1 == True:
-                print("your in room 10 you can move west or east")
+                print("you're in room 10. walking down the hallway there appears to be a giant door in front of you you can move west or east")
             choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 9
@@ -891,11 +1238,11 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            n = random.randrange(300,450)
+            n = random.randrange(125,175)
             if opendoor3 == False:
-                print("when you look around you find yourself surrounded by greenery of a abandoned garden.It's filled with overgrown vines and weeds all over with countless spiderwebs everywhere, you can move north, west, south or pay to open a door going east")
+                print("you're in room 11. when you look around you find yourself surrounded by greenery of a abandoned garden.It's filled with overgrown vines and weeds all over with countless spiderwebs everywhere to the left you find that a door is kept shut tight by a big lock. it seems like you need to exchange something for it to open, you can move north, west, south or pay to open a door going east")
             if opendoor3 == True:
-                print("your in room 11 you can move north, west, south or east")
+                print("you're in room 11.  when you look around you find yourself surrounded by greenery of a abandoned garden.It's filled with overgrown vines and weeds all over with countless spiderwebs everywhere to the left is an open door. you can move north, west, south or east")
             choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 12
@@ -938,7 +1285,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("your in room 12, you can move west or east, you find a bloody sword stuck in the dirt")
+            print("your in room 12, surrounded by thick forrage all around you find a bloody sword stuck in the dirt like its been discarded, you can move west or east")
             choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 13
@@ -974,7 +1321,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("your in room 13, you can move north or east")
+            print("your in room 13, when you walk over you find that there was nothing special waiting here for you. jsut a bunch of tall trees surrounded by fences you can move north or east")
             choice = input(": ")
             if choice == 'n' or choice == 'N' or choice == 'north' or choice == 'North' or choice == 'NORTH':
                 room = 14
@@ -1003,7 +1350,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("your in room 14, you can move south")
+            print("your in room 14, when you walk over here you find that it's a empty place that is a dead end, wasting the time you spent just to walk over here. you can move south")
             choice = input(": ")
             if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
                 room = 13
@@ -1030,7 +1377,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("your in room 15, you can move south or north")
+            print("your in room 15, when you move forward you don't see anything in this part of the forrest. you can move south or north")
             choice = input(": ")
             if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
                 room = 16
@@ -1061,9 +1408,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             if opendoor4 == False:
-                print("your in room 16, you can move North or have a key to open the door ")
+                print("your in room 16, just like the previous room it's mostly an unassuming room however to the right you find that there is a large door that could potentially lead you out of here but it seems to need a key to open. you can move North or have a key to open the door ")
             if opendoor4 == True:
-                print("your in room 16, you can move north or west")
+                print("your in room 16, just like the previous room it's mostly an unassuming room however to the right you find that there is a large open door. you can move north or west")
             choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 17
@@ -1101,7 +1448,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("your in room 17 and find a glowing sword that gives off a sacred feeling besides it you find a weird token, you can move east")
+            print("your in room 17. in the middle of the room you find a glowing sword that gives off a sacred feeling besides it you find a weird token that has blood all over it, you can move east")
             choice = input(": ")
             if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
                 room = 16
@@ -1142,7 +1489,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("your in room 18, you can move west or east")
+            print("your in room 18, afer making it through the door you are disapointed to find that it's just more greenery all around. you can move west or east")
             choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 11
@@ -1172,7 +1519,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("your in room 19, you can move west, south or north")
+            print("your in room 19, when you walk over here just like the previous room it's absolutly just an empty room with two paths that you can take. you can move west, south or north")
             choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 18
@@ -1203,7 +1550,7 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             if quit:
                 break
             time.sleep(3)
-            print("your in room 20, you can move south")
+            print("your in room 20, when you walk over here you find that it's a empty place that is a dead end, wasting the time you spent just to walk over here. you can move south")
             choice = input(": ")
             if choice == 's' or choice == 'S' or choice == 'south' or choice == 'South' or choice == 'SOUTH':
                 room = 19
@@ -1231,9 +1578,9 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
                 break
             time.sleep(3)
             if opendoor2 == False:
-                print("your in room 21, you can move west or pay to open the door leading east")
+                print("your in room 21, looking around besides the locked door there is only the path in front of you you can move west or pay to open the door leading east")
             if opendoor2 == True:
-                print("your in room 21, you can move north, east or south")
+                print("your in room 21, looking around besides the open door there is only the path in front of you. you can move north, east or south")
             choice = input(": ")
             if choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
                 room = 22
@@ -1270,14 +1617,18 @@ if choice1 == 'y' or choice1 == 'Y' or choice1 == 'yes' or choice1 == 'Yes' or c
             else:
                 print("that's not an option")
         if room == 22:
-            monster("BossRoom")
+            print("your in room 22, when you open the door you find yourself in a huge room. in the center of the room is a huge monster, bigger than anything you have seen before, when you try to sneak past it you step on a branch and accidently stir up the beast and it looks very angry.")
+            #monster("BossRoom")
             if quit:
                 break
             time.sleep(3)
-            print("your in room 22, you can move west")
+            print("you can move West or East")
             choice = input(": ")
             if choice == 'w' or choice == 'W' or choice == 'west' or choice == 'West' or choice == 'WEST':
                 room = 21
+            elif choice == 'e' or choice == 'E' or choice == 'east' or choice == 'East' or choice == 'EAST':
+                print("having slain the beast some type of circle is quickly drawn below your feet. before you can even process what is happening it whisks you away with a blinding light. the last thing you hear is: Trial 1 completed. Trial 2 starting before it all fades to dark.")
+                quit = True
             elif choice == 'q' or choice == 'Q' or choice == 'quit' or choice == 'Quit' or choice == 'QUIT':
                 quit = True
             elif choice == 'g' or choice == 'G' or choice == 'gold' or choice == 'Gold' or choice == 'GOLD':

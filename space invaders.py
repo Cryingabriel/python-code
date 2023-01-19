@@ -11,7 +11,7 @@ xpos = 400
 ypos = 750
 meft = False
 might = False
-
+shoot = False
 #enemy Class
 class Alien:
     def __init__(self, xpos, ypos):
@@ -74,6 +74,8 @@ while not gameover:
                 meft = False
             if event.key == pygame.K_RIGHT:
                 might = False
+        if event.type == pygame.K_SPACE:
+            shoot = True
     #phyisics section------------------
 
     #check variables from the input section---------------

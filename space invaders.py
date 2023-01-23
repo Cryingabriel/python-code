@@ -31,7 +31,17 @@ class Alien:
         return time
     def draw(self):
         pygame.draw.rect(screen, (250, 250, 250), (self.xpos, self.ypos, 40, 40))
-class bullet:
+    def collide(self, BulletX, BulletY):
+        if self.isa: #hit only alive aliens
+            if BulletX > self.xpos:#check if the bulet is right of the left of the alien
+                if BulletX < self.xpos + 40:#checks if the bullet is left of the right alien
+                    if BulletY < self.ypos + 40:#checks if the bullet id above the alien
+                        if BulletY > self.ypos:#checks if the bullet is below the alien
+                            print("hit!")#testing
+                            self.isa = False#set the alien to dead
+                            return False#set the bullet to dead
+        return True#otherwise keep bullet alive
+class Bullet:
     def __init__(self, xpos, ypos):
         self.xpos = xpos
         self.ypos = ypos
@@ -46,14 +56,25 @@ class bullet:
     def draw(self):
         pygame.draw.rect(screen, (250, 250, 250), (self.xpos, self.ypos, 3, 20))
 #instantiate bullet object
-meep = bullet(xpos+28, ypos)
+bullet = Bullet(xpos+28, ypos)
 group = []#creat a list
 for i in range (4): #handles the rows
     for y in range (9): #handle colums
         group.append(Alien(y*80+50, i*80+50))
 Alfred = Alien(400, 400)#instantiating one
-
-
+class wall:
+    def __init__(self, xpos, ypos):
+        self.xpos = xpos
+        self.ypos = ypos
+        numh = 0
+    def draw(self):
+        pygame.draw.rect(screen, (250,250,0), (self.xpos, self.ypos, 30, 30))
+walls = []
+Trump = wall(400, 670)
+for k in range  (4):
+    for l in range (2):
+        for o in range (3):
+            walls.append(wall(o*30+200*k+50, i*30+600))
 while not gameover:
     clock.tick(60)
     timer += 1
@@ -62,20 +83,21 @@ while not gameover:
         if event.type == pygame.QUIT:
             gameover = True #quit game if x is pressed in top corner
         
-        if event.type == pygame.KEYDOWN:
+        if event.type == pygame.KEYDOWN:#-----------------------
             if event.key == pygame.K_LEFT:
                 meft = True
             if event.key == pygame.K_RIGHT:
                 might = True
-
+            if event.key == pygame.K_SPACE:
+                shoot = True
         
-        if event.type == pygame.KEYUP:
+        if event.type == pygame.KEYUP:#---------------------------
             if event.key == pygame.K_LEFT:
                 meft = False
             if event.key == pygame.K_RIGHT:
                 might = False
-        if event.type == pygame.K_SPACE:
-            shoot = True
+            if event.key == pygame.K_SPACE:
+                shoot = False
     #phyisics section------------------
 
     #check variables from the input section---------------
@@ -85,12 +107,18 @@ while not gameover:
     if might == True:
         vx =+ 3
     if shoot == True:
-        meep.isa = True
-    if meep.isa == True:
-        meep.move(xpos+28, ypos)
+        bullet.isa = True
+    if bullet.isa == True:
+        bullet.move(xpos+28, ypos)
+        if bullet.isa == True:
+        #check for collision between bullet and enemy
+            for i in range (len(group)):
+                bullet.isa = group[i].collide(bullet.xpos, bullet.ypos)
+                if bullet.isa == False:
+                    break
     else:
-        meep.xpos = xpos + 28
-        meep.ypos = ypos
+        bullet.xpos = xpos + 28
+        bullet.ypos = ypos
     #update player position
     xpos += vx
     #Render section-------------
@@ -100,7 +128,9 @@ while not gameover:
         group[i].draw()
     for i in range (len(group)):
         group[i].move(timer)
-    meep.draw()
+    for i in range (len(walls)):
+        walls[i].draw()
+    bullet.draw()
     pygame.draw.rect(screen, (200, 200, 100), (xpos, 750, 60, 20))
     pygame.display.flip()
 #end game loop------------------

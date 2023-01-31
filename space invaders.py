@@ -5,7 +5,7 @@ pygame.display.set_caption("space invaders")
 screen = pygame.display.set_mode((800, 800))
 clock = pygame.time.Clock()
 gameover = False
-timer = 0;
+timer = 0
 #player variables-----------------
 xpos = 400
 ypos = 750
@@ -62,19 +62,53 @@ for i in range (4): #handles the rows
     for y in range (9): #handle colums
         group.append(Alien(y*80+50, i*80+50))
 Alfred = Alien(400, 400)#instantiating one
+#WALLS
 class wall:
     def __init__(self, xpos, ypos):
         self.xpos = xpos
         self.ypos = ypos
-        numh = 0
+        self.alive = True
+        self.numh = 0
     def draw(self):
-        pygame.draw.rect(screen, (250,250,0), (self.xpos, self.ypos, 30, 30))
+        if self.numh == 0:
+            pygame.draw.rect(screen, (250,250,0), (self.xpos, self.ypos, 30, 30))
+        if self.numh == 1:
+            pygame.draw.rect(screen, (150,150, 10), (self.xpos, self.ypos, 30, 30))
+        if self.numh == 2:
+            pygame.draw.rect(screen, (50,50,0), (self.xpos, self.ypos, 30, 30))
+    def collide(self,BulletX, BulletY):
+        if self.numh <= 3:#only happens when the target if below 3 hits
+            if BulletX > self.xpos:
+                if BulletX < self.xpos + 30:
+                    if BulletY > self.ypos:
+                        if BulletY < self.ypos + 30:
+                            print("Wrong target!")
+                            self.numh +=1
+                            return self.numh
 walls = []
 Trump = wall(400, 670)
 for k in range  (4):
     for l in range (2):
         for o in range (3):
             walls.append(wall(o*30+200*k+50, i*30+600))
+class Missle:
+    def __init__(self):
+        self.xpos = -10
+        self.ypos = -10
+        self.isa = False
+    def move(self, xpos, ypos):
+        if self.isa == True: #only live shoot bullets
+            self.ypos+=5 #move up when shot
+        if self.ypos > 0:
+            self.isa = False
+            self.xpos = xpos
+            self.ypos = ypos
+    def draw(self):
+        pygame.draw.rect(screen, (250, 250, 250), (self.xpos, self.ypos, 3, 20))
+missle = []
+for m in range (100):
+    missle.append()
+#GAME LOOP _______________________________________
 while not gameover:
     clock.tick(60)
     timer += 1
@@ -114,6 +148,11 @@ while not gameover:
         #check for collision between bullet and enemy
             for i in range (len(group)):
                 bullet.isa = group[i].collide(bullet.xpos, bullet.ypos)
+                if bullet.isa == False:
+                    break
+        #check for collision between bullet and walls
+            for i in range (len(walls)):
+                bullet.isa = walls[i].collide(bullet.xpos, bullet.ypos)
                 if bullet.isa == False:
                     break
     else:

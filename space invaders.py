@@ -1,4 +1,6 @@
 import pygame
+import random
+
 
 pygame.init()
 pygame.display.set_caption("space invaders")
@@ -6,6 +8,7 @@ screen = pygame.display.set_mode((800, 800))
 clock = pygame.time.Clock()
 gameover = False
 timer = 0
+fire = random.randrange(100)
 #player variables-----------------
 xpos = 400
 ypos = 750
@@ -55,6 +58,7 @@ class Bullet:
             self.ypos = ypos
     def draw(self):
         pygame.draw.rect(screen, (250, 250, 250), (self.xpos, self.ypos, 3, 20))
+
 #instantiate bullet object
 bullet = Bullet(xpos+28, ypos)
 group = []#creat a list
@@ -91,23 +95,24 @@ for k in range  (4):
     for l in range (2):
         for o in range (3):
             walls.append(wall(o*30+200*k+50, i*30+600))
+
 class Missle:
     def __init__(self):
         self.xpos = -10
         self.ypos = -10
-        self.isa = False
+        self.isal = False
     def move(self, xpos, ypos):
-        if self.isa == True: #only live shoot bullets
-            self.ypos+=5 #move up when shot
+        if self.isal == True: #only live shoot bullets
+            self.ypos+=5 #move down when shot
         if self.ypos > 0:
-            self.isa = False
+            self.isal = False
             self.xpos = xpos
             self.ypos = ypos
     def draw(self):
         pygame.draw.rect(screen, (250, 250, 250), (self.xpos, self.ypos, 3, 20))
 missle = []
 for m in range (100):
-    missle.append()
+    missle.append(Missle())
 #GAME LOOP _______________________________________
 while not gameover:
     clock.tick(60)
@@ -151,6 +156,7 @@ while not gameover:
                 if bullet.isa == False:
                     break
         #check for collision between bullet and walls
+        if bullet.isa == True:   
             for i in range (len(walls)):
                 bullet.isa = walls[i].collide(bullet.xpos, bullet.ypos)
                 if bullet.isa == False:
@@ -160,6 +166,16 @@ while not gameover:
         bullet.ypos = ypos
     #update player position
     xpos += vx
+
+    if fire < 2:
+        p = random.randrage(len(group))
+        if group[p].isal == True:
+            for i in range (len(missle)):
+                if missle[i].isal == False:
+                    missle[i].isal == True
+                    missle[i].xpos = group[i].xpos+5
+                    missle[i].ypos = group[i].ypos+5
+
     #Render section-------------
     screen.fill((0, 0, 0))
     
@@ -170,6 +186,8 @@ while not gameover:
     for i in range (len(walls)):
         walls[i].draw()
     bullet.draw()
+    for i in range (len(missle)):
+        missle[i].draw()
     pygame.draw.rect(screen, (200, 200, 100), (xpos, 750, 60, 20))
     pygame.display.flip()
 #end game loop------------------

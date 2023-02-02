@@ -6,6 +6,8 @@ pygame.init()
 pygame.display.set_caption("space invaders")
 screen = pygame.display.set_mode((800, 800))
 clock = pygame.time.Clock()
+my_font = pygame.font.SysFont('Comic Sans MS', 30)
+text_surface = my_font.render('LIVES:', False, (255,0,0))
 gameover = False
 timer = 0
 
@@ -216,8 +218,7 @@ while not gameover:
     bullet.draw()
     for i in range (len(missle)):
         missle[i].draw()
-    my_font = pygame.font.SysFont('Comic Sans MS', 30)
-    text_surface = my_font.render('LIVES', False, (255,0,0))
+    screen.blit(text_surface, (0,0))
     pygame.draw.rect(screen, (200, 200, 100), (xpos, 750, 60, 20))
     pygame.display.flip()
 #end game loop------------------

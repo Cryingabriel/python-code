@@ -34,7 +34,10 @@ class Alien:
             print("moving right)")
         return time
     def draw(self):
-        pygame.draw.rect(screen, (250, 250, 250), (self.xpos, self.ypos, 40, 40))
+        if self.isa ==True:
+            pygame.draw.rect(screen, (250, 250, 250), (self.xpos, self.ypos, 40, 40))
+        elif self.isa == False:
+            pygame.draw.rect(screen, (0, 0, 0), (self.xpos, self.ypos, 40, 40))
     def collide(self, BulletX, BulletY):
         global shoot
         if self.isa: #hit only alive aliens
@@ -105,16 +108,17 @@ class Missle:
     def __init__(self):
         self.xpos = -10
         self.ypos = -10
-        self.isa = False
+        self.isa = True
     def move(self, xpos, ypos):
         if self.isa == True: #only live shoot bullets
             self.ypos += 5 #move down when shot
-        if self.ypos > 0:
+        if self.ypos >= 750:
             self.isa = False
             self.xpos = xpos
             self.ypos = ypos
     def draw(self):
         pygame.draw.rect(screen, (250, 250, 250), (self.xpos, self.ypos, 3, 20))
+
 missle = []
 for m in range (100):
     missle.append(Missle())
@@ -172,15 +176,15 @@ while not gameover:
     for i in range (len(walls)):
             for k in range (len(missle)):
                 if missle[k].isa == True:
-                    if walls[i].collide(missle[k].xpos, missle[j].ypos) == False:
-                        missle[j].isa = False
+                    if walls[i].collide(missle[k].xpos, missle[k].ypos) == False:
+                        missle[k].isa = False
                         break
     for i in range (len(missle)):
         if missle[i].isa:
-            if missle[i] > xpos:
-                if missle[i] < xpos + 30:
-                    if missle[i] > ypos:
-                        if missle[i] < ypos + 30:
+            if missle[i].xpos > xpos:
+                if missle[i].xpos < xpos + 30:
+                    if missle[i].ypos > ypos:
+                        if missle[i].ypos < ypos + 30:
                             print("hit")
                             lives -= 1
                             xpos = 450

@@ -60,7 +60,7 @@ class Bullet:
     def move(self, xpos, ypos):
         global shoot
         if self.isa == True: #only live shoot bullets
-            self.ypos-=5 #move up when shot
+            self.ypos-=10 #move up when shot
         if self.ypos < 0:
             self.isa = False
             self.xpos = xpos

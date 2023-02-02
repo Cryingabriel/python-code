@@ -61,7 +61,7 @@ class Bullet:
 
 #instantiate bullet object
 bullet = Bullet(xpos+28, ypos)
-group = []#creat a list
+group: list[Alien] = []#creat a list
 for i in range (4): #handles the rows
     for y in range (9): #handle colums
         group.append(Alien(y*80+50, i*80+50))
@@ -100,12 +100,12 @@ class Missle:
     def __init__(self):
         self.xpos = -10
         self.ypos = -10
-        self.isal = False
+        self.isa = False
     def move(self, xpos, ypos):
-        if self.isal == True: #only live shoot bullets
+        if self.isa == True: #only live shoot bullets
             self.ypos+=5 #move down when shot
         if self.ypos > 0:
-            self.isal = False
+            self.isa = False
             self.xpos = xpos
             self.ypos = ypos
     def draw(self):
@@ -169,10 +169,10 @@ while not gameover:
 
     if fire < 2:
         p = random.randrage(len(group))
-        if group[p].isal == True:
+        if group[p].isa == True:
             for i in range (len(missle)):
-                if missle[i].isal == False:
-                    missle[i].isal == True
+                if missle[i].isa == False:
+                    missle[i].isa == True
                     missle[i].xpos = group[i].xpos+5
                     missle[i].ypos = group[i].ypos+5
 

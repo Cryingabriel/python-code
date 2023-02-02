@@ -8,13 +8,14 @@ screen = pygame.display.set_mode((800, 800))
 clock = pygame.time.Clock()
 gameover = False
 timer = 0
-fire = random.randrange(100)
+
 #player variables-----------------
 xpos = 400
 ypos = 750
 meft = False
 might = False
 shoot = False
+lives = 3
 #enemy Class
 class Alien:
     def __init__(self, xpos, ypos):
@@ -35,6 +36,7 @@ class Alien:
     def draw(self):
         pygame.draw.rect(screen, (250, 250, 250), (self.xpos, self.ypos, 40, 40))
     def collide(self, BulletX, BulletY):
+        global shoot
         if self.isa: #hit only alive aliens
             if BulletX > self.xpos:#check if the bulet is right of the left of the alien
                 if BulletX < self.xpos + 40:#checks if the bullet is left of the right alien
@@ -42,6 +44,7 @@ class Alien:
                         if BulletY > self.ypos:#checks if the bullet is below the alien
                             print("hit!")#testing
                             self.isa = False#set the alien to dead
+                            shoot = False
                             return False#set the bullet to dead
         return True#otherwise keep bullet alive
 class Bullet:
@@ -50,12 +53,14 @@ class Bullet:
         self.ypos = ypos
         self.isa = False
     def move(self, xpos, ypos):
+        global shoot
         if self.isa == True: #only live shoot bullets
             self.ypos-=5 #move up when shot
         if self.ypos < 0:
             self.isa = False
             self.xpos = xpos
             self.ypos = ypos
+            shoot = False
     def draw(self):
         pygame.draw.rect(screen, (250, 250, 250), (self.xpos, self.ypos, 3, 20))
 
@@ -135,8 +140,7 @@ while not gameover:
                 meft = False
             if event.key == pygame.K_RIGHT:
                 might = False
-            if event.key == pygame.K_SPACE:
-                shoot = False
+
     #phyisics section------------------
 
     #check variables from the input section---------------
@@ -161,20 +165,40 @@ while not gameover:
                 bullet.isa = walls[i].collide(bullet.xpos, bullet.ypos)
                 if bullet.isa == False:
                     break
+        
     else:
         bullet.xpos = xpos + 28
         bullet.ypos = ypos
+    for i in range (len(walls)):
+            for k in range (len(missle)):
+                if missle[k].isa == True:
+                    if walls[i].collide(missle[k].xpos, missle[j].ypos) == False:
+                        missle[j].isa = False
+                        break
+    for i in range (len(missle)):
+        if missle[i].isa:
+            if missle[i] > xpos:
+                if missle[i] < xpos + 30:
+                    if missle[i] > ypos:
+                        if missle[i] < ypos + 30:
+                            print("hit")
+                            lives -= 1
+                            xpos = 450
+                            ypos = 750
+                            if lives == 0:
+                                gameover = True
+    fire = random.randrange(100)
+    if fire < 2:
+        p = random.randrange(len(group))#pick a random alien
+        if group[p].isa == True:#only drop is alien is alive
+            for i in range (len(missle)):#find the first alive missle
+                if missle[i].isa == False:#fire missle that aren't already going
+                    missle[i].isa == True#set it alive
+                    missle[i].xpos = group[p].xpos+5#set the missle's position to aliens
+                    missle[i].ypos = group[p].ypos+5
+
     #update player position
     xpos += vx
-
-    if fire < 2:
-        p = random.randrage(len(group))
-        if group[p].isa == True:
-            for i in range (len(missle)):
-                if missle[i].isa == False:
-                    missle[i].isa == True
-                    missle[i].xpos = group[i].xpos+5
-                    missle[i].ypos = group[i].ypos+5
 
     #Render section-------------
     screen.fill((0, 0, 0))

@@ -18,6 +18,7 @@ meft = False
 might = False
 shoot = False
 lives = 3
+#------------------------------------------------------------------------------------------------------------
 #enemy Class
 class Alien:
     def __init__(self, xpos, ypos):
@@ -33,7 +34,7 @@ class Alien:
         #moves everytime the timer increases by 100
         if timer % 100==0:
             self.xpos+=50 *self.direction
-            print("moving right)")
+            #print("moving right)")
         return time
     def draw(self):
         if self.isa ==True:
@@ -47,11 +48,13 @@ class Alien:
                 if BulletX < self.xpos + 40:#checks if the bullet is left of the right alien
                     if BulletY < self.ypos + 40:#checks if the bullet id above the alien
                         if BulletY > self.ypos:#checks if the bullet is below the alien
-                            print("hit!")#testing
+                           # print("hit!")#testing
                             self.isa = False#set the alien to dead
                             shoot = False
                             return False#set the bullet to dead
         return True#otherwise keep bullet alive
+    
+#------------------------------------------------------------------------------------------------------------
 class Bullet:
     def __init__(self, xpos, ypos):
         self.xpos = xpos
@@ -76,6 +79,9 @@ for i in range (4): #handles the rows
     for y in range (9): #handle colums
         group.append(Alien(y*80+50, i*80+50))
 Alfred = Alien(400, 400)#instantiating one
+
+
+#------------------------------------------------------------------------------------------------------------
 #WALLS
 class wall:
     def __init__(self, xpos, ypos):
@@ -96,7 +102,7 @@ class wall:
                 if BulletX < self.xpos + 30:
                     if BulletY > self.ypos:
                         if BulletY < self.ypos + 30:
-                            print("Wrong target!")
+                            #print("Wrong target!")
                             self.numh +=1
                             return self.numh
 walls = []
@@ -106,13 +112,15 @@ for k in range  (4):
         for o in range (3):
             walls.append(wall(o*30+200*k+50, i*30+600))
 
+#------------------------------------------------------------------------------------------------------------
 class Missle:
     def __init__(self):
         self.xpos = -10
         self.ypos = -10
-        self.isa = True
-    def move(self, xpos, ypos):
-        if self.isa == True: #only live shoot bullets
+        self.isa = False
+    def move(self):
+        print("i am a missile, I am ", self.isa)
+        if self.isa == True: #only live shoot missle
             self.ypos += 5 #move down when shot
         if self.ypos >= 750:
             self.isa = False
@@ -175,38 +183,47 @@ while not gameover:
     else:
         bullet.xpos = xpos + 28
         bullet.ypos = ypos
+
+#missle/wall collision
     for i in range (len(walls)):
             for k in range (len(missle)):
                 if missle[k].isa == True:
                     if walls[i].collide(missle[k].xpos, missle[k].ypos) == False:
                         missle[k].isa = False
                         break
+
+#Collision for missle/player
     for i in range (len(missle)):
         if missle[i].isa:
             if missle[i].xpos > xpos:
                 if missle[i].xpos < xpos + 30:
                     if missle[i].ypos > ypos:
                         if missle[i].ypos < ypos + 30:
-                            print("hit")
+                           # print("hit")
                             lives -= 1
                             xpos = 450
                             ypos = 750
                             if lives == 0:
-                                gameover = True
+                                gameover = True 
+
+#missile firing!
     fire = random.randrange(100)
-    if fire < 2:
+    if fire < 20:
         p = random.randrange(len(group))#pick a random alien
         if group[p].isa == True:#only drop is alien is alive
             for i in range (len(missle)):#find the first alive missle
                 if missle[i].isa == False:#fire missle that aren't already going
-                    missle[i].isa == True#set it alive
+                    missle[i].isa = True#set it alive
                     missle[i].xpos = group[p].xpos+5#set the missle's position to aliens
                     missle[i].ypos = group[p].ypos+5
 
+
+    for i in range(len(missle)):
+        missle[i].move()
     #update player position
     xpos += vx
 
-    #Render section-------------
+    #Render section------------------------------------------------------------------------------------------
     screen.fill((0, 0, 0))
     
     for i in range (len(group)):

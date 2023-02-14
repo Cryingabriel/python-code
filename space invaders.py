@@ -119,7 +119,7 @@ class Missle:
         self.ypos = -10
         self.isa = False
     def move(self):
-        print("i am a missile, I am ", self.isa)
+        #print("i am a missile, I am ", self.isa)
         if self.isa == True: #only live shoot missle
             self.ypos += 5 #move down when shot
         if self.ypos >= 750:
@@ -133,7 +133,7 @@ missle = []
 for m in range (100):
     missle.append(Missle())
 #GAME LOOP _______________________________________
-while not gameover:
+while gameover == False:
     clock.tick(60)
     timer += 1
     #input section----------------
@@ -196,15 +196,15 @@ while not gameover:
     for i in range (len(missle)):
         if missle[i].isa:
             if missle[i].xpos > xpos:
-                if missle[i].xpos < xpos + 30:
-                    if missle[i].ypos > ypos:
-                        if missle[i].ypos < ypos + 30:
-                           # print("hit")
+                if missle[i].xpos < xpos + 40:
+                    if missle[i].ypos < ypos + 40:
+                        if missle[i].ypos > ypos:
+                            print("hit")
                             lives -= 1
                             xpos = 450
                             ypos = 750
                             if lives == 0:
-                                gameover = True 
+                                gameover = True
 
 #missile firing!
     fire = random.randrange(100)

@@ -133,7 +133,7 @@ missle = []
 for m in range (100):
     missle.append(Missle())
 #GAME LOOP _______________________________________
-while gameover == False:
+while not gameover and lives >0:
     clock.tick(60)
     timer += 1
     #input section----------------
@@ -192,19 +192,8 @@ while gameover == False:
                         missle[k].isa = False
                         break
 
-#Collision for missle/player
-    for i in range (len(missle)):
-        if missle[i].isa:
-            if missle[i].xpos > xpos:
-                if missle[i].xpos < xpos + 40:
-                    if missle[i].ypos < ypos + 40:
-                        if missle[i].ypos > ypos:
-                            print("hit")
-                            lives -= 1
-                            xpos = 450
-                            ypos = 750
-                            if lives == 0:
-                                gameover = True
+
+                            
 
 #missile firing!
     fire = random.randrange(100)
@@ -217,6 +206,19 @@ while gameover == False:
                     missle[i].xpos = group[p].xpos+5#set the missle's position to aliens
                     missle[i].ypos = group[p].ypos+5
 
+    #Collision for missle/player
+    for i in range (len(missle)):
+        if missle[i].isa:
+            #print("missile is alive, checking for collision")
+            if missle[i].xpos > xpos:
+                if missle[i].xpos < xpos + 40:
+                    print(missle[i].xpos, xpos)
+                    if missle[i].ypos < ypos :
+                        if missle[i].ypos > ypos+40:
+                            print("hit")
+                            lives -= 1
+                            xpos = 450
+                            ypos = 750
 
     for i in range(len(missle)):
         missle[i].move()
@@ -238,6 +240,6 @@ while gameover == False:
     screen.blit(text_surface, (0,0))
     pygame.draw.rect(screen, (200, 200, 100), (xpos, 750, 60, 20))
     pygame.display.flip()
-#end game loop------------------
-
+if lives <= 0:
+    print("Game over!")
 pygame.quit()

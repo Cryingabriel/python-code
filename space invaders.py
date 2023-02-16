@@ -213,12 +213,17 @@ while not gameover and lives >0:
             if missle[i].xpos > xpos:
                 if missle[i].xpos < xpos + 40:
                     print(missle[i].xpos, xpos)
-                    if missle[i].ypos < ypos :
-                        if missle[i].ypos > ypos+40:
+                    if missle[i].ypos+10 > ypos :
+                        if missle[i].ypos+20< ypos+30:   
+                            pygame.draw.circle(screen, (255, 255, 0), (xpos, ypos), 30)
+                            pygame.display.flip()
+                            pygame.time.wait(50)
+
                             print("hit")
                             lives -= 1
                             xpos = 450
                             ypos = 750
+
 
     for i in range(len(missle)):
         missle[i].move()

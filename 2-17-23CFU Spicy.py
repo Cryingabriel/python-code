@@ -27,9 +27,9 @@ class Target:
         pygame.draw.circle(screen, (255, 255, 255), (self.xpos+3, self.ypos+3), 30)
         pygame.draw.circle(screen, (255, 0, 0), (self.xpos+4, self.ypos+4), 15)
 
-t1 = Target(150,150)
-t2 = Target(150, 400)
-t3 = Target(150, 650)
+t1 = Target(120,150)
+t2 = Target(120, 400)
+t3 = Target(120, 650)
 while gameover == False:
     timer += 1
     

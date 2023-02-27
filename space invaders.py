@@ -184,16 +184,6 @@ while not gameover and lives >0:
         bullet.xpos = xpos + 28
         bullet.ypos = ypos
 
-#missle/wall collision
-    for i in range (len(walls)):
-            for k in range (len(missle)):
-                if missle[k].isa == True:
-                    if walls[i].collide(missle[k].xpos, missle[k].ypos) == False:
-                        missle[k].isa = False
-                        break
-
-
-                            
 
 #missile firing!
     fire = random.randrange(100)
@@ -205,6 +195,17 @@ while not gameover and lives >0:
                     missle[i].isa = True#set it alive
                     missle[i].xpos = group[p].xpos+5#set the missle's position to aliens
                     missle[i].ypos = group[p].ypos+5
+
+    #missle/wall collision
+    for i in range (len(walls)):
+            for k in range (len(missle)):
+                if missle[k].isa == True:
+                    if walls[i].collide(missle[k].xpos, missle[k].ypos) == False:
+                        missle[k].isa = False
+                        break
+
+
+
 
     #Collision for missle/player
     for i in range (len(missle)):
@@ -218,13 +219,20 @@ while not gameover and lives >0:
                             pygame.draw.circle(screen, (255, 255, 0), (xpos, ypos), 30)
                             pygame.display.flip()
                             pygame.time.wait(50)
-
+                            missle[i].isa = False
                             print("hit")
                             lives -= 1
                             xpos = 450
                             ypos = 750
 
-
+    for i in range (len(group)):
+        if group[i].isa:
+            #print("Alien is alive, checking for collision")
+            if group[i].xpos > xpos:
+                if group[i].xpos < xpos + 40:
+                    if group[i].ypos+30 > ypos :
+                        if group[i].ypos+30< ypos+30:   
+                            lives -= 3
     for i in range(len(missle)):
         missle[i].move()
     #update player position

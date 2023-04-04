@@ -25,6 +25,12 @@ while quit == False:
     if l == 'frog':
         quit = True
 
+num = 100
+
+while num != 50:
+    num-=5
+    print(num)
+
 #4 function 4
 
 def atn(x,y):

@@ -68,8 +68,8 @@ frameNum = 0
 ticker = 0
 direction = DOWN
 
-frameWidth2 = 32
-frameHeight2 = 48
+frameWidth2 = 20
+frameHeight2 = 30
 RowNum2 = 0 #for left animation, this will need to change for other animations
 frameNum2 = 0
 ticker2 = 0
@@ -127,7 +127,7 @@ while not gameover:
             pvx =0
         else:
             pvx = -3
-        RowNum2 = 0
+        RowNum2 = 1
         direction2 = LEFT
         moving2 = True
         
@@ -140,7 +140,7 @@ while not gameover:
             pvx = 0
         else:
             pvx = 3
-        RowNum2 = 1
+        RowNum2 = 0
         direction2 = RIGHT
         moving2 = True
     #turn off velocity
@@ -151,7 +151,7 @@ while not gameover:
         #JUMPING
     if keys2[UP] == True and isOnGround2 == True: #only jump when on the ground
         pvy = -8
-        RowNum2 = 2
+        RowNum2 = 3
         isOnGround2 = False
         direction2 = UP
         moving2 = True
@@ -250,9 +250,31 @@ while not gameover:
     if map[int((p2y)/50)][int((p2x-offset2+frameWidth2/2)/50)]==1 or map[int((p2y)/50)][int((p2x-offset2+frameWidth2/2)/50)]==2 or map[int((p2y)/50)][int((p2x-offset2+frameWidth2/2)/50)]==3:
         pvy=0
 
+    #left collision (it's extra long because we check both head and feets(well, knees) for left collision
+    if (map[int((p2y+frameHeight2-10)/50)][int((p2x-offset2-10)/50)]==1 or map[int((p2y)/50)][int((p2x-offset2-10)/50)]==1 or map[int((p2y+frameHeight2-10)/50)][int((p2x-offset2-10)/50)]==2 or map[int((p2y)/50)][int((p2x-offset2-10)/50)]==2 or map[int((p2y+frameHeight2-10)/50)][int((p2x-offset2-10)/50)]==3 or map[int((p2y)/50)][int((p2x-offset2-10)/50)]==3) and direction2 == LEFT:
+        p2x+=3
+    if (map[int((p2y+frameHeight2-10)/50)][int((p2x-offset2+frameWidth2+5)/50)]==1 or map[int((p2y)/50)][int((p2x-offset2+frameWidth2+5)/50)]==1 or map[int((p2y+frameHeight2-10)/50)][int((p2x-offset2+frameWidth2+5)/50)]==2 or map[int((p2y)/50)][int((p2x-offset2+frameWidth2+5)/50)]==2 or map[int((p2y+frameHeight2-10)/50)][int((p2x-offset2+frameWidth2+5)/50)]==3 or map[int((p2y)/50)][int((p2x-offset2+frameWidth2+5)/50)]==3) and direction2 == RIGHT:
+        p2x-=3
 
+    if p2x+frameWidth2 > 800:
+        p2x-=3
+    if p2x<0:
+        p2x+=3
 
     
+    #stop falling if on bottom of game screen
+    if p2y > 800-frameHeight2:
+        isOnGround2 = True
+        pvy = 0
+        p2y = 800-frameHeight2
+    
+    #gravity
+    if isOnGround2 == False:
+        pvy+=.2 #notice this grows over time, aka ACCELERATION
+
+
+
+
     #ANIMATION-------------------------------------------------------------------
         
     # Update Animation Information
@@ -263,6 +285,13 @@ while not gameover:
           frameNum+=1
         if frameNum>7: 
            frameNum = 0
+
+    if moving2 == True: #animate when moving
+        ticker2+=1
+        if ticker2%10==0: #only change frames every 10 ticks
+          frameNum2+=1
+        if frameNum2>7: 
+           frameNum2 = 0
   
     # RENDER--------------------------------------------------------------------------------
     # Once we've figured out what frame we're on and where we are, time to render.
@@ -273,14 +302,17 @@ while not gameover:
     for i in range (16):
         for j in range(42):
             if map[i][j]==1:
-                screen.blit(dirt, (j*50+offset, i*50), (0, 0, 50, 50))
+                screen.blit(dirt, (j*50+offset+offset2, i*50), (0, 0, 50, 50))
             if map[i][j]==2:
-                screen.blit(brick, (j*50+offset, i*50), (0, 0, 50, 50))
+                screen.blit(brick, (j*50+offset+offset2, i*50), (0, 0, 50, 50))
             if map[i][j]==3:
-                screen.blit(Ladder, (j*50+offset, i*50), (0, 0, 32, 48))
+                screen.blit(Ladder, (j*50+offset+offset2, i*50), (0, 0, 32, 48))
+
+
         
     print(offset)
     screen.blit(Link, (xpos, ypos), (frameWidth*frameNum, RowNum*frameHeight, frameWidth, frameHeight)) 
+    screen.blit(box, (p2x, p2y), (frameWidth2*frameNum2, RowNum2*frameHeight2, frameWidth2, frameHeight2)) 
     pygame.display.flip()#this actually puts the pixel on the screen
     
 #end game loop------------------------------------------------------------------------------

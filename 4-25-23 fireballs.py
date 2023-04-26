@@ -7,6 +7,8 @@ screen.fill((0,0,0))
 clock = pygame.time.Clock() #set up clock
 gameover = False #variable to run our game loop
 
+potato = True
+
 #CONSTANTS
 LEFT = 0
 RIGHT = 1
@@ -28,12 +30,19 @@ class fireball:
     def move(self):
         if self.direction == RIGHT:
             self.xpos+=20
+        elif self.direction == LEFT:
+            self.xpos-=20
+        elif self.direction == UP:
+            self.ypos-=20
+        elif self.direction == DOWN:
+            self.ypos+=20
         #add other directions here
     def draw(self):
         pygame.draw.circle(screen, (250, 0, 0), (self.xpos, self.ypos), 10)
         pygame.draw.circle(screen, (250, 250, 0), (self.xpos, self.ypos), 5)
     def collide(self, x, y):
         if math.sqrt((self.xpos - x) ** 2 + (self.ypos - y) ** 2) < 25: #25 is radius of fireball + radius of potato
+            screen.blit(PotatoPic, (0 + x_offset,0 + y_offset))
             print("collision!")
             return True
         else:
@@ -74,9 +83,10 @@ map = [[2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ,2 ,2, 2,2, 2, 2, 2, 2, 2, 2, 2, 2
 
 brick = pygame.image.load('brick.png') #load your spritesheet
 Link = pygame.image.load('link.png') #load your spritesheet
-PotatoPic = pygame.image.load("potato.jpg")
+PotatoPic = pygame.image.load("potato.png")
 dirt = pygame.image.load('dirt.png')
 Link.set_colorkey((255, 0, 255)) #this makes bright pink (255, 0, 255) transparent (sort of)
+PotatoPic.set_colorkey((255,255,255))
 
 #player variables
 xpos = 400 #xpos of player
@@ -228,12 +238,16 @@ while not gameover:
         xpos-=3
     if xpos < 0:
         xpos+=3
+    if ypos + frameHeight >800:
+        ypos-=3
 
     #potato collision!
     if ball.collide(215, 215) == True:
         ball.isAlive = False
+        potato = False
         #you probably want to do other stuff here too, like kill the potato
         #eventually
+
 
 
     #ANIMATION-------------------------------------------------------------------
@@ -267,7 +281,9 @@ while not gameover:
     #draw player
     screen.blit(Link, (xpos, ypos), (frameWidth * frameNum, RowNum * frameHeight, frameWidth, frameHeight))
     #draw potato
-    screen.blit(PotatoPic, (200 + x_offset, 200 + y_offset))
+    if potato == True:
+        screen.blit(PotatoPic, (200 + x_offset, 200 + y_offset))
+
     pygame.display.flip()#this actually puts the pixel on the screen
    
 #end game

@@ -19,7 +19,7 @@ class chicken:
     def feed(self,num):
         self.hunger -= num
         print("peck peck")
-    def pet():
+    def pet(self):
         print("bock bock!")
         print("the chicken seems happy")
     def info(self):

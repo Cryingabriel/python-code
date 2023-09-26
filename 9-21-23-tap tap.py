@@ -109,10 +109,3 @@ while gover == False:
     screen.blit(timer,(290,10))
     pygame.display.flip()
     print(yVel)
-    
-
-
-
-
-
-

@@ -63,11 +63,11 @@ player = Player(playerPos.x,playerPos.y, playerDamage)
 class Enemy:
     
     #INIT -------------------------------
-    def __init__(self, xpos, ypos,):
+    def __init__(self, xpos, ypos):
         self.pos = Vector2(xpos, ypos)
         self.random = random.randint(0,5)
-        self.healthOPTIONS = [45,65,95,115,175]
-        self.health = random.choice(self.healthOPTIONS)
+        self.healthOPTIONS = [45,65,95,115,175] # list of all of the health the enemies
+        self.health = random.choice(self.healthOPTIONS) #going into the list of health and randomly assigning health to each enemy
         self.playerDamage = 10
         self.speed = 0.8
         self.vel = (player.pos - self.pos).normalize()
@@ -106,26 +106,34 @@ class Enemy:
             self.speed += 0.025
             
         if self.health <= 0:
+                self.pos.x = random.randint(0,800)
+                self.pos.y = random.randint(0,800)
+                self.vel
+                self.health = random.choice(self.healthOPTIONS)
+
+        if self.health <= 0:
             return "dead"
     def S(self):
         self.coins = 0
     #DRAW ---------------------------------
     def draw(self):
-        if self.health > 0:
+        #if self.health > 0:
             if self.random == 0:
-                pygame.draw.circle(screen, (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)), (self.pos), self.radius)
+                pygame.draw.circle(screen, (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)), (self.pos.x,self.pos.y), self.radius)
 
             elif self.random == 1:
-                pygame.draw.circle(screen, (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)), (self.pos), self.radius)
+                pygame.draw.circle(screen, (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)), (self.pos.x,self.pos.y), self.radius)
 
             elif self.random == 2:
-                pygame.draw.circle(screen, (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)), (self.pos), self.radius)
+                pygame.draw.circle(screen, (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)), (self.pos.x,self.pos.y), self.radius)
             
             elif self.random == 3:
-                pygame.draw.circle(screen, (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)), (self.pos), self.radius)
+                pygame.draw.circle(screen, (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)), (self.pos.x,self.pos.y), self.radius)
 
             elif self.random == 4:
-                pygame.draw.circle(screen, (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)), (self.pos), self.radius)
+                pygame.draw.circle(screen, (random.randrange(0,255), random.randrange(0,255), random.randrange(0,255)), (self.pos.x,self.pos.y), self.radius)
+
+
 
     #COLLIDE -----------------------------
     def collide(self):
@@ -137,6 +145,7 @@ class Enemy:
             
             else:
                 self.clicked = False
+            
         return self.health
 
 
@@ -152,6 +161,9 @@ for i in range(30):
 #Main loop ------------------------------------------------------------------------------------
 while Bye == False:
     time.tick(60)
+    r = random.randrange(0,1)
+    g = random.randrange(0,1)
+    b = random.randrange(0,1)
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -168,7 +180,7 @@ while Bye == False:
             
     
     #RENDER SECTION----------------------------------------------------------------------------
-    screen.fill ((0,0,0))
+    screen.fill ((r,g,b))
     
     player.draw()
 

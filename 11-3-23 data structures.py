@@ -6,6 +6,10 @@ ringtoy.append("Purple")
 
 print(ringtoy)
 
+
+
+l = input("type a word")
+
 def reverse(str):
     stack = []
 
@@ -20,5 +24,5 @@ def reverse(str):
     
     return rev
 
-print(reverse("martin"))
+print(reverse(l))
 

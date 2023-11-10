@@ -36,7 +36,6 @@ def tree(ax, ay, bx, by, depth=0):
         x5 = x4 + (dx - dy) / 2
         y5 = y4 - (dx + dy) / 2
 
-
         #top left to bottom left
         pygame.draw.line(screen, (random.randrange(0, 255),random.randrange(0, 255),random.randrange(0, 255)), (x4, y4), (ax, ay))#WHITE
 
@@ -59,8 +58,7 @@ def tree(ax, ay, bx, by, depth=0):
 
 # Initial call to the tree function to start the fractal
 while(1):
+    color = (random.randrange(0, 255),random.randrange(0, 255),random.randrange(0, 255))
     tree(600, 850, 800, 850, depth=20)
-    w = random.randint(0,1) * 255
-    screen.fill((w, w, w))
+    screen.fill(color)
     pygame.display.flip()
-    

@@ -66,8 +66,6 @@ class Turkey():
             pygame.draw.circle(screen, (255, 255, 255), (self.pos.x+80, self.pos.y-45), 10)
             pygame.draw.circle(screen, (0, 0, 0), (self.pos.x+80, self.pos.y-45), 5)
 
-
-
     def move(self):
         if self.num == 0:
             self.pos.y += self.vy
@@ -76,9 +74,8 @@ class Turkey():
         if self.pos.y >= 800:
             self.pos.y = -100
 
-
 l = []
-for i in range(100):
+for i in range(500):
     l.append(Turkey(rr(0,800), rr(0,800)))
 
 
@@ -90,9 +87,6 @@ while exit == False:
         if event.type == pygame.QUIT:
             gover = True
     
-
-
-
     screen.fill((0,0,0))
     for i in range(len(l)):
         l[i].move()

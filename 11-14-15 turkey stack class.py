@@ -98,6 +98,11 @@ class Turkey():
                 self.pos.y = -100
             self.pos.x += self.xv
 
+            if self.pos.x >=800:
+                self.xv *= -1
+            elif self.pos.x <=0:
+                self.xv *= -1
+
     def collision(self):
         if self.num == 0:
             if math.sqrt((mousepos[0]-self.pos.x-35)**2 + (mousepos[1]-self.pos.y)**2)<self.radius1:
@@ -116,11 +121,6 @@ class Turkey():
                 else:
                     self.clicked1 = False
 
-        if self.alive == True:
-            if self.pos.x >=800:
-                self.xv *= -1
-            elif self.pos.x <=0:
-                self.xv *= -1
         
         if self.alive == False:
             self.pos.x = rr(0,800)

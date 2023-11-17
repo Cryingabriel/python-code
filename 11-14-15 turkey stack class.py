@@ -126,7 +126,7 @@ class Turkey():
 
         return self.alive
             
-        
+
 
 l = []
 for i in range(fr):
@@ -136,7 +136,6 @@ for i in range(fr):
 while exit == False:
     clock.tick(60)
 
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             gover = True
@@ -145,10 +144,9 @@ while exit == False:
             for i in range(len(l)):
                 l[i].collision()
 
-
         if event.type == pygame.MOUSEMOTION: #check if mouse moved
             mousepos = event.pos #refreshes mouse position
-    
+
     screen.fill((0,0,0))
     for i in range(len(l)):
         l[i].move()
@@ -158,11 +156,10 @@ while exit == False:
         turkeys -= l[i].addscore()
     for i in range(len(l)):
         l[i].S()
-    
+
     if turkeys == 0:
         text_label2 = my_font.render(str("YOU WIN! "),1,(rr(0,255),rr(0,255),rr(0,255)))
         screen.blit(text_label2, (375,400))
-
 
     text_label3 = my_font.render(str("Score: "),1,(rr(0,255),rr(0,255),rr(0,255)))
     text_surface = my_font.render(str(score), 1 ,(rr(0,255), rr(0,255), rr(0,255)))

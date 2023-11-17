@@ -12,6 +12,8 @@ clock = pygame.time.Clock()
 xpos = 0
 ypos = 0
 score = 0
+fr =100
+turkeys = fr
 mousepos = (xpos,ypos)
 
 
@@ -82,8 +84,6 @@ class Turkey():
                 pygame.draw.circle(screen, (255, 255, 255), (self.pos.x+80, self.pos.y-45), 10)
                 pygame.draw.circle(screen, (0, 0, 0), (self.pos.x+80, self.pos.y-45), 5)
     def addscore(self):
-        if self.alive == False:
-            self.score += 1
         return self.score
     def S(self):
         self.score = 0
@@ -104,36 +104,32 @@ class Turkey():
                 self.xv *= -1
 
     def collision(self):
-        if self.num == 0:
-            if math.sqrt((mousepos[0]-self.pos.x-35)**2 + (mousepos[1]-self.pos.y)**2)<self.radius1:
-                print("ah")
-                self.clicked1 = True
-                if self.clicked1 == True:
-                    self.alive = False
-                else:
-                    self.clicked1 = False
-        elif self.num == 1:
-            if math.sqrt((mousepos[0]-self.pos.x-60)**2 + (mousepos[1]-self.pos.y)**2)<self.radius2:
-                print("ah")
-                self.clicked1 = True
-                if self.clicked1 == True:
-                    self.alive = False
-                else:
-                    self.clicked1 = False
-
-        
-        if self.alive == False:
-            self.pos.x = rr(0,800)
-            self.pos.y = rr(0,800)
-            self.num = rr(0,2)
-            self.alive = True
+        if self.alive == True:
+            if self.num == 0:
+                if math.sqrt((mousepos[0]-self.pos.x-35)**2 + (mousepos[1]-self.pos.y)**2)<self.radius1:
+                    print("ah")
+                    self.score += 1
+                    self.clicked1 = True
+                    if self.clicked1 == True:
+                        self.alive = False
+                    else:
+                        self.clicked1 = False
+            elif self.num == 1:
+                if math.sqrt((mousepos[0]-self.pos.x-60)**2 + (mousepos[1]-self.pos.y)**2)<self.radius2:
+                    print("ah")
+                    self.score += 1
+                    self.clicked1 = True
+                    if self.clicked1 == True:
+                        self.alive = False
+                    else:
+                        self.clicked1 = False
 
         return self.alive
             
         
 
 l = []
-for i in range(100):
+for i in range(fr):
     l.append(Turkey(rr(0,800), rr(0,800)))
 
 
@@ -159,11 +155,18 @@ while exit == False:
         l[i].draw()
 
         score += l[i].addscore()
+        turkeys -= l[i].addscore()
     for i in range(len(l)):
         l[i].S()
     my_font = pygame.font.SysFont('Comic Sans MS', 30)
     text_label3 = my_font.render(str("Score: "),1,(255,0,0))
     text_surface = my_font.render(str(score), 1 ,(255, 0, 0))
+
+    text_label1 = my_font.render(str("Turkeys Left: "),1,(255,0,0))
+    text_surface1 = my_font.render(str(turkeys), 1 ,(255, 0, 0))
+
+    screen.blit(text_surface1, (200,30))
+    screen.blit(text_label1, (0,30))
     screen.blit(text_surface, (90,0))
     screen.blit(text_label3, (0,0))
 

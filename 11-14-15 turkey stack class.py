@@ -4,7 +4,7 @@ from pygame.math import Vector2
 import math
 
 pygame.init()
-
+my_font = pygame.font.SysFont('Comic Sans MS', 30)
 screen = pygame.display.set_mode((800, 800))
 exit = False
 clock = pygame.time.Clock()
@@ -158,7 +158,12 @@ while exit == False:
         turkeys -= l[i].addscore()
     for i in range(len(l)):
         l[i].S()
-    my_font = pygame.font.SysFont('Comic Sans MS', 30)
+    
+    if turkeys == 0:
+        text_label2 = my_font.render(str("YOU WIN! "),1,(rr(0,255),rr(0,255),rr(0,255)))
+        screen.blit(text_label2, (375,400))
+
+
     text_label3 = my_font.render(str("Score: "),1,(rr(0,255),rr(0,255),rr(0,255)))
     text_surface = my_font.render(str(score), 1 ,(rr(0,255), rr(0,255), rr(0,255)))
 

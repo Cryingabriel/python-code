@@ -70,7 +70,7 @@ while True:
                 hclicked= False
     else:
         pturn = False
-        pygame
+        #pygame
     #play computer screen 
     if pturn == False:
         print("Starting machine Turn")

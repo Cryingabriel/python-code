@@ -1,3 +1,5 @@
+#add bullets to the game for the turkeys
+
 import pygame
 from random import randrange as rr
 from pygame.math import Vector2
@@ -12,7 +14,7 @@ clock = pygame.time.Clock()
 xpos = 0
 ypos = 0
 score = 0
-fr =100
+fr = 100
 turkeys = fr
 mousepos = (xpos,ypos)
 ong = rr(0, 255)
@@ -29,7 +31,7 @@ class Turkey():
         self.radius2 = 60
         self.clicked1 = False
         self.score = 0
-    
+
     def draw(self):
         if self.alive == True:
             if self.num == 0:
@@ -126,7 +128,6 @@ class Turkey():
 
         return self.alive
             
-
 
 l = []
 for i in range(fr):

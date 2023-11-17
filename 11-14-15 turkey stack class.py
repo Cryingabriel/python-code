@@ -15,7 +15,7 @@ score = 0
 fr =100
 turkeys = fr
 mousepos = (xpos,ypos)
-
+ong = rr(0, 255)
 
 class Turkey():
     def __init__(self, xpos, ypos):
@@ -34,7 +34,7 @@ class Turkey():
         if self.alive == True:
             if self.num == 0:
                 #Feathers
-                pygame.draw.circle(screen, (rr(0,255),rr(0,255),rr(0,255)), (self.pos.x+5, self.pos.y), 10)
+                pygame.draw.circle(screen, (ong,rr(0,255),rr(0,255)), (self.pos.x+5, self.pos.y), 10)
                 pygame.draw.circle(screen, (rr(0,255),rr(0,255),rr(0,255)), (self.pos.x+15, self.pos.y-22), 10)
                 pygame.draw.circle(screen, (rr(0,255),rr(0,255),rr(0,255)), (self.pos.x+35, self.pos.y-35), 10)
                 pygame.draw.circle(screen, (rr(0,255),rr(0,255),rr(0,255)), (self.pos.x+55, self.pos.y-22), 10)
@@ -159,11 +159,11 @@ while exit == False:
     for i in range(len(l)):
         l[i].S()
     my_font = pygame.font.SysFont('Comic Sans MS', 30)
-    text_label3 = my_font.render(str("Score: "),1,(255,0,0))
-    text_surface = my_font.render(str(score), 1 ,(255, 0, 0))
+    text_label3 = my_font.render(str("Score: "),1,(rr(0,255),rr(0,255),rr(0,255)))
+    text_surface = my_font.render(str(score), 1 ,(rr(0,255), rr(0,255), rr(0,255)))
 
-    text_label1 = my_font.render(str("Turkeys Left: "),1,(255,0,0))
-    text_surface1 = my_font.render(str(turkeys), 1 ,(255, 0, 0))
+    text_label1 = my_font.render(str("Turkeys Left: "),1,(rr(0,255),rr(0,255),rr(0,255)))
+    text_surface1 = my_font.render(str(turkeys), 1 ,(rr(0,255), rr(0,255), rr(0,255)))
 
     screen.blit(text_surface1, (200,30))
     screen.blit(text_label1, (0,30))

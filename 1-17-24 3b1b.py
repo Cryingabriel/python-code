@@ -43,7 +43,7 @@ class Box():
             self.xv *= -1
             self.c +=1
             self.v2 = (self.mass - b2m)/ (self.mass + b2m)
-            self.xv = self.v2
+            self.xv += self.v2
         print("box 1 c at", self.c)
         
 
@@ -51,7 +51,7 @@ class Box():
 class Box2():
     def __init__(self, xpos, ypos, mass):
         self.pos = Vector2(xpos, ypos)
-        self.xv = -10
+        self.xv = -2
         self.yv = 0
         self.num = random.randint(0,2)
         self.gavity = False
@@ -79,10 +79,12 @@ class Box2():
 
     def collision(self,b1x, b1m):
         if self.pos.x <= b1x and self.pos.x >= b1x:
-            self.xv *= -1
             self.c +=1
             self.v2 = (b1m*2)/ (b1m + self.mass)
-            self.xv = self.v2
+        if self.c == 100:
+            self.xv *= -1
+            self.c = 0
+        self.xv += self.v2
         print("box 2 c at", self.c)
         
         #if self.pos.x >=

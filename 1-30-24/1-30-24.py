@@ -69,7 +69,7 @@ class Particles():
 
 
 
-particles = Particles(450,450,2500)
+particles = Particles(450,450,500)
 pygame.mixer.Sound.play(SAO)
 #time.sleep(2)
 #pygame.mixer.Sound.play(SAO)
@@ -94,7 +94,7 @@ while True:
    
 
 	#1.comment out screen.fill and youll see a reference
-	screen.fill((rr(0,55),rr(0,55),rr(0,55)))
+	#screen.fill((rr(0,55),rr(0,55),rr(0,55)))
 
 	particles.update()
 	pygame.display.flip()

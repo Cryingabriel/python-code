@@ -10,7 +10,7 @@ pygame.display.set_caption("Pythagorean Tree Fractal")
 
 # Create the game screen
 screen = pygame.display.set_mode((1500, 900))
-
+r = True
 
 def tree(ax, ay, bx, by, depth=0):
 
@@ -57,7 +57,10 @@ def tree(ax, ay, bx, by, depth=0):
         tree(x5, y5, x3, y3, depth - 1)  # Right branch
 
 # Initial call to the tree function to start the fractal
-while(1):
+while r == True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: #close game window
+            break
     color = (random.randrange(0, 255),random.randrange(0, 255),random.randrange(0, 255))
     tree(600, 850, 800, 850, depth=20)
     screen.fill(color)

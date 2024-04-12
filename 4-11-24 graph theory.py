@@ -2,16 +2,13 @@ import pygame
 import random
 from pygame.math import Vector2
 
-
 FRAMERATE = 60
 SCREEN_SIZE = Vector2(1200, 800)
-
 
 # pygame init:
 pygame.init()
 screen = pygame.display.set_mode(SCREEN_SIZE)
 pygame.display.set_caption("")
-
 
 # definitions:
 def add_vertex(v: int):
@@ -22,8 +19,6 @@ def add_vertex(v: int):
   else:
     vertices_no = vertices_no + 1
     graph[v] = []
-
-
 
 # Add an edge between vertex v1 and v2 with edge weight e
 def add_edge(v1: int, v2: int, e: int):

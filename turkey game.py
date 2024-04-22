@@ -15,7 +15,25 @@ ypos = 0
 score = 0
 mousepos = (xpos,ypos)
 
+class Clouds():
+    def __init__(self, xpos, ypos):#setting up all of the class specific variables
+        self.pos = Vector2(xpos, ypos)
+        self.vx = -5
+        self.radius = 10
+    
+    def draw(self):
+        #Drawing my clouds in the background
+        pygame.draw.circle(screen, (255,255,255), (self.pos.x, self.pos.y), 10)
+        pygame.draw.circle(screen, (255,255,255), (self.pos.x + 10, self.pos.y), 10)
+        pygame.draw.circle(screen, (255,255,255), (self.pos.x + 20, self.pos.y), 10)
 
+    def move(self):
+        if self.pos.x < 0:#once the cloud moves out of screen it appears to the right and scrolls back on screen
+            self.pos.x = 850
+        self.pos.x += self.vx
+r = []
+for i in range(10):
+    r.append(Clouds(rr(0,800), rr(0,400)))
 
 class Turkey():
     def __init__(self, xpos, ypos):
@@ -34,6 +52,7 @@ class Turkey():
     def draw(self):#draw the turkey
         if self.alive == True:
             #Feathers
+            #The overall shape of the turkey is from my teacher Dr.Mo however the size, placement and color is all me.
             pygame.draw.circle(screen, (255,174,66), (self.pos.x+5, self.pos.y), self.size1)
             pygame.draw.circle(screen, (255,174,66), (self.pos.x+15, self.pos.y-22), self.size1)
             pygame.draw.circle(screen, (255,174,66), (self.pos.x+35, self.pos.y-35), self.size1)
@@ -65,7 +84,7 @@ class Turkey():
         if self.alive == True:
             if self.num == 0:
                 self.vy
-                self.pos.y += self.vy
+                self.pos.y += self.vy #
             elif self.num == 1:
                 self.vy2
                 self.pos.y += self.vy2
@@ -80,6 +99,7 @@ class Turkey():
 
     def collision(self):
         if self.alive == True:
+            #My teacher Dr.Mo provided the distance formula
             if math.sqrt((mousepos[0]-self.pos.x-35)**2 + (mousepos[1]-self.pos.y)**2)<self.radius1: #if the mouse is within the turkeys body, kill it
                 print("ah")
                 self.score += 1
@@ -111,10 +131,10 @@ while exit == False:
     #render section
     screen.fill((145,224,255))
 
-    #Cloud 1
-    pygame.draw.circle(screen, (255,255,255), (100,100), 10)
-    pygame.draw.circle(screen, (255,255,255), (110,100), 10)
-    pygame.draw.circle(screen, (255,255,255), (120,100), 10)
+    for i in range(len(r)):
+        r[i].move()
+        r[i].draw()
+
     for i in range(len(l)):
         l[i].move()
         l[i].draw()
@@ -124,7 +144,7 @@ while exit == False:
     for i in range(len(l)):
         l[i].S()
 
-    if turkeys == 0:
+    if turkeys == 0:#p
         text_label2 = my_font.render(str("YOU WIN! "),1,(0, 0, 0))
         screen.blit(text_label2, (325,380))
 
